@@ -36,7 +36,9 @@ Partial Class FrmLocalidades
         Me.lblCp = New System.Windows.Forms.Label()
         Me.TxtLocalidad = New System.Windows.Forms.TextBox()
         Me.TxtCp = New System.Windows.Forms.TextBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.dgvLocalidades, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnGestionarLocalidades
@@ -173,11 +175,22 @@ Partial Class FrmLocalidades
         Me.TxtCp.Size = New System.Drawing.Size(100, 20)
         Me.TxtCp.TabIndex = 14
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
+        Me.PictureBox1.Location = New System.Drawing.Point(539, 27)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 67
+        Me.PictureBox1.TabStop = False
+        '
         'FrmLocalidades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(645, 428)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BtnGestionarLocalidades)
         Me.Controls.Add(Me.BtnAtrasLocalidades)
         Me.Controls.Add(Me.lblBuscarXLocalidad)
@@ -195,6 +208,7 @@ Partial Class FrmLocalidades
         Me.Name = "FrmLocalidades"
         Me.Text = "FrmLocalidades"
         CType(Me.dgvLocalidades, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -214,4 +228,5 @@ Partial Class FrmLocalidades
     Friend WithEvents lblCp As Label
     Friend WithEvents TxtLocalidad As TextBox
     Friend WithEvents TxtCp As TextBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -51,7 +51,7 @@ CREATE TABLE productos (
 	id_producto INT  PRIMARY KEY, 
 	descripcion NVARCHAR (60),
 	precio DECIMAL(10,2),
-	stock INT , 
+	stock DECIMAL(10,3), 
 	id_rubro INT  FOREIGN KEY REFERENCES rubros(id_rubro)
 );
 
@@ -73,7 +73,7 @@ CREATE TABLE detalle_venta (
 	id_producto INT ,
 	id_fila INT , --ID FILA 
 	precio DECIMAL(10,2),
-	cantidad INT , 
+	cantidad DECIMAL(10,3), 
 	precio_r DECIMAL(10,2), --PRECIO DE RENGLON
 
 	 PRIMARY KEY (id_venta, id_producto, id_fila),
@@ -330,7 +330,7 @@ CREATE PROCEDURE spu_alta_producto
    @id_producto INT,
    @descripcion NVARCHAR(60), 
    @precio DECIMAL(10,2),
-   @stock INT,
+   @stock DECIMAL(10,3),
    @id_rubro INT  
 AS
 BEGIN
@@ -343,7 +343,7 @@ CREATE PROCEDURE spu_modificar_producto
 	@id_producto INT,
 	@descripcion NVARCHAR(60), 
 	@precio DECIMAL(10,2),
-	@stock INT,
+	@stock DECIMAL(10,3),
 	@id_rubro INT  
 AS
 BEGIN 
@@ -463,7 +463,7 @@ CREATE PROCEDURE spu_alta_detalle_venta
 			@id_producto INT, 
 			@id_fila INT, 
 			@precio DECIMAL(10,2),
-			@cantidad INT,
+			@cantidad DECIMAL(10,3),
 			@precio_r DECIMAL(10,2)  
 AS
 BEGIN
@@ -477,7 +477,7 @@ CREATE PROCEDURE spu_modificar_detalle_venta
 			@id_producto INT, 
 			@id_fila INT, 
 			@precio DECIMAL(10,2),
-			@cantidad INT,
+			@cantidad DECIMAL(10,3),
 			@precio_r DECIMAL(10,2) 
 AS
 BEGIN 

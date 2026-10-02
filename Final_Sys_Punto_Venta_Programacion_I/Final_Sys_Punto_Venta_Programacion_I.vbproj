@@ -97,10 +97,10 @@
     <Compile Include="Formularios\FrmDetalleVenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FrmForma_de_Pago.Designer.vb">
-      <DependentUpon>FrmForma_de_Pago.vb</DependentUpon>
+    <Compile Include="Formularios\FrmFormaDePago.Designer.vb">
+      <DependentUpon>FrmFormaDePago.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmForma_de_Pago.vb">
+    <Compile Include="Formularios\FrmFormaDePago.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmLogin.Designer.vb">
@@ -156,6 +156,12 @@
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmDetalleVenta.resx">
+      <DependentUpon>FrmDetalleVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmFormaDePago.resx">
+      <DependentUpon>FrmFormaDePago.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLocalidades.resx">
       <DependentUpon>FrmLocalidades.vb</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +193,27 @@
   <ItemGroup>
     <Folder Include="Recursos\" />
     <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Imagen_Main_Pollo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pollo-Abasto Tu Almacen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CandadoAzul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FondoFormularios.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\artistic-blurry-colorful-wallpaper-background %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\artistic-blurry-colorful-wallpaper-background %281%291.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

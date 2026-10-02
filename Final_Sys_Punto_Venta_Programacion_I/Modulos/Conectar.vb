@@ -2,7 +2,7 @@
     Public cmd As New SqlClient.SqlCommand
     Public dr As SqlClient.SqlDataReader
     Public conexion As New SqlClient.SqlConnection("Data Source=localhost;Initial Catalog=banco_izo_04_08_26;Integrated Security=True")
-    Public Sub conectar() 'Funcion para abrir la conexion 
+    Public Sub AbrirConexion() 'Funcion para abrir la conexion 
         Try
             ' ¿La conexión está cerrada?
             If conexion.State = ConnectionState.Closed Then
