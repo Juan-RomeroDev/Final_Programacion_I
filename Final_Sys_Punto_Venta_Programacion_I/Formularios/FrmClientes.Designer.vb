@@ -90,8 +90,9 @@ Partial Class FrmClientes
         'lblIDCliente
         '
         Me.lblIDCliente.AutoSize = True
+        Me.lblIDCliente.BackColor = System.Drawing.Color.Transparent
         Me.lblIDCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIDCliente.ForeColor = System.Drawing.Color.White
+        Me.lblIDCliente.ForeColor = System.Drawing.Color.Black
         Me.lblIDCliente.Location = New System.Drawing.Point(153, 321)
         Me.lblIDCliente.Name = "lblIDCliente"
         Me.lblIDCliente.Size = New System.Drawing.Size(97, 21)
@@ -130,8 +131,9 @@ Partial Class FrmClientes
         'CPCliente
         '
         Me.CPCliente.AutoSize = True
+        Me.CPCliente.BackColor = System.Drawing.Color.Transparent
         Me.CPCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CPCliente.ForeColor = System.Drawing.Color.White
+        Me.CPCliente.ForeColor = System.Drawing.Color.Black
         Me.CPCliente.Location = New System.Drawing.Point(153, 382)
         Me.CPCliente.Name = "CPCliente"
         Me.CPCliente.Size = New System.Drawing.Size(30, 21)
@@ -141,8 +143,9 @@ Partial Class FrmClientes
         'LblTelefonoCliente
         '
         Me.LblTelefonoCliente.AutoSize = True
+        Me.LblTelefonoCliente.BackColor = System.Drawing.Color.Transparent
         Me.LblTelefonoCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTelefonoCliente.ForeColor = System.Drawing.Color.White
+        Me.LblTelefonoCliente.ForeColor = System.Drawing.Color.Black
         Me.LblTelefonoCliente.Location = New System.Drawing.Point(153, 451)
         Me.LblTelefonoCliente.Name = "LblTelefonoCliente"
         Me.LblTelefonoCliente.Size = New System.Drawing.Size(90, 21)
@@ -152,8 +155,9 @@ Partial Class FrmClientes
         'lblRazonSocialCliente
         '
         Me.lblRazonSocialCliente.AutoSize = True
+        Me.lblRazonSocialCliente.BackColor = System.Drawing.Color.Transparent
         Me.lblRazonSocialCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRazonSocialCliente.ForeColor = System.Drawing.Color.White
+        Me.lblRazonSocialCliente.ForeColor = System.Drawing.Color.Black
         Me.lblRazonSocialCliente.Location = New System.Drawing.Point(153, 353)
         Me.lblRazonSocialCliente.Name = "lblRazonSocialCliente"
         Me.lblRazonSocialCliente.Size = New System.Drawing.Size(125, 21)
@@ -219,8 +223,9 @@ Partial Class FrmClientes
         'LblEmail
         '
         Me.LblEmail.AutoSize = True
+        Me.LblEmail.BackColor = System.Drawing.Color.Transparent
         Me.LblEmail.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEmail.ForeColor = System.Drawing.Color.White
+        Me.LblEmail.ForeColor = System.Drawing.Color.Black
         Me.LblEmail.Location = New System.Drawing.Point(153, 416)
         Me.LblEmail.Name = "LblEmail"
         Me.LblEmail.Size = New System.Drawing.Size(58, 21)

@@ -1,0 +1,410 @@
+Public Class FrmClientes
+    'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION 
+    Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
+    Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AbrirConexion()
+        llenarClientes()
+
+        ' Al arrancar, bloqueo todo para que solo se pueda dar de Alta o Buscar
+        Bloquear()
+
+        ' FORZAMOS EL FOCO A LA GRILLA
+        Me.dgvClientes.Focus()
+    End Sub
+
+    ' =========================================================
+    ' CELDAS DE LA GRILLA Y SUS FUNCIONES 
+    ' =========================================================
+
+    Private Sub dgvClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellContentClick
+        ' Valido que el clic sea en una fila real y no en los títulos de arriba
+        If e.RowIndex >= 0 Then
+            ' Asigno CADA columna a su caja correspondiente respetando el orden de la BD
+            Me.TxtIDCliente.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(0).Value.ToString()
+            Me.TxtRazonSocial.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(1).Value.ToString()
+            Me.TxtCPCLiente.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(3).Value.ToString()
+            Me.TxtTelefono.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(2).Value.ToString()
+
+            'Mandar Cells(4) a tu Label que muestra el nombre de la localidad
+            Me.LblCPFiltrado.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(4).Value.ToString()
+
+
+            ' 2. ¿El usuario apretó "Gestionar Clientes" antes?
+            If modoEdicion = True Then
+                ' Paso 4: Bloqueando Alta y desbloqueando Modifica y Baja
+                Me.btnAltaCliente.Enabled = False
+                Me.btnModificaCliente.Enabled = True
+                Me.btnBajaCliente.Enabled = True
+
+                ' REGLA DE ORO: Bloqueo el ID y el CP (se busca con botón)
+                Me.TxtIDCliente.Enabled = False
+                Me.TxtCPCLiente.Enabled = False
+
+                ' Habilito el resto para modificar
+                Me.TxtRazonSocial.Enabled = True
+                Me.TxtEmail.Enabled = True
+                Me.TxtTelefono.Enabled = True
+                Me.BtnBuscarLocalidad.Enabled = True
+            End If
+        End If
+    End Sub
+
+    ' =========================================================
+    ' EVENTOS KEYDOWN (ENTER) PARA ABRIR BÚSQUEDAS Y BOTONES 
+    ' =========================================================
+
+    Private Sub dgvClientes_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellDoubleClick
+        If wflag = 4 Then ' 4 ES LA SEÑAL DE CLIENTES
+            wID_Cliente = Me.dgvClientes.CurrentRow.Cells(0).Value
+            wNombre_Cliente = Me.dgvClientes.CurrentRow.Cells(1).Value.ToString()
+            Me.Close()
+        End If
+    End Sub
+
+    ' EVENTO: APRETAR LA TECLA ENTER
+    Private Sub dgvClientes_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvClientes.KeyDown
+        If wflag = 4 And e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            wID_Cliente = Me.dgvClientes.CurrentRow.Cells(0).Value
+            wNombre_Cliente = Me.dgvClientes.CurrentRow.Cells(1).Value.ToString()
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub TxtCPCLiente_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtCPCLiente.KeyDown
+        ' Verificacion si apreto Enter para abrir la pantalla de Localidades
+        If e.KeyCode = Keys.Enter Then
+
+            ' Esto evita que suene el "Tilin" de error de Windows al apretar Enter
+            e.SuppressKeyPress = True
+
+            ' Indica que se está buscando una Localidad para el Cliente
+            wflag = 1
+
+            ' Abro la pantalla de Localidades
+            Dim frm As New frmLocalidades()
+            frm.ShowDialog()
+
+            ' Suspension del binding para evitar que se actualice la interfaz 
+            If wCP <> 0 Then
+                Me.TxtCPCLiente.Text = wCP
+                Me.LblCPFiltrado.Text = wCP
+            End If
+
+            ' Reset a las variables de control 
+            wflag = 0
+            wCP = 0
+        End If
+    End Sub
+
+
+    ' =========================================================
+    ' FUNCIONES CRUD (ALTA, BAJA, MODIFICACIÓN)
+    ' =========================================================
+
+    Private Sub Bloquear()
+        modoEdicion = False
+
+        ' Paso 5: La grilla/formulario vuelve a estar toda bloqueada
+        Me.TxtIDCliente.Enabled = False
+        Me.TxtRazonSocial.Enabled = False
+        Me.TxtCPCLiente.Enabled = False
+        Me.TxtEmail.Enabled = False
+        Me.TxtTelefono.Enabled = False
+
+        ' Fondo gris para que parezca apagada
+        Me.TxtCPCLiente.BackColor = ColorTranslator.FromOle(&HFFFF) 'Color Amarillo
+
+        ' BLOQUEAMOS TODOS LOS BOTONES
+        Me.btnAltaCliente.Enabled = False
+        Me.btnModificaCliente.Enabled = False
+        Me.btnBajaCliente.Enabled = False
+        Me.BtnBuscarLocalidad.Enabled = False
+    End Sub
+
+    Private Sub llenarClientes()
+        ' Llamo al procedimiento almacenado que me devuelve todos los clientes
+        Dim sql As String = "exec spu_mostrar_clientes"
+        Dim adp As New SqlClient.SqlDataAdapter(sql, AbrirConexion.conexion)
+        Dim ds As New DataSet
+
+        ' Lleno la tabla temporal
+        ds.Tables.Add("clientes")
+        adp.Fill(ds.Tables("clientes"))
+
+        ' Asigno los datos a la grilla
+        Me.dgvClientes.DataSource = ds.Tables("clientes")
+
+        ' FORMATO DE LA GRILLA 
+        ' Acá solo tengo 6 columnas, así que no hace falta ocultar nada
+
+        ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
+        Me.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+        Me.dgvClientes.Columns(0).FillWeight = 40   ' ID (pequeño)
+        Me.dgvClientes.Columns(1).FillWeight = 160  ' RAZON SOCIAL (el más ancho)
+        Me.dgvClientes.Columns(2).FillWeight = 90   ' TELEFONO
+        Me.dgvClientes.Columns(3).FillWeight = 50   ' CP (pequeño)
+        Me.dgvClientes.Columns(4).FillWeight = 120  ' LOCALIDAD
+        Me.dgvClientes.Columns(5).FillWeight = 80   ' DNI
+
+        Me.dgvClientes.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvClientes.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvClientes.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvClientes.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvClientes.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.dgvClientes.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        Bloquear() ' <--- ¡Acá cierro el ciclo del Paso 5
+    End Sub
+
+    'FUNCION PARA GENERAR + 1 ID DE CLIENTE
+    Private Sub generarIdCliente()
+        Try
+            AbrirConexion()
+            cmd.CommandText = "exec spu_generar_id_cliente"
+
+            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos 
+
+            If nuevoID IsNot Nothing AndAlso Not IsDBNull(nuevoID) Then
+                Me.TxtIDCliente.Text = nuevoID.ToString()
+            Else
+                Me.TxtIDCliente.Text = "1"
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al generar ID: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    'FUNCION DAR DE ALTA UN CLIENTE
+    Private Sub altaClientes()
+        Dim altaCli As New Clases.Clientes
+        altaCli.id_cliente = Me.TxtIDCliente.Text.Trim()
+        altaCli.razonSocial = Me.TxtRazonSocial.Text.Trim()
+        altaCli.cp = Me.TxtCPCLiente.Text.Trim()
+        altaCli.email = Me.TxtEmail.Text.Trim()
+        altaCli.telefono = Me.TxtTelefono.Text.Trim()
+
+        'Cuidado con los espacios Por Ejemplo: Dim sql As String = "exec spu_alta_localidad" & altaLoc.cp & ",'" & altaLoc.localidad & "'"
+        Dim sql As String = "exec spu_add_cliente " & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
+        cmd.CommandText = sql
+        MsgBox("SE DARA DE ALTA UN CLIENTE",, "INFO")
+        'Captura de error(Por si ocurre un improbable error en la BD :) ) 
+        Try
+            AbrirConexion()
+            cmd.ExecuteNonQuery()
+            MsgBox("CLIENTE CREADO CON EXITO",, "INFO")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+
+    'FUNCION PARA MODIFICAR LOS DATOS EN LA GRILLA DE CLIENTES
+    Private Sub modificarClientes()
+        'Lee los 5 datos de los textboxes (ID, Razon Social, Telefono, DNI, CP)
+        Dim id As String = Me.TxtIDCliente.Text.Trim()
+        Dim razonSocial As String = Me.TxtRazonSocial.Text.Trim()
+        Dim cp As String = Me.TxtCPCLiente.Text.Trim()
+        Dim email As String = Me.TxtEmail.Text.Trim()
+        Dim telefono As String = Me.TxtTelefono.Text.Trim()
+
+        'SQL Store Procedure para modificar el cliente.
+        'CUIDADO: ID y CP van SIN comillas simples (porque son INT). Razon, Telefono y DNI van CON comillas simples.
+        Dim sql As String = "exec spu_up_cliente " & id & ", '" & razonSocial & "', '" & cp & "', " & email & ", '" & telefono & "'"
+        cmd.CommandText = sql
+
+        MsgBox("SE MODIFICARÁ EL CLIENTE", , "INFO")
+
+        Try
+            cmd.ExecuteNonQuery() ' Ejecuta la modificación en SQL
+            MsgBox("CLIENTE MODIFICADO CON EXITO", , "INFO")
+            ' llenarClientes() para que la grilla muestre el cambio
+            llenarClientes()
+
+            ' Limpiar las cajas de texto después de modificar
+            Me.TxtIDCliente.Clear()
+            Me.TxtRazonSocial.Clear()
+            Me.TxtCPCLiente.Clear()
+            Me.TxtEmail.Clear()
+            Me.TxtTelefono.Clear()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Bloquear() ' <--- ¡Acá cierro el ciclo del Paso 5
+    End Sub
+
+    'FUNCION DAR DE BAJA, ELIMINAR UN CLIENTE
+    Private Sub bajaClientes()
+        ' Verifico que al menos el DNI no esté vacío
+        If Me.TxtIDCliente.Text.Trim() = "" Then
+            MsgBox("Por favor, seleccione un cliente de la lista para eliminar.", MsgBoxStyle.Exclamation, "Datos incompletos")
+            Exit Sub
+        End If
+
+        ' Le pregunto al usuario si está seguro
+        Dim respuesta As DialogResult
+        respuesta = MsgBox("¿Está seguro que desea eliminar el cliente con ID: " & Me.TxtIDCliente.Text & "?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Confirmar Baja")
+
+        ' Si el usuario dijo que SÍ, ejecuto el borrado
+        If respuesta = DialogResult.Yes Then
+            Dim id As String = Me.TxtIDCliente.Text
+            ' Armo la consulta apuntando al procedimiento de baja (usa el ID)
+            Dim sql As String = "exec spu_del_cliente " & id
+            cmd.CommandText = sql
+
+            Try
+                cmd.ExecuteNonQuery()
+                MsgBox("CLIENTE ELIMINADO CON EXITO", MsgBoxStyle.Information, "INFO")
+
+                ' Recargo la grilla para que desaparezca la fila borrada
+                llenarClientes()
+
+                ' Limpiamos las cajas
+                Me.TxtIDCliente.Clear()
+                Me.TxtRazonSocial.Clear()
+                Me.TxtCPCLiente.Clear()
+                Me.TxtEmail.Clear()
+                Me.TxtTelefono.Clear()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+
+        Bloquear() ' <--- ¡Acá cierro el ciclo del Paso 5
+    End Sub
+
+    ' =========================================================
+    ' BOTONES, TXT Y SUS FUNCIONES (EVENTOS)
+    ' =========================================================
+
+    'BOTON DE DAR ALTA UN CLIENTE
+    Private Sub btnAltaCliente_Click(sender As Object, e As EventArgs) Handles btnAltaCliente.Click
+
+        ' Valida que no haya nada en blanco
+        If TxtRazonSocial.Text.Trim() = "" Or TxtTelefono.Text.Trim() = "" Or TxtEmail.Text.Trim() = "" Or TxtCPCLiente.Text.Trim() = "" Then
+            MsgBox("Por favor, complete todos los campos obligatorios.", MsgBoxStyle.Exclamation, "Datos incompletos")
+            Exit Sub
+        End If
+
+        ' Vuelvo a llenar la grilla para que se vea el cliente recién cargado
+        altaClientes()
+        llenarClientes()
+
+        ' Limpio los textboxes y pongo el foco en el primero
+        Me.TxtIDCliente.Clear()
+        Me.TxtRazonSocial.Clear()
+        Me.TxtCPCLiente.Clear()
+        Me.TxtEmail.Clear()
+        Me.TxtTelefono.Clear()
+    End Sub
+
+    ' EVENTO DEL BOTÓN MODIFICA 
+    Private Sub btnModificaCliente_Click(sender As Object, e As EventArgs) Handles btnModificaCliente.Click
+        ' Validar que haya un ID seleccionado
+        If Me.TxtIDCliente.Text.Trim() = "" Then
+            MsgBox("Debe seleccionar un cliente de la lista para modificar.", MsgBoxStyle.Exclamation, "Sin selección")
+            Exit Sub
+        End If
+
+        ' Validar que no queden campos en blanco
+        If Me.TxtRazonSocial.Text.Trim() = "" Or Me.TxtTelefono.Text.Trim() = "" Or Me.TxtEmail.Text.Trim() = "" Or Me.TxtCPCLiente.Text.Trim() = "" Then
+            MsgBox("No puede dejar campos vacíos al modificar el cliente.", MsgBoxStyle.Exclamation, "Datos incompletos")
+            Exit Sub
+        End If
+
+        ' Si pasó los controles, ejecuta la modificación
+        modificarClientes()
+    End Sub
+    Private Sub btnBajaCliente_Click(sender As Object, e As EventArgs) Handles btnBajaCliente.Click
+        bajaClientes()
+    End Sub
+
+    Private Sub BtnAtrasClientes_Click(sender As Object, e As EventArgs) Handles BtnAtrasClientes.Click
+        Me.Close()
+    End Sub
+
+    Private Sub BtnBuscarLocalidad_Click(sender As Object, e As EventArgs) Handles BtnBuscarLocalidad.Click
+        ' Indica que se está buscando una Localidad para el Cliente
+        wflag = 1
+
+        'Abro la pantalla de Localidades para que el usuario seleccione una
+        Dim frm As New FrmLocalidades()
+        frm.ShowDialog()
+
+        'Suspender el binding para evitar que se actualice la interfaz mientras asignamos los valores
+        If wCP <> 0 Then
+            Me.TxtCPCLiente.Text = wCP ' Asigna la localidad seleccionada a la caja de texto
+            Me.LblCPFiltrado.Text = wCP
+        End If
+
+        'Reset a las variables de control para que no afecten futuras operaciones
+        wflag = 0
+        wCP = 0
+    End Sub
+
+    Private Sub BtnGestionarClientes_Click(sender As Object, e As EventArgs) Handles BtnGestionarClientes.Click
+        ' ESTA ES LA LLAVE para el error de antes de apretar el boton gestionar localidades hagas click en la grilla y se activen los modifica y baja
+
+        modoEdicion = True
+
+
+        ' Paso 2: Los dos textboxes se limpian
+        Me.TxtIDCliente.Clear()
+        Me.TxtRazonSocial.Clear()
+        Me.TxtEmail.Clear()
+        Me.TxtCPCLiente.Clear()
+        Me.TxtTelefono.Clear()
+
+        ' limpiar  el LblCPFiltrado
+        Me.LblCPFiltrado.Text = ""
+
+        ' 2. Generar el nuevo ID (después de limpiar)
+        generarIdCliente()
+
+
+        ' Habilito las cajas para que se pueda escribir los datos nuevos
+        Me.TxtIDCliente.Enabled = False ' ID se genera solo, no se puede escribir
+        Me.TxtRazonSocial.Enabled = True
+        Me.TxtEmail.Enabled = True
+        Me.TxtTelefono.Enabled = True
+
+        ' Primero la habilito y despues le doy el ReadOnly para poder seleccionar el Txt 
+        Me.TxtCPCLiente.Enabled = True
+        Me.TxtCPCLiente.ReadOnly = True
+
+        'HABLITO LOS BTN BUSCAR PARA FILTRAR LOCALIDAD
+        Me.BtnBuscarLocalidad.Enabled = True
+
+        ' Paso 3: El usuario decide escribir para dar de Alta. 
+        ' Desbloqueo Alta y Bloqueo Modifica y Baja.
+        Me.btnAltaCliente.Enabled = True
+        Me.btnModificaCliente.Enabled = False
+        Me.btnBajaCliente.Enabled = False
+
+        Me.TxtRazonSocial.Focus() ' El foco va directo a Razón Social
+    End Sub
+
+    Private Sub BtnGenerarCredencialClientes_Click(sender As Object, e As EventArgs) Handles BtnGenerarCredencialClientes.Click
+        wID_Cliente = Me.dgvClientes.CurrentRow.Cells(0).Value ' Asigno el ID del cliente a la variable global
+        MsgBox("Se generará la credencial para el cliente con ID: " & wID_Cliente, MsgBoxStyle.Information, "Generar Credencial")
+
+        Dim frm As New FrmImprimir_CredencialesClientes
+        frm.ShowDialog()
+    End Sub
+
+    ' =========================================================
+    ' VALIDACIONES DE SOLO NUMEROS EN CAMPOS 
+    ' =========================================================
+
+    Private Sub TxtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTelefono.KeyPress
+        ' Permite únicamente dígitos y teclas de control
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+            MsgBox("Atención: El campo Telefono solo acepta números.", MsgBoxStyle.Exclamation, "Dato inválido")
+        End If
+    End Sub
+
+End Class
