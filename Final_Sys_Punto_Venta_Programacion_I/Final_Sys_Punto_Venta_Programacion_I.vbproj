@@ -73,6 +73,60 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Clientes.Designer.vb">
+      <DependentUpon>FrmImprimir_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_CredencialesClientes.Designer.vb">
+      <DependentUpon>FrmImprimir_CredencialesClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_CredencialesClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmClientes.Designer.vb">
+      <DependentUpon>FrmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmDetalleVenta.Designer.vb">
+      <DependentUpon>FrmDetalleVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmDetalleVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmForma_de_Pago.Designer.vb">
+      <DependentUpon>FrmForma_de_Pago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmForma_de_Pago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmLogin.Designer.vb">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmLocalidades.Designer.vb">
+      <DependentUpon>FrmLocalidades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmLocalidades.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmProductos.Designer.vb">
+      <DependentUpon>FrmProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmRubros.Designer.vb">
+      <DependentUpon>FrmRubros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmRubros.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Clases.vb" />
     <Compile Include="Modulos\Conectar.vb" />
     <Compile Include="Formularios\FrmMain.vb">
@@ -99,6 +153,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\FrmClientes.resx">
+      <DependentUpon>FrmClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmLocalidades.resx">
+      <DependentUpon>FrmLocalidades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmLogin.resx">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -122,7 +185,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FormulariosImprimir\" />
     <Folder Include="Recursos\" />
     <Folder Include="Reportes\" />
   </ItemGroup>
