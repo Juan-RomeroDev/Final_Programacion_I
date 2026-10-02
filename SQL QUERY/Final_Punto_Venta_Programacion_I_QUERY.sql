@@ -204,9 +204,9 @@ GO
 CREATE PROCEDURE spu_mostrar_rubros
 AS
 BEGIN
-     SELECT id_rubro ID_RUBRO, descrip_rubro DESCRIPCION_RUBRO FROM rubros
-END 
-GO 
+     SELECT id_rubro ID_RUBRO, descrip_rubro DESCRIPCION_RUBRO FROM rubros;
+END; 
+
 
 --ALTA RUBROS
 CREATE PROCEDURE spu_alta_rubro
@@ -252,12 +252,14 @@ CREATE PROCEDURE spu_mostrar_clientes
 AS
 BEGIN
      SELECT 
-			id_cliente AS ID_CLIENTE, 
-			razon_social AS RAZON_SOCIAL,  
-			cp AS CP,
-			mail AS MAIL, 
-			telefono AS TELEFONO
+			clientes.id_cliente AS ID_CLIENTE, 
+			clientes.razon_social AS RAZON_SOCIAL,  
+			clientes.cp AS CP,
+			localidades.localidad AS LOCALIDAD,
+			clientes.mail AS MAIL, 
+			clientes.telefono AS TELEFONO
 	 FROM clientes
+	 INNER JOIN localidades ON clientes.cp = localidades.cp;
 END; 
 
 
@@ -312,12 +314,14 @@ CREATE PROCEDURE spu_mostrar_productos
 AS
 BEGIN
      SELECT 
-			id_producto AS ID_PRODUCTO,
-			descripcion AS DESCRIPCION, 
-			precio AS PRECIO,
-			stock AS STOCK,
-			id_rubro AS ID_RUBRO 
+			productos.id_producto AS ID_PRODUCTO,
+			productos.descripcion AS DESCRIPCION, 
+			productos.precio AS PRECIO,
+			productos.stock AS STOCK,
+			productos.id_rubro AS ID_RUBRO,
+			rubros.descrip_rubro AS DESCRIPCION_RUBRO
 	 FROM productos
+	 INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro;
 END; 
 
 
@@ -372,13 +376,19 @@ CREATE PROCEDURE spu_mostrar_ventas
 AS
 BEGIN
      SELECT 
-			id_venta AS ID_VENTA,
-			fecha AS FECHA, 
-			id_forma_pago AS ID_FORMA_PAGO, 
-			id_cliente AS ID_CLIENTE,
-			id_usuario AS ID_USUARIO,
-			total AS TOTAL 
+			ventas.id_venta AS ID_VENTA,
+			ventas.fecha AS FECHA, 
+			ventas.id_forma_pago AS ID_FORMA_PAGO, 
+			forma_de_pago.descrip_forma_pago AS DESCRIPCION_FORMA_PAGO,
+			ventas.id_cliente AS ID_CLIENTE,
+			clientes.razon_social AS RAZON_SOCIAL,
+			ventas.id_usuario AS ID_USUARIO,
+			usuarios.usuario AS USUARIO,
+			ventas.total AS TOTAL 
 	 FROM ventas
+	 INNER JOIN forma_de_pago ON ventas.id_forma_pago = forma_de_pago.id_forma_pago
+	 INNER JOIN clientes ON ventas.id_cliente = clientes.id_cliente
+	 INNER JOIN usuarios ON ventas.id_usuario = usuarios.id_usuario;
 END; 
 
 
@@ -430,16 +440,20 @@ END;
 
 --MOSTRAR DETALLE_VENTAS
 CREATE PROCEDURE spu_mostrar_detalle_venta
+	@_id_venta INT
 AS
 BEGIN
      SELECT 
-			id_venta AS ID_VENTA,
-			id_producto AS ID_PRODUCTO, 
-			id_fila AS ID_FILA, 
-			precio AS PRECIO,
-			cantidad AS CANTIDAD,
-			precio_r AS PRECIO_RENGLON 
+			detalle_venta.id_venta AS ID_VENTA,
+			detalle_venta.id_producto AS ID_PRODUCTO, 
+			productos.descripcion AS DESCRIPCION_PRODUCTO,
+			detalle_venta.id_fila AS ID_FILA, 
+			detalle_venta.precio AS PRECIO,
+			detalle_venta.cantidad AS CANTIDAD,
+			detalle_venta.precio_r AS PRECIO_RENGLON
 	 FROM detalle_venta
+	 INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+	 WHERE detalle_venta.id_venta = @_id_venta;
 END; 
 
 
