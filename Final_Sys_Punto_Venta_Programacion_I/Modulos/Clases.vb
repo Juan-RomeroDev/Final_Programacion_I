@@ -3,15 +3,6 @@ Imports System.Runtime.Remoting.Messaging
 Imports System.Security.Cryptography.X509Certificates
 
 Module Clases
-    ' =========================================================
-    ' CLASE LOCALIDADES 
-    ' =========================================================
-
-    'Clase para almacenar los datos de las localidades Publicamente, para poder acceder a ellos desde cualquier formulario
-    Class Localidades
-        Public cp As Integer
-        Public localidad As String
-    End Class
 
     ' =========================================================
     ' CLASE CLIENTES 
@@ -25,6 +16,27 @@ Module Clases
         Public email As String
         Public telefono As String
     End Class
+
+    ' =========================================================
+    ' CLASE LOCALIDADES 
+    ' =========================================================
+
+    'Clase para almacenar los datos de las localidades Publicamente, para poder acceder a ellos desde cualquier formulario
+    Class Localidades
+        Public cp As Integer
+        Public localidad As String
+    End Class
+
+    ' =========================================================
+    ' CLASE RUBROS
+    ' =========================================================
+
+    Class Rubros
+        Public idRubro As Integer
+        Public descripcionRubro As String
+    End Class
+
+
 
     ' =========================================================
     ' BANDERA DE ESTADO (Controla qué formulario hizo la llamada)

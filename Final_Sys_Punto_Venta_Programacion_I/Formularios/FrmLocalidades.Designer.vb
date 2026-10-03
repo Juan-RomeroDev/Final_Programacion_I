@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmLocalidades
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class frmLocalidades
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,9 @@ Partial Class FrmLocalidades
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLocalidades))
         Me.BtnGestionarLocalidades = New System.Windows.Forms.Button()
         Me.BtnAtrasLocalidades = New System.Windows.Forms.Button()
         Me.lblBuscarXLocalidad = New System.Windows.Forms.Label()
@@ -43,20 +44,20 @@ Partial Class FrmLocalidades
         '
         'BtnGestionarLocalidades
         '
-        Me.BtnGestionarLocalidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGestionarLocalidades.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnGestionarLocalidades.Location = New System.Drawing.Point(370, 260)
         Me.BtnGestionarLocalidades.Name = "BtnGestionarLocalidades"
-        Me.BtnGestionarLocalidades.Size = New System.Drawing.Size(150, 23)
+        Me.BtnGestionarLocalidades.Size = New System.Drawing.Size(206, 28)
         Me.BtnGestionarLocalidades.TabIndex = 27
         Me.BtnGestionarLocalidades.Text = "Gestionar Localidades"
         Me.BtnGestionarLocalidades.UseVisualStyleBackColor = True
         '
         'BtnAtrasLocalidades
         '
-        Me.BtnAtrasLocalidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAtrasLocalidades.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnAtrasLocalidades.Location = New System.Drawing.Point(0, -1)
         Me.BtnAtrasLocalidades.Name = "BtnAtrasLocalidades"
-        Me.BtnAtrasLocalidades.Size = New System.Drawing.Size(75, 23)
+        Me.BtnAtrasLocalidades.Size = New System.Drawing.Size(73, 30)
         Me.BtnAtrasLocalidades.TabIndex = 26
         Me.BtnAtrasLocalidades.Text = "ATRAS"
         Me.BtnAtrasLocalidades.UseVisualStyleBackColor = True
@@ -64,33 +65,33 @@ Partial Class FrmLocalidades
         'lblBuscarXLocalidad
         '
         Me.lblBuscarXLocalidad.AutoSize = True
-        Me.lblBuscarXLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBuscarXLocalidad.Location = New System.Drawing.Point(184, 27)
+        Me.lblBuscarXLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBuscarXLocalidad.Location = New System.Drawing.Point(261, 28)
         Me.lblBuscarXLocalidad.Name = "lblBuscarXLocalidad"
-        Me.lblBuscarXLocalidad.Size = New System.Drawing.Size(115, 13)
+        Me.lblBuscarXLocalidad.Size = New System.Drawing.Size(151, 21)
         Me.lblBuscarXLocalidad.TabIndex = 25
         Me.lblBuscarXLocalidad.Text = "Buscar x Localidad"
         '
         'lblBuscarXCp
         '
         Me.lblBuscarXCp.AutoSize = True
-        Me.lblBuscarXCp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBuscarXCp.Location = New System.Drawing.Point(8, 27)
+        Me.lblBuscarXCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBuscarXCp.Location = New System.Drawing.Point(89, 28)
         Me.lblBuscarXCp.Name = "lblBuscarXCp"
-        Me.lblBuscarXCp.Size = New System.Drawing.Size(75, 13)
+        Me.lblBuscarXCp.Size = New System.Drawing.Size(97, 21)
         Me.lblBuscarXCp.TabIndex = 24
         Me.lblBuscarXCp.Text = "Buscar x Cp"
         '
         'TxtFiltrarLocalidad
         '
-        Me.TxtFiltrarLocalidad.Location = New System.Drawing.Point(187, 46)
+        Me.TxtFiltrarLocalidad.Location = New System.Drawing.Point(265, 52)
         Me.TxtFiltrarLocalidad.Name = "TxtFiltrarLocalidad"
         Me.TxtFiltrarLocalidad.Size = New System.Drawing.Size(161, 20)
         Me.TxtFiltrarLocalidad.TabIndex = 23
         '
         'TxtFiltrarCp
         '
-        Me.TxtFiltrarCp.Location = New System.Drawing.Point(11, 46)
+        Me.TxtFiltrarCp.Location = New System.Drawing.Point(88, 52)
         Me.TxtFiltrarCp.Name = "TxtFiltrarCp"
         Me.TxtFiltrarCp.Size = New System.Drawing.Size(135, 20)
         Me.TxtFiltrarCp.TabIndex = 22
@@ -98,10 +99,10 @@ Partial Class FrmLocalidades
         'btnBajaLocalidad
         '
         Me.btnBajaLocalidad.Enabled = False
-        Me.btnBajaLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBajaLocalidad.Location = New System.Drawing.Point(535, 367)
+        Me.btnBajaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBajaLocalidad.Location = New System.Drawing.Point(545, 367)
         Me.btnBajaLocalidad.Name = "btnBajaLocalidad"
-        Me.btnBajaLocalidad.Size = New System.Drawing.Size(75, 23)
+        Me.btnBajaLocalidad.Size = New System.Drawing.Size(67, 30)
         Me.btnBajaLocalidad.TabIndex = 21
         Me.btnBajaLocalidad.Text = "BAJA"
         Me.btnBajaLocalidad.UseVisualStyleBackColor = True
@@ -109,10 +110,10 @@ Partial Class FrmLocalidades
         'btnModificaLocalidad
         '
         Me.btnModificaLocalidad.Enabled = False
-        Me.btnModificaLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificaLocalidad.Location = New System.Drawing.Point(273, 367)
         Me.btnModificaLocalidad.Name = "btnModificaLocalidad"
-        Me.btnModificaLocalidad.Size = New System.Drawing.Size(75, 23)
+        Me.btnModificaLocalidad.Size = New System.Drawing.Size(97, 30)
         Me.btnModificaLocalidad.TabIndex = 20
         Me.btnModificaLocalidad.Text = "MODIFICA"
         Me.btnModificaLocalidad.UseVisualStyleBackColor = True
@@ -132,10 +133,10 @@ Partial Class FrmLocalidades
         'btnAltaLocalidad
         '
         Me.btnAltaLocalidad.Enabled = False
-        Me.btnAltaLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAltaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAltaLocalidad.Location = New System.Drawing.Point(28, 367)
         Me.btnAltaLocalidad.Name = "btnAltaLocalidad"
-        Me.btnAltaLocalidad.Size = New System.Drawing.Size(75, 23)
+        Me.btnAltaLocalidad.Size = New System.Drawing.Size(82, 30)
         Me.btnAltaLocalidad.TabIndex = 18
         Me.btnAltaLocalidad.Text = "ALTA"
         Me.btnAltaLocalidad.UseVisualStyleBackColor = True
@@ -143,20 +144,20 @@ Partial Class FrmLocalidades
         'LblLocalidad
         '
         Me.LblLocalidad.AutoSize = True
-        Me.LblLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblLocalidad.Location = New System.Drawing.Point(141, 321)
+        Me.LblLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblLocalidad.Location = New System.Drawing.Point(135, 317)
         Me.LblLocalidad.Name = "LblLocalidad"
-        Me.LblLocalidad.Size = New System.Drawing.Size(76, 13)
+        Me.LblLocalidad.Size = New System.Drawing.Size(98, 21)
         Me.LblLocalidad.TabIndex = 17
         Me.LblLocalidad.Text = "LOCALIDAD"
         '
         'lblCp
         '
         Me.lblCp.AutoSize = True
-        Me.lblCp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCp.Location = New System.Drawing.Point(141, 266)
+        Me.lblCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCp.Location = New System.Drawing.Point(135, 262)
         Me.lblCp.Name = "lblCp"
-        Me.lblCp.Size = New System.Drawing.Size(23, 13)
+        Me.lblCp.Size = New System.Drawing.Size(30, 21)
         Me.lblCp.TabIndex = 16
         Me.lblCp.Text = "CP"
         '
@@ -178,14 +179,14 @@ Partial Class FrmLocalidades
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(539, 27)
+        Me.PictureBox1.Location = New System.Drawing.Point(574, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 67
         Me.PictureBox1.TabStop = False
         '
-        'FrmLocalidades
+        'frmLocalidades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -205,7 +206,9 @@ Partial Class FrmLocalidades
         Me.Controls.Add(Me.lblCp)
         Me.Controls.Add(Me.TxtLocalidad)
         Me.Controls.Add(Me.TxtCp)
-        Me.Name = "FrmLocalidades"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "frmLocalidades"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmLocalidades"
         CType(Me.dgvLocalidades, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

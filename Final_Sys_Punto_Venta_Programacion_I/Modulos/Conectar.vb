@@ -1,7 +1,7 @@
 ﻿Module Conectar
     Public cmd As New SqlClient.SqlCommand
     Public dr As SqlClient.SqlDataReader
-    Public conexion As New SqlClient.SqlConnection("Data Source=localhost;Initial Catalog=banco_izo_04_08_26;Integrated Security=True")
+    Public conexion As New SqlClient.SqlConnection("Data Source=localhost;Initial Catalog=Final_Punto_Venta_Programacion_I;Integrated Security=True")
     Public Sub AbrirConexion() 'Funcion para abrir la conexion 
         Try
             ' ¿La conexión está cerrada?

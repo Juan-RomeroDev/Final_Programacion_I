@@ -63,26 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property artistic_blurry_colorful_wallpaper_background__1_() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("artistic-blurry-colorful-wallpaper-background (1)", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property artistic_blurry_colorful_wallpaper_background__1_1() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("artistic-blurry-colorful-wallpaper-background (1)1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property CandadoAzul() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("CandadoAzul", resourceCulture)
@@ -96,26 +76,6 @@ Namespace My.Resources
         Friend ReadOnly Property Clientes() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Clientes", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property FondoFormularios() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("FondoFormularios", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Imagen_Main_Pollo() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Imagen_Main_Pollo", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

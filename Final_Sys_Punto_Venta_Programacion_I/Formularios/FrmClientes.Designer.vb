@@ -53,7 +53,7 @@ Partial Class FrmClientes
         'BtnGenerarCredencialClientes
         '
         Me.BtnGenerarCredencialClientes.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarCredencialClientes.Location = New System.Drawing.Point(712, 375)
+        Me.BtnGenerarCredencialClientes.Location = New System.Drawing.Point(731, 448)
         Me.BtnGenerarCredencialClientes.Name = "BtnGenerarCredencialClientes"
         Me.BtnGenerarCredencialClientes.Size = New System.Drawing.Size(151, 28)
         Me.BtnGenerarCredencialClientes.TabIndex = 63
@@ -63,7 +63,7 @@ Partial Class FrmClientes
         'BtnGestionarClientes
         '
         Me.BtnGestionarClientes.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGestionarClientes.Location = New System.Drawing.Point(712, 338)
+        Me.BtnGestionarClientes.Location = New System.Drawing.Point(731, 411)
         Me.BtnGestionarClientes.Name = "BtnGestionarClientes"
         Me.BtnGestionarClientes.Size = New System.Drawing.Size(148, 31)
         Me.BtnGestionarClientes.TabIndex = 62
@@ -82,7 +82,7 @@ Partial Class FrmClientes
         '
         'TxtIDCliente
         '
-        Me.TxtIDCliente.Location = New System.Drawing.Point(313, 321)
+        Me.TxtIDCliente.Location = New System.Drawing.Point(332, 394)
         Me.TxtIDCliente.Name = "TxtIDCliente"
         Me.TxtIDCliente.Size = New System.Drawing.Size(105, 20)
         Me.TxtIDCliente.TabIndex = 58
@@ -92,8 +92,8 @@ Partial Class FrmClientes
         Me.lblIDCliente.AutoSize = True
         Me.lblIDCliente.BackColor = System.Drawing.Color.Transparent
         Me.lblIDCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIDCliente.ForeColor = System.Drawing.Color.Black
-        Me.lblIDCliente.Location = New System.Drawing.Point(153, 321)
+        Me.lblIDCliente.ForeColor = System.Drawing.Color.White
+        Me.lblIDCliente.Location = New System.Drawing.Point(172, 394)
         Me.lblIDCliente.Name = "lblIDCliente"
         Me.lblIDCliente.Size = New System.Drawing.Size(97, 21)
         Me.lblIDCliente.TabIndex = 57
@@ -104,7 +104,7 @@ Partial Class FrmClientes
         Me.LblCPFiltrado.AutoSize = True
         Me.LblCPFiltrado.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.LblCPFiltrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCPFiltrado.Location = New System.Drawing.Point(491, 393)
+        Me.LblCPFiltrado.Location = New System.Drawing.Point(510, 466)
         Me.LblCPFiltrado.Name = "LblCPFiltrado"
         Me.LblCPFiltrado.Size = New System.Drawing.Size(15, 13)
         Me.LblCPFiltrado.TabIndex = 56
@@ -113,7 +113,7 @@ Partial Class FrmClientes
         'BtnBuscarLocalidad
         '
         Me.BtnBuscarLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscarLocalidad.Location = New System.Drawing.Point(437, 383)
+        Me.BtnBuscarLocalidad.Location = New System.Drawing.Point(456, 456)
         Me.BtnBuscarLocalidad.Name = "BtnBuscarLocalidad"
         Me.BtnBuscarLocalidad.Size = New System.Drawing.Size(48, 23)
         Me.BtnBuscarLocalidad.TabIndex = 55
@@ -123,7 +123,7 @@ Partial Class FrmClientes
         'TxtCPCLiente
         '
         Me.TxtCPCLiente.BackColor = System.Drawing.Color.Yellow
-        Me.TxtCPCLiente.Location = New System.Drawing.Point(313, 382)
+        Me.TxtCPCLiente.Location = New System.Drawing.Point(332, 455)
         Me.TxtCPCLiente.Name = "TxtCPCLiente"
         Me.TxtCPCLiente.Size = New System.Drawing.Size(105, 20)
         Me.TxtCPCLiente.TabIndex = 54
@@ -133,8 +133,8 @@ Partial Class FrmClientes
         Me.CPCliente.AutoSize = True
         Me.CPCliente.BackColor = System.Drawing.Color.Transparent
         Me.CPCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CPCliente.ForeColor = System.Drawing.Color.Black
-        Me.CPCliente.Location = New System.Drawing.Point(153, 382)
+        Me.CPCliente.ForeColor = System.Drawing.Color.White
+        Me.CPCliente.Location = New System.Drawing.Point(172, 458)
         Me.CPCliente.Name = "CPCliente"
         Me.CPCliente.Size = New System.Drawing.Size(30, 21)
         Me.CPCliente.TabIndex = 53
@@ -145,8 +145,8 @@ Partial Class FrmClientes
         Me.LblTelefonoCliente.AutoSize = True
         Me.LblTelefonoCliente.BackColor = System.Drawing.Color.Transparent
         Me.LblTelefonoCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTelefonoCliente.ForeColor = System.Drawing.Color.Black
-        Me.LblTelefonoCliente.Location = New System.Drawing.Point(153, 451)
+        Me.LblTelefonoCliente.ForeColor = System.Drawing.Color.White
+        Me.LblTelefonoCliente.Location = New System.Drawing.Point(172, 524)
         Me.LblTelefonoCliente.Name = "LblTelefonoCliente"
         Me.LblTelefonoCliente.Size = New System.Drawing.Size(90, 21)
         Me.LblTelefonoCliente.TabIndex = 50
@@ -157,8 +157,8 @@ Partial Class FrmClientes
         Me.lblRazonSocialCliente.AutoSize = True
         Me.lblRazonSocialCliente.BackColor = System.Drawing.Color.Transparent
         Me.lblRazonSocialCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRazonSocialCliente.ForeColor = System.Drawing.Color.Black
-        Me.lblRazonSocialCliente.Location = New System.Drawing.Point(153, 353)
+        Me.lblRazonSocialCliente.ForeColor = System.Drawing.Color.White
+        Me.lblRazonSocialCliente.Location = New System.Drawing.Point(172, 423)
         Me.lblRazonSocialCliente.Name = "lblRazonSocialCliente"
         Me.lblRazonSocialCliente.Size = New System.Drawing.Size(125, 21)
         Me.lblRazonSocialCliente.TabIndex = 49
@@ -166,14 +166,14 @@ Partial Class FrmClientes
         '
         'TxtTelefono
         '
-        Me.TxtTelefono.Location = New System.Drawing.Point(313, 451)
+        Me.TxtTelefono.Location = New System.Drawing.Point(332, 524)
         Me.TxtTelefono.Name = "TxtTelefono"
         Me.TxtTelefono.Size = New System.Drawing.Size(172, 20)
         Me.TxtTelefono.TabIndex = 48
         '
         'TxtRazonSocial
         '
-        Me.TxtRazonSocial.Location = New System.Drawing.Point(313, 350)
+        Me.TxtRazonSocial.Location = New System.Drawing.Point(332, 423)
         Me.TxtRazonSocial.Name = "TxtRazonSocial"
         Me.TxtRazonSocial.Size = New System.Drawing.Size(172, 20)
         Me.TxtRazonSocial.TabIndex = 47
@@ -181,7 +181,7 @@ Partial Class FrmClientes
         'btnBajaCliente
         '
         Me.btnBajaCliente.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBajaCliente.Location = New System.Drawing.Point(748, 490)
+        Me.btnBajaCliente.Location = New System.Drawing.Point(767, 563)
         Me.btnBajaCliente.Name = "btnBajaCliente"
         Me.btnBajaCliente.Size = New System.Drawing.Size(62, 30)
         Me.btnBajaCliente.TabIndex = 46
@@ -191,7 +191,7 @@ Partial Class FrmClientes
         'btnModificaCliente
         '
         Me.btnModificaCliente.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificaCliente.Location = New System.Drawing.Point(474, 490)
+        Me.btnModificaCliente.Location = New System.Drawing.Point(493, 563)
         Me.btnModificaCliente.Name = "btnModificaCliente"
         Me.btnModificaCliente.Size = New System.Drawing.Size(93, 30)
         Me.btnModificaCliente.TabIndex = 45
@@ -201,7 +201,7 @@ Partial Class FrmClientes
         'btnAltaCliente
         '
         Me.btnAltaCliente.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAltaCliente.Location = New System.Drawing.Point(235, 490)
+        Me.btnAltaCliente.Location = New System.Drawing.Point(254, 563)
         Me.btnAltaCliente.Name = "btnAltaCliente"
         Me.btnAltaCliente.Size = New System.Drawing.Size(70, 30)
         Me.btnAltaCliente.TabIndex = 44
@@ -212,12 +212,12 @@ Partial Class FrmClientes
         '
         Me.dgvClientes.AllowUserToAddRows = False
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvClientes.Location = New System.Drawing.Point(128, 91)
+        Me.dgvClientes.Location = New System.Drawing.Point(41, 100)
         Me.dgvClientes.Name = "dgvClientes"
         Me.dgvClientes.ReadOnly = True
         Me.dgvClientes.RowHeadersVisible = False
         Me.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvClientes.Size = New System.Drawing.Size(751, 208)
+        Me.dgvClientes.Size = New System.Drawing.Size(1080, 242)
         Me.dgvClientes.TabIndex = 43
         '
         'LblEmail
@@ -225,8 +225,8 @@ Partial Class FrmClientes
         Me.LblEmail.AutoSize = True
         Me.LblEmail.BackColor = System.Drawing.Color.Transparent
         Me.LblEmail.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblEmail.ForeColor = System.Drawing.Color.Black
-        Me.LblEmail.Location = New System.Drawing.Point(153, 416)
+        Me.LblEmail.ForeColor = System.Drawing.Color.White
+        Me.LblEmail.Location = New System.Drawing.Point(172, 489)
         Me.LblEmail.Name = "LblEmail"
         Me.LblEmail.Size = New System.Drawing.Size(58, 21)
         Me.LblEmail.TabIndex = 64
@@ -234,7 +234,7 @@ Partial Class FrmClientes
         '
         'TxtEmail
         '
-        Me.TxtEmail.Location = New System.Drawing.Point(313, 419)
+        Me.TxtEmail.Location = New System.Drawing.Point(332, 492)
         Me.TxtEmail.Name = "TxtEmail"
         Me.TxtEmail.Size = New System.Drawing.Size(172, 20)
         Me.TxtEmail.TabIndex = 65
@@ -242,8 +242,10 @@ Partial Class FrmClientes
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(175, 64)
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(175, 32)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 21)
         Me.Label1.TabIndex = 68
@@ -251,6 +253,7 @@ Partial Class FrmClientes
         '
         'PictureBox2
         '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Clientes
         Me.PictureBox2.Location = New System.Drawing.Point(87, 6)
         Me.PictureBox2.Name = "PictureBox2"
@@ -261,8 +264,9 @@ Partial Class FrmClientes
         '
         'PictureBox1
         '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(918, -1)
+        Me.PictureBox1.Location = New System.Drawing.Point(1085, -1)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -273,8 +277,10 @@ Partial Class FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(987, 553)
+        Me.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1156, 680)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
@@ -297,6 +303,7 @@ Partial Class FrmClientes
         Me.Controls.Add(Me.btnModificaCliente)
         Me.Controls.Add(Me.btnAltaCliente)
         Me.Controls.Add(Me.dgvClientes)
+        Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmClientes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
