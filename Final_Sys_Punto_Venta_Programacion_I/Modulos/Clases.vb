@@ -36,6 +36,15 @@ Module Clases
         Public descripcionRubro As String
     End Class
 
+    ' =========================================================
+    ' CLASE FORMA DE PAGOS  
+    ' =========================================================
+
+    Class FormaPagos
+        Public idFormaPago As Integer
+        Public descripcionFormaPago As String
+    End Class
+
 
 
     ' =========================================================

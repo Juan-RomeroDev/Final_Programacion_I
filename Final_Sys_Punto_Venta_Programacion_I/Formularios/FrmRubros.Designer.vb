@@ -50,7 +50,7 @@ Partial Class FrmRubros
         Me.lblIDRubro.AutoSize = True
         Me.lblIDRubro.BackColor = System.Drawing.Color.Transparent
         Me.lblIDRubro.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIDRubro.ForeColor = System.Drawing.Color.Black
+        Me.lblIDRubro.ForeColor = System.Drawing.Color.White
         Me.lblIDRubro.Location = New System.Drawing.Point(81, 341)
         Me.lblIDRubro.Name = "lblIDRubro"
         Me.lblIDRubro.Size = New System.Drawing.Size(88, 21)
@@ -62,7 +62,7 @@ Partial Class FrmRubros
         Me.lblDescrip_rubro.AutoSize = True
         Me.lblDescrip_rubro.BackColor = System.Drawing.Color.Transparent
         Me.lblDescrip_rubro.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescrip_rubro.ForeColor = System.Drawing.Color.Black
+        Me.lblDescrip_rubro.ForeColor = System.Drawing.Color.White
         Me.lblDescrip_rubro.Location = New System.Drawing.Point(82, 371)
         Me.lblDescrip_rubro.Name = "lblDescrip_rubro"
         Me.lblDescrip_rubro.Size = New System.Drawing.Size(173, 21)
@@ -79,7 +79,7 @@ Partial Class FrmRubros
         'btnBajaRubro
         '
         Me.btnBajaRubro.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBajaRubro.Location = New System.Drawing.Point(632, 491)
+        Me.btnBajaRubro.Location = New System.Drawing.Point(623, 460)
         Me.btnBajaRubro.Name = "btnBajaRubro"
         Me.btnBajaRubro.Size = New System.Drawing.Size(62, 30)
         Me.btnBajaRubro.TabIndex = 69
@@ -89,7 +89,7 @@ Partial Class FrmRubros
         'btnModificaRubro
         '
         Me.btnModificaRubro.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificaRubro.Location = New System.Drawing.Point(358, 491)
+        Me.btnModificaRubro.Location = New System.Drawing.Point(349, 460)
         Me.btnModificaRubro.Name = "btnModificaRubro"
         Me.btnModificaRubro.Size = New System.Drawing.Size(93, 30)
         Me.btnModificaRubro.TabIndex = 68
@@ -98,8 +98,10 @@ Partial Class FrmRubros
         '
         'btnAltaRubro
         '
+        Me.btnAltaRubro.BackColor = System.Drawing.Color.White
         Me.btnAltaRubro.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAltaRubro.Location = New System.Drawing.Point(119, 491)
+        Me.btnAltaRubro.ForeColor = System.Drawing.Color.Black
+        Me.btnAltaRubro.Location = New System.Drawing.Point(110, 460)
         Me.btnAltaRubro.Name = "btnAltaRubro"
         Me.btnAltaRubro.Size = New System.Drawing.Size(70, 30)
         Me.btnAltaRubro.TabIndex = 67
@@ -141,7 +143,7 @@ Partial Class FrmRubros
         'BtnGestionarRubros
         '
         Me.BtnGestionarRubros.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGestionarRubros.Location = New System.Drawing.Point(577, 394)
+        Me.BtnGestionarRubros.Location = New System.Drawing.Point(577, 371)
         Me.BtnGestionarRubros.Name = "BtnGestionarRubros"
         Me.BtnGestionarRubros.Size = New System.Drawing.Size(148, 31)
         Me.BtnGestionarRubros.TabIndex = 82
@@ -152,7 +154,8 @@ Partial Class FrmRubros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(823, 579)
+        Me.BackColor = System.Drawing.Color.MidnightBlue
+        Me.ClientSize = New System.Drawing.Size(823, 518)
         Me.Controls.Add(Me.BtnGestionarRubros)
         Me.Controls.Add(Me.BtnAtrasRubros)
         Me.Controls.Add(Me.PictureBox1)

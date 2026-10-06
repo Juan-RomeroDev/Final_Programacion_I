@@ -66,6 +66,7 @@ Partial Class frmLocalidades
         '
         Me.lblBuscarXLocalidad.AutoSize = True
         Me.lblBuscarXLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBuscarXLocalidad.ForeColor = System.Drawing.Color.White
         Me.lblBuscarXLocalidad.Location = New System.Drawing.Point(261, 28)
         Me.lblBuscarXLocalidad.Name = "lblBuscarXLocalidad"
         Me.lblBuscarXLocalidad.Size = New System.Drawing.Size(151, 21)
@@ -76,6 +77,7 @@ Partial Class frmLocalidades
         '
         Me.lblBuscarXCp.AutoSize = True
         Me.lblBuscarXCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBuscarXCp.ForeColor = System.Drawing.Color.White
         Me.lblBuscarXCp.Location = New System.Drawing.Point(89, 28)
         Me.lblBuscarXCp.Name = "lblBuscarXCp"
         Me.lblBuscarXCp.Size = New System.Drawing.Size(97, 21)
@@ -145,6 +147,7 @@ Partial Class frmLocalidades
         '
         Me.LblLocalidad.AutoSize = True
         Me.LblLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblLocalidad.ForeColor = System.Drawing.Color.White
         Me.LblLocalidad.Location = New System.Drawing.Point(135, 317)
         Me.LblLocalidad.Name = "LblLocalidad"
         Me.LblLocalidad.Size = New System.Drawing.Size(98, 21)
@@ -155,6 +158,7 @@ Partial Class frmLocalidades
         '
         Me.lblCp.AutoSize = True
         Me.lblCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCp.ForeColor = System.Drawing.Color.White
         Me.lblCp.Location = New System.Drawing.Point(135, 262)
         Me.lblCp.Name = "lblCp"
         Me.lblCp.Size = New System.Drawing.Size(30, 21)
@@ -172,6 +176,7 @@ Partial Class frmLocalidades
         '
         Me.TxtCp.BackColor = System.Drawing.Color.Yellow
         Me.TxtCp.Location = New System.Drawing.Point(248, 260)
+        Me.TxtCp.MaxLength = 4
         Me.TxtCp.Name = "TxtCp"
         Me.TxtCp.Size = New System.Drawing.Size(100, 20)
         Me.TxtCp.TabIndex = 14
@@ -190,6 +195,7 @@ Partial Class frmLocalidades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(645, 428)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BtnGestionarLocalidades)

@@ -187,7 +187,7 @@
         altaCli.telefono = Me.TxtTelefono.Text.Trim()
 
         'Cuidado con los espacios Por Ejemplo: Dim sql As String = "exec spu_alta_localidad" & altaLoc.cp & ",'" & altaLoc.localidad & "'"
-        Dim sql As String = "exec spu_add_cliente " & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
+        Dim sql As String = "exec spu_alta_clientes" & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UN CLIENTE",, "INFO")
         'Captura de error(Por si ocurre un improbable error en la BD :) ) 
@@ -331,7 +331,7 @@
         wflag = 1
 
         'Abro la pantalla de Localidades para que el usuario seleccione una
-        Dim frm As New FrmLocalidades()
+        Dim frm As New frmLocalidades()
         frm.ShowDialog()
 
         'Suspender el binding para evitar que se actualice la interfaz mientras asignamos los valores

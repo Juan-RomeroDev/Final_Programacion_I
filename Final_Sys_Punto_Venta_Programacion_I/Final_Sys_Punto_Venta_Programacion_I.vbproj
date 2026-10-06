@@ -170,6 +170,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Formularios\FrmVentas.Designer.vb">
+      <DependentUpon>FrmVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
@@ -199,6 +205,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptDetalleVenta.rdlc" />
+    <EmbeddedResource Include="Formularios\FrmVentas.resx">
+      <DependentUpon>FrmVentas.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -212,9 +222,7 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reportes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Imagen_Main_Pollo.png" />
   </ItemGroup>
@@ -229,6 +237,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pollo-Abasto-Tu-Almacen.ico" />
+    <None Include="Resources\Forma_de_pago.jpg" />
+    <None Include="Resources\DetalleVenta.png" />
     <Content Include="Resources\Fondo_Formularios.jpg" />
   </ItemGroup>
   <ItemGroup>

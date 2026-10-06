@@ -23,34 +23,203 @@ Partial Class FrmFormaDePago
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmFormaDePago))
+        Me.dgvFormaDePago = New System.Windows.Forms.DataGridView()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Lbl_ID_Forma_Pago = New System.Windows.Forms.Label()
+        Me.Lbl_Forma_Pago = New System.Windows.Forms.Label()
+        Me.TxtIDFormaPago = New System.Windows.Forms.TextBox()
+        Me.TxtDescripcionFormaPago = New System.Windows.Forms.TextBox()
+        Me.BtnGestionarLocalidades = New System.Windows.Forms.Button()
+        Me.btnBajaFormaPago = New System.Windows.Forms.Button()
+        Me.btnModificaFormaPago = New System.Windows.Forms.Button()
+        Me.btnAltaFormaPago = New System.Windows.Forms.Button()
+        Me.BtnAtrasFormaPago = New System.Windows.Forms.Button()
+        CType(Me.dgvFormaDePago, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'dgvFormaDePago
+        '
+        Me.dgvFormaDePago.AllowUserToAddRows = False
+        Me.dgvFormaDePago.BackgroundColor = System.Drawing.Color.RoyalBlue
+        Me.dgvFormaDePago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvFormaDePago.GridColor = System.Drawing.Color.RoyalBlue
+        Me.dgvFormaDePago.Location = New System.Drawing.Point(88, 108)
+        Me.dgvFormaDePago.Name = "dgvFormaDePago"
+        Me.dgvFormaDePago.ReadOnly = True
+        Me.dgvFormaDePago.RowHeadersVisible = False
+        Me.dgvFormaDePago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvFormaDePago.Size = New System.Drawing.Size(654, 178)
+        Me.dgvFormaDePago.TabIndex = 90
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Forma_de_pago
+        Me.PictureBox2.Location = New System.Drawing.Point(88, 24)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(130, 78)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 91
+        Me.PictureBox2.TabStop = False
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(727, -2)
+        Me.PictureBox1.Location = New System.Drawing.Point(765, -1)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 67
         Me.PictureBox1.TabStop = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(224, 56)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(125, 21)
+        Me.Label1.TabIndex = 92
+        Me.Label1.Text = "Forma De Pago"
+        '
+        'Lbl_ID_Forma_Pago
+        '
+        Me.Lbl_ID_Forma_Pago.AutoSize = True
+        Me.Lbl_ID_Forma_Pago.BackColor = System.Drawing.Color.Transparent
+        Me.Lbl_ID_Forma_Pago.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbl_ID_Forma_Pago.ForeColor = System.Drawing.Color.White
+        Me.Lbl_ID_Forma_Pago.Location = New System.Drawing.Point(162, 324)
+        Me.Lbl_ID_Forma_Pago.Name = "Lbl_ID_Forma_Pago"
+        Me.Lbl_ID_Forma_Pago.Size = New System.Drawing.Size(134, 21)
+        Me.Lbl_ID_Forma_Pago.TabIndex = 103
+        Me.Lbl_ID_Forma_Pago.Text = "ID FORMA PAGO"
+        '
+        'Lbl_Forma_Pago
+        '
+        Me.Lbl_Forma_Pago.AutoSize = True
+        Me.Lbl_Forma_Pago.BackColor = System.Drawing.Color.Transparent
+        Me.Lbl_Forma_Pago.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbl_Forma_Pago.ForeColor = System.Drawing.Color.White
+        Me.Lbl_Forma_Pago.Location = New System.Drawing.Point(74, 356)
+        Me.Lbl_Forma_Pago.Name = "Lbl_Forma_Pago"
+        Me.Lbl_Forma_Pago.Size = New System.Drawing.Size(222, 21)
+        Me.Lbl_Forma_Pago.TabIndex = 102
+        Me.Lbl_Forma_Pago.Text = "DESCRIPCION FORMA PAGO"
+        '
+        'TxtIDFormaPago
+        '
+        Me.TxtIDFormaPago.Location = New System.Drawing.Point(307, 327)
+        Me.TxtIDFormaPago.Name = "TxtIDFormaPago"
+        Me.TxtIDFormaPago.Size = New System.Drawing.Size(105, 20)
+        Me.TxtIDFormaPago.TabIndex = 104
+        '
+        'TxtDescripcionFormaPago
+        '
+        Me.TxtDescripcionFormaPago.Location = New System.Drawing.Point(307, 359)
+        Me.TxtDescripcionFormaPago.Name = "TxtDescripcionFormaPago"
+        Me.TxtDescripcionFormaPago.Size = New System.Drawing.Size(105, 20)
+        Me.TxtDescripcionFormaPago.TabIndex = 105
+        '
+        'BtnGestionarLocalidades
+        '
+        Me.BtnGestionarLocalidades.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGestionarLocalidades.Location = New System.Drawing.Point(487, 324)
+        Me.BtnGestionarLocalidades.Name = "BtnGestionarLocalidades"
+        Me.BtnGestionarLocalidades.Size = New System.Drawing.Size(194, 32)
+        Me.BtnGestionarLocalidades.TabIndex = 106
+        Me.BtnGestionarLocalidades.Text = "Gestionar Forma Pago"
+        Me.BtnGestionarLocalidades.UseVisualStyleBackColor = True
+        '
+        'btnBajaFormaPago
+        '
+        Me.btnBajaFormaPago.Enabled = False
+        Me.btnBajaFormaPago.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBajaFormaPago.Location = New System.Drawing.Point(623, 403)
+        Me.btnBajaFormaPago.Name = "btnBajaFormaPago"
+        Me.btnBajaFormaPago.Size = New System.Drawing.Size(67, 30)
+        Me.btnBajaFormaPago.TabIndex = 109
+        Me.btnBajaFormaPago.Text = "BAJA"
+        Me.btnBajaFormaPago.UseVisualStyleBackColor = True
+        '
+        'btnModificaFormaPago
+        '
+        Me.btnModificaFormaPago.Enabled = False
+        Me.btnModificaFormaPago.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificaFormaPago.Location = New System.Drawing.Point(351, 403)
+        Me.btnModificaFormaPago.Name = "btnModificaFormaPago"
+        Me.btnModificaFormaPago.Size = New System.Drawing.Size(97, 30)
+        Me.btnModificaFormaPago.TabIndex = 108
+        Me.btnModificaFormaPago.Text = "MODIFICA"
+        Me.btnModificaFormaPago.UseVisualStyleBackColor = True
+        '
+        'btnAltaFormaPago
+        '
+        Me.btnAltaFormaPago.Enabled = False
+        Me.btnAltaFormaPago.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAltaFormaPago.Location = New System.Drawing.Point(106, 403)
+        Me.btnAltaFormaPago.Name = "btnAltaFormaPago"
+        Me.btnAltaFormaPago.Size = New System.Drawing.Size(82, 30)
+        Me.btnAltaFormaPago.TabIndex = 107
+        Me.btnAltaFormaPago.Text = "ALTA"
+        Me.btnAltaFormaPago.UseVisualStyleBackColor = True
+        '
+        'BtnAtrasFormaPago
+        '
+        Me.BtnAtrasFormaPago.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAtrasFormaPago.Location = New System.Drawing.Point(0, -1)
+        Me.BtnAtrasFormaPago.Name = "BtnAtrasFormaPago"
+        Me.BtnAtrasFormaPago.Size = New System.Drawing.Size(82, 33)
+        Me.BtnAtrasFormaPago.TabIndex = 110
+        Me.BtnAtrasFormaPago.Text = "ATRAS"
+        Me.BtnAtrasFormaPago.UseVisualStyleBackColor = True
+        '
         'FrmFormaDePago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.BackColor = System.Drawing.Color.MidnightBlue
+        Me.ClientSize = New System.Drawing.Size(837, 460)
+        Me.Controls.Add(Me.BtnAtrasFormaPago)
+        Me.Controls.Add(Me.btnBajaFormaPago)
+        Me.Controls.Add(Me.btnModificaFormaPago)
+        Me.Controls.Add(Me.btnAltaFormaPago)
+        Me.Controls.Add(Me.BtnGestionarLocalidades)
+        Me.Controls.Add(Me.TxtDescripcionFormaPago)
+        Me.Controls.Add(Me.TxtIDFormaPago)
+        Me.Controls.Add(Me.Lbl_ID_Forma_Pago)
+        Me.Controls.Add(Me.Lbl_Forma_Pago)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.dgvFormaDePago)
         Me.Controls.Add(Me.PictureBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmFormaDePago"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FrmForma_de_Pago"
+        Me.Text = "FORMA DE PAGO "
+        CType(Me.dgvFormaDePago, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents dgvFormaDePago As DataGridView
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Lbl_ID_Forma_Pago As Label
+    Friend WithEvents Lbl_Forma_Pago As Label
+    Friend WithEvents TxtIDFormaPago As TextBox
+    Friend WithEvents TxtDescripcionFormaPago As TextBox
+    Friend WithEvents BtnGestionarLocalidades As Button
+    Friend WithEvents btnBajaFormaPago As Button
+    Friend WithEvents btnModificaFormaPago As Button
+    Friend WithEvents btnAltaFormaPago As Button
+    Friend WithEvents BtnAtrasFormaPago As Button
 End Class

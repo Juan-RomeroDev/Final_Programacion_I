@@ -22,19 +22,16 @@ Partial Class FrmClientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientes))
         Me.BtnGenerarCredencialClientes = New System.Windows.Forms.Button()
         Me.BtnGestionarClientes = New System.Windows.Forms.Button()
         Me.BtnAtrasClientes = New System.Windows.Forms.Button()
         Me.TxtIDCliente = New System.Windows.Forms.TextBox()
         Me.lblIDCliente = New System.Windows.Forms.Label()
-        Me.LblCPFiltrado = New System.Windows.Forms.Label()
-        Me.BtnBuscarLocalidad = New System.Windows.Forms.Button()
         Me.TxtCPCLiente = New System.Windows.Forms.TextBox()
         Me.CPCliente = New System.Windows.Forms.Label()
-        Me.LblTelefonoCliente = New System.Windows.Forms.Label()
         Me.lblRazonSocialCliente = New System.Windows.Forms.Label()
-        Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.TxtRazonSocial = New System.Windows.Forms.TextBox()
         Me.btnBajaCliente = New System.Windows.Forms.Button()
         Me.btnModificaCliente = New System.Windows.Forms.Button()
@@ -45,6 +42,10 @@ Partial Class FrmClientes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LblCPFiltrado = New System.Windows.Forms.Label()
+        Me.BtnBuscarLocalidad = New System.Windows.Forms.Button()
+        Me.TxtTelefono = New System.Windows.Forms.TextBox()
+        Me.LblTelefonoCliente = New System.Windows.Forms.Label()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,27 +100,6 @@ Partial Class FrmClientes
         Me.lblIDCliente.TabIndex = 57
         Me.lblIDCliente.Text = "ID_CLIENTE"
         '
-        'LblCPFiltrado
-        '
-        Me.LblCPFiltrado.AutoSize = True
-        Me.LblCPFiltrado.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.LblCPFiltrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCPFiltrado.Location = New System.Drawing.Point(510, 466)
-        Me.LblCPFiltrado.Name = "LblCPFiltrado"
-        Me.LblCPFiltrado.Size = New System.Drawing.Size(15, 13)
-        Me.LblCPFiltrado.TabIndex = 56
-        Me.LblCPFiltrado.Text = "--"
-        '
-        'BtnBuscarLocalidad
-        '
-        Me.BtnBuscarLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscarLocalidad.Location = New System.Drawing.Point(456, 456)
-        Me.BtnBuscarLocalidad.Name = "BtnBuscarLocalidad"
-        Me.BtnBuscarLocalidad.Size = New System.Drawing.Size(48, 23)
-        Me.BtnBuscarLocalidad.TabIndex = 55
-        Me.BtnBuscarLocalidad.Text = "..."
-        Me.BtnBuscarLocalidad.UseVisualStyleBackColor = True
-        '
         'TxtCPCLiente
         '
         Me.TxtCPCLiente.BackColor = System.Drawing.Color.Yellow
@@ -140,18 +120,6 @@ Partial Class FrmClientes
         Me.CPCliente.TabIndex = 53
         Me.CPCliente.Text = "CP"
         '
-        'LblTelefonoCliente
-        '
-        Me.LblTelefonoCliente.AutoSize = True
-        Me.LblTelefonoCliente.BackColor = System.Drawing.Color.Transparent
-        Me.LblTelefonoCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTelefonoCliente.ForeColor = System.Drawing.Color.White
-        Me.LblTelefonoCliente.Location = New System.Drawing.Point(172, 524)
-        Me.LblTelefonoCliente.Name = "LblTelefonoCliente"
-        Me.LblTelefonoCliente.Size = New System.Drawing.Size(90, 21)
-        Me.LblTelefonoCliente.TabIndex = 50
-        Me.LblTelefonoCliente.Text = "TELEFONO"
-        '
         'lblRazonSocialCliente
         '
         Me.lblRazonSocialCliente.AutoSize = True
@@ -163,13 +131,6 @@ Partial Class FrmClientes
         Me.lblRazonSocialCliente.Size = New System.Drawing.Size(125, 21)
         Me.lblRazonSocialCliente.TabIndex = 49
         Me.lblRazonSocialCliente.Text = "RAZON SOCIAL"
-        '
-        'TxtTelefono
-        '
-        Me.TxtTelefono.Location = New System.Drawing.Point(332, 524)
-        Me.TxtTelefono.Name = "TxtTelefono"
-        Me.TxtTelefono.Size = New System.Drawing.Size(172, 20)
-        Me.TxtTelefono.TabIndex = 48
         '
         'TxtRazonSocial
         '
@@ -211,10 +172,20 @@ Partial Class FrmClientes
         'dgvClientes
         '
         Me.dgvClientes.AllowUserToAddRows = False
+        Me.dgvClientes.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvClientes.GridColor = System.Drawing.Color.RoyalBlue
         Me.dgvClientes.Location = New System.Drawing.Point(41, 100)
         Me.dgvClientes.Name = "dgvClientes"
         Me.dgvClientes.ReadOnly = True
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Nirmala Text", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Chartreuse
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvClientes.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvClientes.RowHeadersVisible = False
         Me.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvClientes.Size = New System.Drawing.Size(1080, 242)
@@ -273,6 +244,46 @@ Partial Class FrmClientes
         Me.PictureBox1.TabIndex = 66
         Me.PictureBox1.TabStop = False
         '
+        'LblCPFiltrado
+        '
+        Me.LblCPFiltrado.AutoSize = True
+        Me.LblCPFiltrado.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.LblCPFiltrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCPFiltrado.Location = New System.Drawing.Point(510, 466)
+        Me.LblCPFiltrado.Name = "LblCPFiltrado"
+        Me.LblCPFiltrado.Size = New System.Drawing.Size(15, 13)
+        Me.LblCPFiltrado.TabIndex = 56
+        Me.LblCPFiltrado.Text = "--"
+        '
+        'BtnBuscarLocalidad
+        '
+        Me.BtnBuscarLocalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnBuscarLocalidad.Location = New System.Drawing.Point(456, 456)
+        Me.BtnBuscarLocalidad.Name = "BtnBuscarLocalidad"
+        Me.BtnBuscarLocalidad.Size = New System.Drawing.Size(48, 23)
+        Me.BtnBuscarLocalidad.TabIndex = 55
+        Me.BtnBuscarLocalidad.Text = "..."
+        Me.BtnBuscarLocalidad.UseVisualStyleBackColor = True
+        '
+        'TxtTelefono
+        '
+        Me.TxtTelefono.Location = New System.Drawing.Point(332, 524)
+        Me.TxtTelefono.Name = "TxtTelefono"
+        Me.TxtTelefono.Size = New System.Drawing.Size(172, 20)
+        Me.TxtTelefono.TabIndex = 48
+        '
+        'LblTelefonoCliente
+        '
+        Me.LblTelefonoCliente.AutoSize = True
+        Me.LblTelefonoCliente.BackColor = System.Drawing.Color.Transparent
+        Me.LblTelefonoCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTelefonoCliente.ForeColor = System.Drawing.Color.White
+        Me.LblTelefonoCliente.Location = New System.Drawing.Point(172, 524)
+        Me.LblTelefonoCliente.Name = "LblTelefonoCliente"
+        Me.LblTelefonoCliente.Size = New System.Drawing.Size(90, 21)
+        Me.LblTelefonoCliente.TabIndex = 50
+        Me.LblTelefonoCliente.Text = "TELEFONO"
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -321,13 +332,9 @@ Partial Class FrmClientes
     Friend WithEvents BtnAtrasClientes As Button
     Friend WithEvents TxtIDCliente As TextBox
     Friend WithEvents lblIDCliente As Label
-    Friend WithEvents LblCPFiltrado As Label
-    Friend WithEvents BtnBuscarLocalidad As Button
     Friend WithEvents TxtCPCLiente As TextBox
     Friend WithEvents CPCliente As Label
-    Friend WithEvents LblTelefonoCliente As Label
     Friend WithEvents lblRazonSocialCliente As Label
-    Friend WithEvents TxtTelefono As TextBox
     Friend WithEvents TxtRazonSocial As TextBox
     Friend WithEvents btnBajaCliente As Button
     Friend WithEvents btnModificaCliente As Button
@@ -338,4 +345,8 @@ Partial Class FrmClientes
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents LblCPFiltrado As Label
+    Friend WithEvents BtnBuscarLocalidad As Button
+    Friend WithEvents TxtTelefono As TextBox
+    Friend WithEvents LblTelefonoCliente As Label
 End Class
