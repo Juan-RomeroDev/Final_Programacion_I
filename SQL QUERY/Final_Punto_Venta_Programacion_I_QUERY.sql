@@ -69,12 +69,13 @@ CREATE TABLE ventas (
 );
 
 CREATE TABLE detalle_venta (
-	id_venta INT , 
-	id_producto INT ,
-	id_fila INT , --ID FILA 
+	id_venta INT, 
+	id_producto INT,
+	id_fila INT, --ID FILA 
 	precio DECIMAL(10,2),
 	cantidad DECIMAL(10,3), 
 	precio_r DECIMAL(10,2), --PRECIO DE RENGLON
+	-- EL PRECIO DE RENGLON PODES MULTIPLICARLO PRECIO X CANTIDAD = PRECIO RENGLON, ENTONCES POR ACA O POR CODIGO SE PUEDE HACER 
 
 	 PRIMARY KEY (id_venta, id_producto, id_fila),
 	 FOREIGN KEY (id_venta) REFERENCES ventas(id_venta),
@@ -86,16 +87,16 @@ CREATE TABLE detalle_venta (
 -- ============================================
 
 --MOSTRAR FORMAS PAGO 
-GO
+
 CREATE PROCEDURE spu_mostrar_forma_pago
 AS
 BEGIN
      SELECT id_forma_pago AS ID_FORMA_PAGO, descrip_forma_pago AS DESCRIPCION_FORMA_PAGO FROM forma_de_pago
-END 
-GO 
+END; 
+
 
 --ALTA FORMAS PAGO
-GO 
+ 
 CREATE PROCEDURE spu_alta_forma_de_pago
    @id_forma_pago INT ,
    @descrip_forma_pago NVARCHAR(60)
@@ -141,7 +142,7 @@ CREATE PROCEDURE spu_mostrar_localidades
 AS
 BEGIN
      SELECT cp CP, localidad LOCALIDAD FROM localidades
-END 
+END; 
 GO 
 
 --ALTA LOCALIDADES
@@ -241,6 +242,16 @@ CREATE PROCEDURE spu_generar_id_rubro
 AS 
 BEGIN 
      SELECT MAX(id_rubro) + 1 AS Nuevo_ID FROM rubros;
+END;
+
+-- ============================================
+-- PROCEDIMIENTOS ALMACENADOS USUARIOS
+-- ============================================
+
+CREATE PROCEDURE spu_mostrar_usuarios
+AS 
+BEGIN 
+	SELECT id_usuario AS ID_USUARIO, usuario AS USUARIO, psw AS PSW FROM usuarios;
 END;
 
 -- ============================================
