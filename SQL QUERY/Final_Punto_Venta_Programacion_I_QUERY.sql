@@ -11,7 +11,7 @@ CREATE DATABASE Final_Punto_Venta_Programacion_I
 USE Final_Punto_Venta_Programacion_I
 
 -- ============================================
--- TABLAS PUNTO VENTA "PADRE"
+-- TABLAS PUNTO VENTA "PADRE"  (TODOS LOS ABM DE LAS TABLAS (EXC usuarios))
 -- ============================================
 
 CREATE TABLE forma_de_pago (
@@ -523,7 +523,157 @@ BEGIN
 END;
 
 -- ============================================
--- PROCEDIMIENTO ALMACENADO BACKUP Final_Punto_Venta_Programacion_I
+--  TODOS LOS ABM DE LAS TABLAS (EXC usuarios)  
+-- ============================================
+
+-- ============================================
+-- PROCEDIMIENTO SPU MOSTRAR COMPROBANTE VENTA (IMPRIMIR EL COMPROBANTE DE LA VENTA) INICIO
+-- ============================================
+
+CREATE PROCEDURE spu_imprimir_comprobante
+    @id_venta INT
+AS
+BEGIN
+    SELECT
+			-- DATOS DE LA CABECERA DE LA VENTA
+			ventas.id_venta AS NRO_COMPROBANTE,
+			ventas.fecha AS FECHA,
+			forma_de_pago.descrip_forma_pago AS FORMA_DE_PAGO,
+			usuarios.usuario AS USUARIO,
+
+			-- DATOS DEL CLIENTE
+			clientes.razon_social AS RAZON_SOCIAL,
+			clientes.telefono AS TELEFONO_CLIENTE,
+			clientes.mail AS MAIL_CLIENTE,
+
+			-- DATOS DEL DETALLE DE LA VENTA (RENGLONES DE LA FACTURA) 
+			detalle_venta.id_fila AS RENGLON,
+			productos.descripcion AS PRODUCTO,
+			detalle_venta.precio AS PRECIO_UNITARIO,
+			detalle_venta.cantidad AS CANTIDAD,
+			detalle_venta.precio_r AS PRECIO_RENGLON,
+
+			-- TOTAL FINAL DE LA VENTA 
+			ventas.total AS TOTAL_VENTA 
+			
+			FROM ventas
+
+			-- UNIR LA CABECERA CON EL DETALLE DE LA VENTA
+			INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
+
+			-- UNIR EL DETALLLE DE VENTA CON LOS PRODUCTOS PARA SABER LOS NOMBRES 
+			INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+
+			-- UNIR LA CABECERA VENTA CON EL CLIENTE,  
+			INNER JOIN clientes ON ventas.id_cliente = clientes.id_cliente
+			-- FORMA DE PAGO
+			INNER JOIN forma_de_pago ON ventas.id_forma_pago = forma_de_pago.id_forma_pago
+			-- Y USUARIO PARA SABER LOS DATOS DE LA VENTA
+			INNER JOIN usuarios ON ventas.id_usuario = usuarios.id_usuario 
+
+			WHERE ventas.id_venta = @id_venta
+END;
+
+-- ============================================
+-- PROCEDIMIENTO SPU MOSTRAR COMPROBANTE VENTA (IMPRIMIR EL COMPROBANTE DE LA VENTA) FIN 
+-- ============================================
+
+-- ============================================
+-- REPORTE: LISTA DE PRECIOS (LISTA DE PRECIOS)
+-- ============================================
+
+CREATE PROCEDURE spu_reporte_lista_precios
+AS
+BEGIN
+    SELECT 
+        rubros.descrip_rubro AS RUBRO,
+        productos.descripcion AS PRODUCTO,
+        productos.precio AS PRECIO
+    FROM productos
+    INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
+    ORDER BY rubros.descrip_rubro, productos.descripcion;
+END;
+GO
+
+-- ============================================
+-- REPORTE DE VENTAS x FECHA
+-- ============================================
+
+CREATE PROCEDURE spu_reporte_ventas_por_fecha
+	@fecha_desde DATE,
+	@fecha_hasta DATE
+AS
+BEGIN 
+	 SELECT 
+		   ventas.id_venta AS NRO_VENTA,
+		   ventas.fecha AS FECHA,
+		   clientes.razon_social AS CLIENTE,
+		   forma_de_pago.descrip_forma_pago AS FORMA_DE_PAGO,
+		   ventas.total AS TOTAL_VENTA
+		FROM ventas
+
+		INNER JOIN clientes ON ventas.id_cliente = clientes.id_cliente
+
+		INNER JOIN forma_de_pago ON ventas.id_forma_pago = forma_de_pago.id_forma_pago
+
+		WHERE ventas.fecha BETWEEN @fecha_desde AND @fecha_hasta
+
+		ORDER BY ventas.fecha DESC;
+END;
+
+-- ============================================
+-- REPORTE DE VENTAS x RUBRO
+-- ============================================
+
+CREATE PROCEDURE spu_reporte_ventas_por_rubro
+	@id_rubro INT
+AS
+BEGIN 
+	 SELECT 
+		  ventas.fecha AS FECHA, 
+		  ventas.id_venta AS NRO_VENTA,
+		  productos.descripcion AS PRODUCTO,
+		  detalle_venta.cantidad AS CANTIDAD_VENDIDA,
+		  detalle_venta.precio_r AS SUBTOTAL
+	FROM ventas 
+	-- Primero uno la cabecera con sus renglones (detalle)
+	INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
+
+	-- Ahora que estoy en el renglón, busco que producto es
+	INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+
+	WHERE productos.id_rubro = @id_rubro
+END;
+
+-- ============================================
+-- BUSCAR VENTAS x RUBRO
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_ventas_X_rubro
+    @descrip_rubro NVARCHAR(60)
+AS
+BEGIN
+    SELECT 
+        ventas.id_venta AS NRO_VENTA,
+        ventas.fecha AS FECHA,
+        rubros.descrip_rubro AS RUBRO,
+        productos.descripcion AS PRODUCTO,
+        detalle_venta.precio AS PRECIO_UNITARIO,
+        detalle_venta.cantidad AS CANTIDAD,
+        detalle_venta.precio_r AS PRECIO_RENGLON
+    FROM ventas
+    INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
+    INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+    INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
+    WHERE rubros.descrip_rubro LIKE '%' + @descrip_rubro + '%'
+    ORDER BY ventas.fecha DESC;
+END;
+GO
+
+
+
+-- ============================================
+-- PROCEDIMIENTO ALMACENADO BACKUP Final_Punto_Venta_Programacion_I 
 -- ============================================
 
 --BACKUP DE BASE DE DATOS 
