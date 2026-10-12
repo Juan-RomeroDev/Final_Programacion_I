@@ -15,24 +15,24 @@ USE Final_Punto_Venta_Programacion_I
 -- ============================================
 
 CREATE TABLE forma_de_pago (
-	id_forma_pago INT  PRIMARY KEY,  
-	descrip_forma_pago NVARCHAR (60)
+	id_forma_pago INT PRIMARY KEY,  
+	descrip_forma_pago NVARCHAR (60) NOT NULL
 );
 
 CREATE TABLE localidades (
-	cp INT  PRIMARY KEY, 
-	localidad NVARCHAR (60)
+	cp INT PRIMARY KEY, 
+	localidad NVARCHAR (60) NOT NULL
 );
 
 CREATE TABLE rubros (
-	id_rubro INT  PRIMARY KEY,  
-	descrip_rubro NVARCHAR (60)
+	id_rubro INT PRIMARY KEY,  
+	descrip_rubro NVARCHAR (60) NOT NULL
 );
 
 CREATE TABLE usuarios ( 
-	id_usuario INT  PRIMARY KEY, 
-	usuario NVARCHAR (60),
-	psw NVARCHAR (60)
+	id_usuario INT PRIMARY KEY, 
+	usuario NVARCHAR (60) NOT NULL,
+	psw NVARCHAR (60) NOT NULL
 ); 
 
 -- ============================================
@@ -40,19 +40,19 @@ CREATE TABLE usuarios (
 -- ============================================
 
 CREATE TABLE clientes (
-	id_cliente INT  PRIMARY KEY,
-	razon_social NVARCHAR (60),
-	cp INT  FOREIGN KEY REFERENCES localidades(cp),
+	id_cliente INT PRIMARY KEY,
+	razon_social NVARCHAR (60) NOT NULL,
+	cp INT NOT NULL FOREIGN KEY REFERENCES localidades(cp),
 	mail NVARCHAR (60),
 	telefono NVARCHAR (60)
 ); 
 
 CREATE TABLE productos ( 
-	id_producto INT  PRIMARY KEY, 
-	descripcion NVARCHAR (60),
-	precio DECIMAL(10,2),
-	stock DECIMAL(10,3), 
-	id_rubro INT  FOREIGN KEY REFERENCES rubros(id_rubro)
+	id_producto INT PRIMARY KEY, 
+	descripcion NVARCHAR (60) NOT NULL,
+	precio DECIMAL(10,2) NOT NULL,
+	stock DECIMAL(10,3) NOT NULL, 
+	id_rubro INT NOT NULL FOREIGN KEY REFERENCES rubros(id_rubro)
 );
 
 -- ============================================
@@ -61,20 +61,20 @@ CREATE TABLE productos (
 
 CREATE TABLE ventas (
 	id_venta INT  PRIMARY KEY, 
-	fecha DATE,
-	id_forma_pago INT  FOREIGN KEY REFERENCES forma_de_pago(id_forma_pago),
-	id_cliente INT  FOREIGN KEY REFERENCES clientes(id_cliente),
-	id_usuario INT  FOREIGN KEY REFERENCES usuarios(id_usuario),
-	total DECIMAL(10,2) 
+	fecha DATE NOT NULL,
+	id_forma_pago INT NOT NULL FOREIGN KEY REFERENCES forma_de_pago(id_forma_pago),
+	id_cliente INT NOT NULL FOREIGN KEY REFERENCES clientes(id_cliente),
+	id_usuario INT NOT NULL FOREIGN KEY REFERENCES usuarios(id_usuario),
+	total DECIMAL(10,2) NOT NULL
 );
 
 CREATE TABLE detalle_venta (
 	id_venta INT, 
 	id_producto INT,
 	id_fila INT, --ID FILA 
-	precio DECIMAL(10,2),
-	cantidad DECIMAL(10,3), 
-	precio_r DECIMAL(10,2), --PRECIO DE RENGLON
+	precio DECIMAL(10,2) NOT NULL,
+	cantidad DECIMAL(10,3) NOT NULL, 
+	precio_r DECIMAL(10,2) NOT NULL, --PRECIO DE RENGLON
 	-- EL PRECIO DE RENGLON PODES MULTIPLICARLO PRECIO X CANTIDAD = PRECIO RENGLON, ENTONCES POR ACA O POR CODIGO SE PUEDE HACER 
 
 	 PRIMARY KEY (id_venta, id_producto, id_fila),
@@ -129,7 +129,7 @@ END;
 CREATE PROCEDURE spu_generar_id_forma_de_pago
 AS 
 BEGIN 
-     SELECT MAX(id_forma_pago) + 1 AS Nuevo_ID FROM forma_de_pago; 
+     SELECT ISNULL(MAX(id_forma_pago), 0) + 1 AS Nuevo_ID FROM forma_de_pago; 
 END;
 
 -- ============================================
@@ -172,6 +172,9 @@ BEGIN
    DELETE FROM localidades WHERE cp = @cp;
 END;
 
+-- ============================================
+-- PROCEDIMIENTOS ALMACENADOS BUSCAR
+-- ============================================
 
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS LOCALIDADES BUSCAR X CP - LOCALIDADES 
@@ -195,6 +198,192 @@ BEGIN
     SELECT cp CP, localidad LOCALIDAD FROM localidades 
     WHERE localidad LIKE '%' + @localidad + '%'; 
 END;
+
+-- ============================================
+-- PROCEDIMIENTOS ALMACENADOS BUSCAR 
+-- ============================================
+
+-- ============================================
+-- BUSCAR CLIENTE X VENTA  
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_cliente_X_venta
+	@razon_social NVARCHAR (60)
+AS 
+BEGIN 	
+	SELECT
+		clientes.id_cliente AS ID_CLIENTE,
+		clientes.razon_social AS RAZON_SOCIAL,
+		localidades.localidad AS LOCALIDAD,
+		clientes.mail AS MAIL, 
+		clientes.telefono AS TELEFONO
+	FROM clientes  
+	INNER JOIN localidades ON clientes.cp = localidades.cp
+	WHERE razon_social LIKE '%' + @razon_social + '%';
+END;
+	
+
+-- ============================================
+-- BUSCAR FORMA PAGO 
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_forma_pago
+	@descrip_forma_pago NVARCHAR (60)
+AS 
+BEGIN 
+	SELECT 
+		id_forma_pago AS ID_FORMA_PAGO,
+		descrip_forma_pago AS FORMA_PAGO 
+	FROM forma_de_pago	
+	WHERE descrip_forma_pago LIKE '%' + @descrip_forma_pago + '%';
+END;
+-- ============================================
+-- BUSCAR FORMA PAGO X VENTA  
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_forma_pago_X_venta
+	@descrip_forma_pago NVARCHAR (60) 
+AS 
+BEGIN 
+	SELECT 
+		ventas.id_venta AS NRO_VENTA, 
+		ventas.fecha AS FECHA,
+		forma_de_pago.descrip_forma_pago AS FORMA_PAGO 
+	FROM ventas	
+	INNER JOIN forma_de_pago ON forma_de_pago.id_forma_pago = ventas.id_forma_pago
+	WHERE forma_de_pago.descrip_forma_pago LIKE '%' + @descrip_forma_pago + '%';
+END;
+
+-- ============================================
+-- BUSCAR PRODUCTO X PRODUCTO
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_producto_X_producto 
+	@descripcion NVARCHAR (60)
+AS 
+BEGIN 
+	SELECT 
+		id_producto AS ID_PRODUCTO,
+		descripcion AS PRODUCTO,
+		precio AS PRECIO, 
+		stock AS STOCK 
+	FROM productos 
+	WHERE productos.descripcion LIKE '%' + @descripcion + '%';
+END;
+
+
+-- ============================================
+-- BUSCAR PRODUCTO X DETALLE VENTA  
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_producto_X_detalle_venta
+	@descripcion NVARCHAR (60)
+AS
+BEGIN 
+	SELECT
+		detalle_venta.id_venta AS ID_VENTA,
+		detalle_venta.id_producto AS ID_PRODUCTO,
+		productos.descripcion AS PRODUCTO	
+	FROM detalle_venta
+	INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+	WHERE productos.descripcion LIKE '%' + @descripcion + '%';
+END;
+
+-- ============================================
+-- BUSCAR RUBRO  
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_rubro
+	@descrip_rubro NVARCHAR (60)
+AS
+BEGIN 
+	SELECT 
+		id_rubro AS ID_RUBRO,
+		descrip_rubro AS RUBRO
+	FROM rubros
+	WHERE rubros.descrip_rubro LIKE '%' + @descrip_rubro + '%';
+END;
+
+-- ============================================
+-- BUSCAR RUBRO x PRODUCTO 
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_rubro_X_producto
+	@descrip_rubro NVARCHAR (60)
+AS 
+BEGIN 
+	SELECT 
+		rubros.id_rubro AS ID_RUBRO,
+		productos.id_producto AS ID_PRODUCTO,
+		rubros.descrip_rubro AS RUBRO,
+		productos.descripcion AS PRODUCTO
+	FROM productos --A
+	INNER JOIN rubros /*B*/ ON productos.id_rubro = rubros.id_rubro
+	WHERE rubros.descrip_rubro LIKE '%' + @descrip_rubro + '%';	
+END;
+
+-- ============================================
+-- BUSCAR USUARIO x VENTA 
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_usuario_X_venta 
+	@usuario NVARCHAR (60)
+AS 
+BEGIN 
+	SELECT 
+		usuarios.id_usuario AS ID_USUARIO,
+		usuarios.usuario AS USUARIO,
+		ventas.id_venta AS ID_VENTA 
+	FROM ventas 
+	INNER JOIN usuarios ON ventas.id_usuario = usuarios.id_usuario
+	WHERE usuarios.usuario LIKE '%' + @usuario + '%';
+END;
+
+-- ============================================
+-- BUSCAR VENTAS x FECHA 
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_ventas_X_fecha
+	@fecha DATE
+AS 
+BEGIN 
+	SELECT 
+		id_venta AS ID_VENTA, 
+		fecha AS FECHA,
+		id_forma_pago AS ID_FORMA_PAGO,
+		id_cliente AS ID_CLIENTE,
+		id_usuario AS ID_USUARIO,
+		total AS TOTAL
+	FROM ventas
+	WHERE ventas.fecha = @fecha 
+	ORDER BY fecha ASC;
+END; 
+
+-- ============================================
+-- BUSCAR VENTAS x RUBRO
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_ventas_X_rubro
+    @descrip_rubro NVARCHAR(60)
+AS
+BEGIN
+    SELECT 
+        ventas.id_venta AS NRO_VENTA,
+        ventas.fecha AS FECHA,
+        rubros.descrip_rubro AS RUBRO,
+        productos.descripcion AS PRODUCTO,
+        detalle_venta.precio AS PRECIO_UNITARIO,
+        detalle_venta.cantidad AS CANTIDAD,
+        detalle_venta.precio_r AS PRECIO_RENGLON
+    FROM ventas
+    INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
+    INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+    INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
+    WHERE rubros.descrip_rubro LIKE '%' + @descrip_rubro + '%'
+    ORDER BY ventas.fecha DESC;
+END;
+GO
+
 
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS RUBROS
@@ -241,18 +430,32 @@ END;
 CREATE PROCEDURE spu_generar_id_rubro
 AS 
 BEGIN 
-     SELECT MAX(id_rubro) + 1 AS Nuevo_ID FROM rubros;
+     SELECT ISNULL(MAX(id_rubro), 0) + 1 AS Nuevo_ID FROM rubros;
 END;
 
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS USUARIOS
 -- ============================================
 
+-- MOSTRAR USUARIOS
 CREATE PROCEDURE spu_mostrar_usuarios
 AS 
 BEGIN 
-	SELECT id_usuario AS ID_USUARIO, usuario AS USUARIO, psw AS PSW FROM usuarios;
+	SELECT id_usuario AS ID_USUARIO, usuario AS USUARIO, psw AS PSW 
+	FROM usuarios;
 END;
+
+-- VALIDAR USUARIOS 
+CREATE PROCEDURE spu_validar_usuario
+	@usuario NVARCHAR(60),
+	@psw NVARCHAR(60)
+AS
+BEGIN
+	SELECT id_usuario AS ID_USUARIO, usuario AS USUARIO
+	FROM usuarios
+	WHERE usuario = @usuario AND psw = @psw;
+END;
+GO
 
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS CLIENTES
@@ -302,7 +505,7 @@ BEGIN
 END;
 
 --ELIMINAR CLIENTES
-CREATE PROCEDURE spu_baja_cliente
+CREATE PROCEDURE spu_baja_clientes
     @id_cliente INT
 AS
 BEGIN
@@ -313,7 +516,7 @@ END;
 CREATE PROCEDURE spu_generar_id_cliente
 AS 
 BEGIN 
-     SELECT MAX(id_cliente) + 1 AS Nuevo_ID FROM clientes;
+     SELECT ISNULL(MAX(id_cliente), 0) + 1 AS Nuevo_ID FROM clientes;
 END;
 
 -- ============================================
@@ -375,7 +578,7 @@ END;
 CREATE PROCEDURE spu_generar_id_producto
 AS 
 BEGIN 
-     SELECT MAX(id_producto) + 1 AS Nuevo_ID FROM productos;
+     SELECT ISNULL(MAX(id_producto), 0) + 1 AS Nuevo_ID FROM productos;
 END;
 
 -- ============================================
@@ -435,6 +638,19 @@ CREATE PROCEDURE spu_baja_ventas
     @id_venta INT 
 AS
 BEGIN
+  -- 1° devuelvo al stock lo que se había vendido (sumado por producto)
+   UPDATE productos
+   SET stock = stock + vendido.total
+   FROM productos
+   INNER JOIN (
+        SELECT id_producto, SUM(cantidad) AS total
+        FROM detalle_venta
+        WHERE id_venta = @id_venta
+        GROUP BY id_producto
+   ) AS vendido ON productos.id_producto = vendido.id_producto;
+
+   -- 2° borro los renglones y 3° la cabecera
+   DELETE FROM detalle_venta WHERE id_venta = @id_venta;
    DELETE FROM ventas WHERE id_venta = @id_venta;
 END;
 
@@ -442,7 +658,7 @@ END;
 CREATE PROCEDURE spu_generar_id_venta
 AS 
 BEGIN 
-     SELECT MAX(id_venta) + 1 AS Nuevo_ID FROM ventas;
+     SELECT ISNULL(MAX(id_venta), 0) + 1 AS Nuevo_ID FROM ventas;
 END;
 
 -- ============================================
@@ -480,6 +696,11 @@ AS
 BEGIN
     INSERT INTO detalle_venta (id_venta, id_producto, id_fila, precio, cantidad, precio_r) 
 		VALUES (@id_venta, @id_producto, @id_fila, @precio, @cantidad, @precio_r);
+		
+	-- Descuento del stock lo vendido
+    UPDATE productos 
+    SET stock = stock - @cantidad 
+    WHERE id_producto = @id_producto;
 END;
 
 --MODIFICAR DETALLE_VENTAS
@@ -492,21 +713,47 @@ CREATE PROCEDURE spu_modificar_detalle_venta
 			@precio_r DECIMAL(10,2) 
 AS
 BEGIN 
+	-- 1° guardo la cantidad que tenía antes el renglón
+	DECLARE @cantidad_anterior DECIMAL(10,3);
+
+	SELECT @cantidad_anterior = cantidad
+	FROM detalle_venta
+	WHERE id_venta = @id_venta AND id_producto = @id_producto AND id_fila = @id_fila;
+	
+	-- 2° actualizo el renglón
 	UPDATE detalle_venta
 	-- NO ACTUALIZO LAS CLAVES PRIMARIAS SOLO LOS DATOS QUE YA TIENE LA TABLA PORQUE SON CLAVES PRIMARIAS COMPUESTAS DE OTRAS TABLAS 
 	SET precio = @precio, cantidad = @cantidad, precio_r = @precio_r
 	WHERE id_venta = @id_venta AND id_producto = @id_producto AND id_fila = @id_fila;
 	-- ACORDATE QUE PARA LAS CLAVES PRIMARIAS COMPUESTAS DEBES USAR AND PARA CONCATENAR LAS CLAVES DECLARADAS NECESARIAS
+	
+	-- 3° ajusto el stock con la diferencia (devuelvo la vieja, resto la nueva)
+	UPDATE productos
+	SET stock = stock + @cantidad_anterior - @cantidad
+	WHERE id_producto = @id_producto;
 END;
 
---ELIMINAR VENTAS
+--ELIMINAR DETALLE VENTAS
 CREATE PROCEDURE spu_baja_detalle_venta
 --TRES CLAVES PRIMARIAS SE TIENEN QUE SELECCIONAR PARA ELIMINAR 
 	@id_venta INT,
 	@id_producto INT,
 	@id_fila INT 
 AS
-BEGIN
+BEGIN 
+	-- 1° guardo la cantidad del renglón antes de borrarlo
+    DECLARE @cantidad DECIMAL(10,3);
+
+    SELECT @cantidad = cantidad 
+    FROM detalle_venta
+    WHERE id_venta = @id_venta AND id_producto = @id_producto AND id_fila = @id_fila;
+
+    -- 2° devuelvo esa cantidad al stock
+    UPDATE productos 
+    SET stock = stock + @cantidad 
+    WHERE id_producto = @id_producto;
+
+    -- 3° recién ahí borro el renglón
    DELETE FROM detalle_venta 
    WHERE id_venta = @id_venta AND id_producto = @id_producto AND id_fila = @id_fila;
    --LO MISMO PARA ESTE WHERE, NECESITA ENCONTRAR LAS TRES CLAVES PRIMARIAS
@@ -572,6 +819,7 @@ BEGIN
 			INNER JOIN usuarios ON ventas.id_usuario = usuarios.id_usuario 
 
 			WHERE ventas.id_venta = @id_venta
+			ORDER BY detalle_venta.id_fila ASC 
 END;
 
 -- ============================================
@@ -630,11 +878,13 @@ CREATE PROCEDURE spu_reporte_ventas_por_rubro
 AS
 BEGIN 
 	 SELECT 
-		  ventas.fecha AS FECHA, 
-		  ventas.id_venta AS NRO_VENTA,
-		  productos.descripcion AS PRODUCTO,
-		  detalle_venta.cantidad AS CANTIDAD_VENDIDA,
-		  detalle_venta.precio_r AS SUBTOTAL
+		rubros.id_rubro AS ID_RUBRO, 
+		rubros.descrip_rubro AS RUBRO,
+		ventas.fecha AS FECHA, 
+		ventas.id_venta AS NRO_VENTA,
+		productos.descripcion AS PRODUCTO,
+		detalle_venta.cantidad AS CANTIDAD_VENDIDA,
+		detalle_venta.precio_r AS SUBTOTAL
 	FROM ventas 
 	-- Primero uno la cabecera con sus renglones (detalle)
 	INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
@@ -642,34 +892,12 @@ BEGIN
 	-- Ahora que estoy en el renglón, busco que producto es
 	INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
 
+	-- Y con el producto busco a qué rubro debe estar 
+	INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
+
 	WHERE productos.id_rubro = @id_rubro
+	ORDER BY ventas.fecha DESC;
 END;
-
--- ============================================
--- BUSCAR VENTAS x RUBRO
--- ============================================
-
-CREATE PROCEDURE spu_buscar_ventas_X_rubro
-    @descrip_rubro NVARCHAR(60)
-AS
-BEGIN
-    SELECT 
-        ventas.id_venta AS NRO_VENTA,
-        ventas.fecha AS FECHA,
-        rubros.descrip_rubro AS RUBRO,
-        productos.descripcion AS PRODUCTO,
-        detalle_venta.precio AS PRECIO_UNITARIO,
-        detalle_venta.cantidad AS CANTIDAD,
-        detalle_venta.precio_r AS PRECIO_RENGLON
-    FROM ventas
-    INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
-    INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
-    INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
-    WHERE rubros.descrip_rubro LIKE '%' + @descrip_rubro + '%'
-    ORDER BY ventas.fecha DESC;
-END;
-GO
-
 
 
 -- ============================================
