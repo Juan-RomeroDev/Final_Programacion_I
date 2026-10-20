@@ -34,6 +34,8 @@ Partial Class FrmRubros
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnAtrasRubros = New System.Windows.Forms.Button()
         Me.BtnGestionarRubros = New System.Windows.Forms.Button()
+        Me.TxtBuscarRubro = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.dgvRubros, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -111,6 +113,7 @@ Partial Class FrmRubros
         'dgvRubros
         '
         Me.dgvRubros.AllowUserToAddRows = False
+        Me.dgvRubros.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.dgvRubros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRubros.Location = New System.Drawing.Point(83, 84)
         Me.dgvRubros.Name = "dgvRubros"
@@ -150,12 +153,33 @@ Partial Class FrmRubros
         Me.BtnGestionarRubros.Text = "Gestionar Rubros"
         Me.BtnGestionarRubros.UseVisualStyleBackColor = True
         '
+        'TxtBuscarRubro
+        '
+        Me.TxtBuscarRubro.Location = New System.Drawing.Point(254, 35)
+        Me.TxtBuscarRubro.Name = "TxtBuscarRubro"
+        Me.TxtBuscarRubro.Size = New System.Drawing.Size(100, 20)
+        Me.TxtBuscarRubro.TabIndex = 83
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(119, 32)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(110, 21)
+        Me.Label1.TabIndex = 84
+        Me.Label1.Text = "Buscar Rubro"
+        '
         'FrmRubros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(823, 518)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TxtBuscarRubro)
         Me.Controls.Add(Me.BtnGestionarRubros)
         Me.Controls.Add(Me.BtnAtrasRubros)
         Me.Controls.Add(Me.PictureBox1)
@@ -188,4 +212,6 @@ Partial Class FrmRubros
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnAtrasRubros As Button
     Friend WithEvents BtnGestionarRubros As Button
+    Friend WithEvents TxtBuscarRubro As TextBox
+    Friend WithEvents Label1 As Label
 End Class

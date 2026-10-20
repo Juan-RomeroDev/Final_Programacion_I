@@ -123,6 +123,7 @@ Partial Class frmLocalidades
         'dgvLocalidades
         '
         Me.dgvLocalidades.AllowUserToAddRows = False
+        Me.dgvLocalidades.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.dgvLocalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvLocalidades.Location = New System.Drawing.Point(63, 82)
         Me.dgvLocalidades.Name = "dgvLocalidades"

@@ -145,6 +145,12 @@
     <Compile Include="Formularios\FrmRubros.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Ventas.Designer.vb">
+      <DependentUpon>Ventas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ventas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Clases.vb" />
     <Compile Include="Modulos\Conectar.vb" />
     <Compile Include="Formularios\FrmMain.vb">
@@ -170,10 +176,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Formularios\FrmVentas.Designer.vb">
-      <DependentUpon>FrmVentas.vb</DependentUpon>
+    <Compile Include="Formularios\FrmPOS.Designer.vb">
+      <DependentUpon>FrmPOS.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmVentas.vb">
+    <Compile Include="Formularios\FrmPOS.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -196,8 +202,14 @@
     <EmbeddedResource Include="Formularios\FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmProductos.resx">
+      <DependentUpon>FrmProductos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmRubros.resx">
       <DependentUpon>FrmRubros.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ventas.resx">
+      <DependentUpon>Ventas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -206,8 +218,8 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RptDetalleVenta.rdlc" />
-    <EmbeddedResource Include="Formularios\FrmVentas.resx">
-      <DependentUpon>FrmVentas.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\FrmPOS.resx">
+      <DependentUpon>FrmPOS.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pollo-Abasto-Tu-Almacen.ico" />
+    <None Include="Resources\Productos.jpg" />
     <None Include="Resources\Forma_de_pago.jpg" />
     <None Include="Resources\DetalleVenta.png" />
     <Content Include="Resources\Fondo_Formularios.jpg" />

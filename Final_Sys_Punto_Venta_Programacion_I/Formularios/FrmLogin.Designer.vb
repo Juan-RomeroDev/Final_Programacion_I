@@ -65,6 +65,7 @@ Partial Class FrmLogin
         'dgvUsuarios
         '
         Me.dgvUsuarios.AllowUserToAddRows = False
+        Me.dgvUsuarios.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUsuarios.Location = New System.Drawing.Point(186, 73)
         Me.dgvUsuarios.Name = "dgvUsuarios"
@@ -99,7 +100,7 @@ Partial Class FrmLogin
         Me.Lbl_IniciarSesion.AutoSize = True
         Me.Lbl_IniciarSesion.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_IniciarSesion.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Lbl_IniciarSesion.ForeColor = System.Drawing.Color.Black
+        Me.Lbl_IniciarSesion.ForeColor = System.Drawing.Color.Transparent
         Me.Lbl_IniciarSesion.Location = New System.Drawing.Point(193, 27)
         Me.Lbl_IniciarSesion.Name = "Lbl_IniciarSesion"
         Me.Lbl_IniciarSesion.Size = New System.Drawing.Size(180, 30)
@@ -110,6 +111,7 @@ Partial Class FrmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(572, 333)
         Me.Controls.Add(Me.Lbl_IniciarSesion)
         Me.Controls.Add(Me.PictureBox2)

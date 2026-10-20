@@ -36,6 +36,8 @@ Partial Class FrmFormaDePago
         Me.btnModificaFormaPago = New System.Windows.Forms.Button()
         Me.btnAltaFormaPago = New System.Windows.Forms.Button()
         Me.BtnAtrasFormaPago = New System.Windows.Forms.Button()
+        Me.TxtBuscarFormaPago = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.dgvFormaDePago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,7 +83,7 @@ Partial Class FrmFormaDePago
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(224, 56)
+        Me.Label1.Location = New System.Drawing.Point(224, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(125, 21)
         Me.Label1.TabIndex = 92
@@ -178,12 +180,33 @@ Partial Class FrmFormaDePago
         Me.BtnAtrasFormaPago.Text = "ATRAS"
         Me.BtnAtrasFormaPago.UseVisualStyleBackColor = True
         '
+        'TxtBuscarFormaPago
+        '
+        Me.TxtBuscarFormaPago.Location = New System.Drawing.Point(532, 84)
+        Me.TxtBuscarFormaPago.Name = "TxtBuscarFormaPago"
+        Me.TxtBuscarFormaPago.Size = New System.Drawing.Size(105, 20)
+        Me.TxtBuscarFormaPago.TabIndex = 111
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(347, 81)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(179, 21)
+        Me.Label2.TabIndex = 112
+        Me.Label2.Text = "Buscar Forma De Pago"
+        '
         'FrmFormaDePago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(837, 460)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TxtBuscarFormaPago)
         Me.Controls.Add(Me.BtnAtrasFormaPago)
         Me.Controls.Add(Me.btnBajaFormaPago)
         Me.Controls.Add(Me.btnModificaFormaPago)
@@ -222,4 +245,6 @@ Partial Class FrmFormaDePago
     Friend WithEvents btnModificaFormaPago As Button
     Friend WithEvents btnAltaFormaPago As Button
     Friend WithEvents BtnAtrasFormaPago As Button
+    Friend WithEvents TxtBuscarFormaPago As TextBox
+    Friend WithEvents Label2 As Label
 End Class
