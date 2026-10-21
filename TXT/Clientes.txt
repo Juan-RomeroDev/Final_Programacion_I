@@ -22,11 +22,10 @@ Public Class FrmClientes
             ' Asigno CADA columna a su caja correspondiente respetando el orden de la BD
             Me.TxtIDCliente.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(0).Value.ToString()
             Me.TxtRazonSocial.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(1).Value.ToString()
-            Me.TxtCPCLiente.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(3).Value.ToString()
-            Me.TxtTelefono.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(2).Value.ToString()
-
-            'Mandar Cells(4) a tu Label que muestra el nombre de la localidad
-            Me.LblCPFiltrado.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(4).Value.ToString()
+            Me.TxtCPCLiente.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(2).Value.ToString()
+            Me.LblCPFiltrado.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(3).Value.ToString()
+            Me.TxtEmail.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(4).Value.ToString()
+            Me.TxtTelefono.Text = Me.dgvClientes.Rows(e.RowIndex).Cells(5).Value.ToString()
 
 
             ' 2. ¿El usuario apretó "Gestionar Clientes" antes?
@@ -125,7 +124,7 @@ Public Class FrmClientes
     Private Sub llenarClientes()
         ' Llamo al procedimiento almacenado que me devuelve todos los clientes
         Dim sql As String = "exec spu_mostrar_clientes"
-        Dim adp As New SqlClient.SqlDataAdapter(sql, AbrirConexion.conexion)
+        Dim adp As New SqlClient.SqlDataAdapter(sql, conexion)
         Dim ds As New DataSet
 
         ' Lleno la tabla temporal
@@ -141,12 +140,13 @@ Public Class FrmClientes
         ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
         Me.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
-        Me.dgvClientes.Columns(0).FillWeight = 40   ' ID (pequeño)
-        Me.dgvClientes.Columns(1).FillWeight = 160  ' RAZON SOCIAL (el más ancho)
-        Me.dgvClientes.Columns(2).FillWeight = 90   ' TELEFONO
-        Me.dgvClientes.Columns(3).FillWeight = 50   ' CP (pequeño)
-        Me.dgvClientes.Columns(4).FillWeight = 120  ' LOCALIDAD
-        Me.dgvClientes.Columns(5).FillWeight = 80   ' DNI
+        ' ORDEN ESTRICTO DE SQL
+        Me.dgvClientes.Columns(0).FillWeight = 40   ' ID_CLIENTE
+        Me.dgvClientes.Columns(1).FillWeight = 160  ' RAZON_SOCIAL
+        Me.dgvClientes.Columns(2).FillWeight = 50   ' CP
+        Me.dgvClientes.Columns(3).FillWeight = 120  ' LOCALIDAD
+        Me.dgvClientes.Columns(4).FillWeight = 100  ' MAIL
+        Me.dgvClientes.Columns(5).FillWeight = 90   ' TELEFONO
 
         Me.dgvClientes.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.dgvClientes.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -187,7 +187,7 @@ Public Class FrmClientes
         altaCli.telefono = Me.TxtTelefono.Text.Trim()
 
         'Cuidado con los espacios Por Ejemplo: Dim sql As String = "exec spu_alta_localidad" & altaLoc.cp & ",'" & altaLoc.localidad & "'"
-        Dim sql As String = "exec spu_add_cliente " & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
+        Dim sql As String = "exec spu_alta_clientes" & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UN CLIENTE",, "INFO")
         'Captura de error(Por si ocurre un improbable error en la BD :) ) 
@@ -331,7 +331,7 @@ Public Class FrmClientes
         wflag = 1
 
         'Abro la pantalla de Localidades para que el usuario seleccione una
-        Dim frm As New FrmLocalidades()
+        Dim frm As New frmLocalidades()
         frm.ShowDialog()
 
         'Suspender el binding para evitar que se actualice la interfaz mientras asignamos los valores

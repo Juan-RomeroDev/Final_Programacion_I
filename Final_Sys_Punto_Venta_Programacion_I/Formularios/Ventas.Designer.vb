@@ -24,62 +24,66 @@ Partial Class Ventas
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ventas))
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TxtVentaPorCliente = New System.Windows.Forms.TextBox()
+        Me.LblBuscarVentaPorCliente = New System.Windows.Forms.Label()
+        Me.TxtVentaPorRubro = New System.Windows.Forms.TextBox()
+        Me.LblBuscarVentaPorRubro = New System.Windows.Forms.Label()
         Me.DateTimePickerHasta = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickerDesde = New System.Windows.Forms.DateTimePicker()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Lbl_ID_Venta = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.LblBuscarVentaPorFechas = New System.Windows.Forms.Label()
+        Me.LblBuscarVentaPorUsuario = New System.Windows.Forms.Label()
+        Me.TxtVentaPorUsuario = New System.Windows.Forms.TextBox()
         Me.DgvVentasRealizadas = New System.Windows.Forms.DataGridView()
+        Me.LblBuscarPorFormaDePago = New System.Windows.Forms.Label()
+        Me.TxtBuscarVentaPorFormaPago = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TxtBuscarVentaPorDetalleVenta = New System.Windows.Forms.TextBox()
         CType(Me.DgvVentasRealizadas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox3
+        'TxtVentaPorCliente
         '
-        Me.TextBox3.Location = New System.Drawing.Point(218, 43)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox3.TabIndex = 114
+        Me.TxtVentaPorCliente.Location = New System.Drawing.Point(218, 43)
+        Me.TxtVentaPorCliente.Name = "TxtVentaPorCliente"
+        Me.TxtVentaPorCliente.Size = New System.Drawing.Size(100, 20)
+        Me.TxtVentaPorCliente.TabIndex = 114
         '
-        'Label8
+        'LblBuscarVentaPorCliente
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(12, 42)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(200, 21)
-        Me.Label8.TabIndex = 113
-        Me.Label8.Text = "Buscar Venta Por Usuario"
+        Me.LblBuscarVentaPorCliente.AutoSize = True
+        Me.LblBuscarVentaPorCliente.BackColor = System.Drawing.Color.Transparent
+        Me.LblBuscarVentaPorCliente.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBuscarVentaPorCliente.ForeColor = System.Drawing.Color.White
+        Me.LblBuscarVentaPorCliente.Location = New System.Drawing.Point(12, 42)
+        Me.LblBuscarVentaPorCliente.Name = "LblBuscarVentaPorCliente"
+        Me.LblBuscarVentaPorCliente.Size = New System.Drawing.Size(195, 21)
+        Me.LblBuscarVentaPorCliente.TabIndex = 113
+        Me.LblBuscarVentaPorCliente.Text = "Buscar Venta Por Cliente"
         '
-        'TextBox2
+        'TxtVentaPorRubro
         '
-        Me.TextBox2.Location = New System.Drawing.Point(1039, 15)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 112
+        Me.TxtVentaPorRubro.Location = New System.Drawing.Point(600, 43)
+        Me.TxtVentaPorRubro.Name = "TxtVentaPorRubro"
+        Me.TxtVentaPorRubro.Size = New System.Drawing.Size(100, 20)
+        Me.TxtVentaPorRubro.TabIndex = 112
         '
-        'Label7
+        'LblBuscarVentaPorRubro
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(836, 15)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(187, 21)
-        Me.Label7.TabIndex = 111
-        Me.Label7.Text = "Buscar Venta Por Rubro"
+        Me.LblBuscarVentaPorRubro.AutoSize = True
+        Me.LblBuscarVentaPorRubro.BackColor = System.Drawing.Color.Transparent
+        Me.LblBuscarVentaPorRubro.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBuscarVentaPorRubro.ForeColor = System.Drawing.Color.White
+        Me.LblBuscarVentaPorRubro.Location = New System.Drawing.Point(397, 43)
+        Me.LblBuscarVentaPorRubro.Name = "LblBuscarVentaPorRubro"
+        Me.LblBuscarVentaPorRubro.Size = New System.Drawing.Size(187, 21)
+        Me.LblBuscarVentaPorRubro.TabIndex = 111
+        Me.LblBuscarVentaPorRubro.Text = "Buscar Venta Por Rubro"
         '
         'DateTimePickerHasta
         '
         Me.DateTimePickerHasta.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePickerHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerHasta.Location = New System.Drawing.Point(696, 4)
+        Me.DateTimePickerHasta.Location = New System.Drawing.Point(755, 4)
         Me.DateTimePickerHasta.Name = "DateTimePickerHasta"
         Me.DateTimePickerHasta.Size = New System.Drawing.Size(124, 35)
         Me.DateTimePickerHasta.TabIndex = 110
@@ -89,42 +93,42 @@ Partial Class Ventas
         '
         Me.DateTimePickerDesde.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePickerDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerDesde.Location = New System.Drawing.Point(548, 4)
+        Me.DateTimePickerDesde.Location = New System.Drawing.Point(607, 4)
         Me.DateTimePickerDesde.Name = "DateTimePickerDesde"
         Me.DateTimePickerDesde.Size = New System.Drawing.Size(130, 35)
         Me.DateTimePickerDesde.TabIndex = 109
         Me.DateTimePickerDesde.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
         '
-        'Label3
+        'LblBuscarVentaPorFechas
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(338, 12)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(192, 21)
-        Me.Label3.TabIndex = 108
-        Me.Label3.Text = "Buscar Venta Por Fechas"
+        Me.LblBuscarVentaPorFechas.AutoSize = True
+        Me.LblBuscarVentaPorFechas.BackColor = System.Drawing.Color.Transparent
+        Me.LblBuscarVentaPorFechas.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBuscarVentaPorFechas.ForeColor = System.Drawing.Color.White
+        Me.LblBuscarVentaPorFechas.Location = New System.Drawing.Point(397, 12)
+        Me.LblBuscarVentaPorFechas.Name = "LblBuscarVentaPorFechas"
+        Me.LblBuscarVentaPorFechas.Size = New System.Drawing.Size(192, 21)
+        Me.LblBuscarVentaPorFechas.TabIndex = 108
+        Me.LblBuscarVentaPorFechas.Text = "Buscar Venta Por Fechas"
         '
-        'Lbl_ID_Venta
+        'LblBuscarVentaPorUsuario
         '
-        Me.Lbl_ID_Venta.AutoSize = True
-        Me.Lbl_ID_Venta.BackColor = System.Drawing.Color.Transparent
-        Me.Lbl_ID_Venta.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Lbl_ID_Venta.ForeColor = System.Drawing.Color.White
-        Me.Lbl_ID_Venta.Location = New System.Drawing.Point(12, 9)
-        Me.Lbl_ID_Venta.Name = "Lbl_ID_Venta"
-        Me.Lbl_ID_Venta.Size = New System.Drawing.Size(200, 21)
-        Me.Lbl_ID_Venta.TabIndex = 107
-        Me.Lbl_ID_Venta.Text = "Buscar Venta Por Usuario"
+        Me.LblBuscarVentaPorUsuario.AutoSize = True
+        Me.LblBuscarVentaPorUsuario.BackColor = System.Drawing.Color.Transparent
+        Me.LblBuscarVentaPorUsuario.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBuscarVentaPorUsuario.ForeColor = System.Drawing.Color.White
+        Me.LblBuscarVentaPorUsuario.Location = New System.Drawing.Point(12, 9)
+        Me.LblBuscarVentaPorUsuario.Name = "LblBuscarVentaPorUsuario"
+        Me.LblBuscarVentaPorUsuario.Size = New System.Drawing.Size(200, 21)
+        Me.LblBuscarVentaPorUsuario.TabIndex = 107
+        Me.LblBuscarVentaPorUsuario.Text = "Buscar Venta Por Usuario"
         '
-        'TextBox1
+        'TxtVentaPorUsuario
         '
-        Me.TextBox1.Location = New System.Drawing.Point(218, 12)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 106
+        Me.TxtVentaPorUsuario.Location = New System.Drawing.Point(218, 12)
+        Me.TxtVentaPorUsuario.Name = "TxtVentaPorUsuario"
+        Me.TxtVentaPorUsuario.Size = New System.Drawing.Size(100, 20)
+        Me.TxtVentaPorUsuario.TabIndex = 106
         '
         'DgvVentasRealizadas
         '
@@ -132,7 +136,7 @@ Partial Class Ventas
         Me.DgvVentasRealizadas.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.DgvVentasRealizadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvVentasRealizadas.GridColor = System.Drawing.Color.RoyalBlue
-        Me.DgvVentasRealizadas.Location = New System.Drawing.Point(81, 125)
+        Me.DgvVentasRealizadas.Location = New System.Drawing.Point(259, 271)
         Me.DgvVentasRealizadas.Name = "DgvVentasRealizadas"
         Me.DgvVentasRealizadas.ReadOnly = True
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -148,22 +152,64 @@ Partial Class Ventas
         Me.DgvVentasRealizadas.Size = New System.Drawing.Size(673, 270)
         Me.DgvVentasRealizadas.TabIndex = 115
         '
+        'LblBuscarPorFormaDePago
+        '
+        Me.LblBuscarPorFormaDePago.AutoSize = True
+        Me.LblBuscarPorFormaDePago.BackColor = System.Drawing.Color.Transparent
+        Me.LblBuscarPorFormaDePago.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBuscarPorFormaDePago.ForeColor = System.Drawing.Color.White
+        Me.LblBuscarPorFormaDePago.Location = New System.Drawing.Point(12, 79)
+        Me.LblBuscarPorFormaDePago.Name = "LblBuscarPorFormaDePago"
+        Me.LblBuscarPorFormaDePago.Size = New System.Drawing.Size(256, 21)
+        Me.LblBuscarPorFormaDePago.TabIndex = 116
+        Me.LblBuscarPorFormaDePago.Text = "Buscar Venta Por Forma De Pago"
+        '
+        'TxtBuscarVentaPorFormaPago
+        '
+        Me.TxtBuscarVentaPorFormaPago.Location = New System.Drawing.Point(274, 82)
+        Me.TxtBuscarVentaPorFormaPago.Name = "TxtBuscarVentaPorFormaPago"
+        Me.TxtBuscarVentaPorFormaPago.Size = New System.Drawing.Size(100, 20)
+        Me.TxtBuscarVentaPorFormaPago.TabIndex = 117
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(397, 81)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(244, 21)
+        Me.Label1.TabIndex = 118
+        Me.Label1.Text = "Buscar Venta Por Detalle Venta"
+        '
+        'TxtBuscarVentaPorDetalleVenta
+        '
+        Me.TxtBuscarVentaPorDetalleVenta.Location = New System.Drawing.Point(647, 82)
+        Me.TxtBuscarVentaPorDetalleVenta.Name = "TxtBuscarVentaPorDetalleVenta"
+        Me.TxtBuscarVentaPorDetalleVenta.Size = New System.Drawing.Size(100, 20)
+        Me.TxtBuscarVentaPorDetalleVenta.TabIndex = 119
+        '
         'Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(1170, 450)
+        Me.ClientSize = New System.Drawing.Size(1220, 592)
+        Me.Controls.Add(Me.TxtBuscarVentaPorDetalleVenta)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TxtBuscarVentaPorFormaPago)
+        Me.Controls.Add(Me.LblBuscarPorFormaDePago)
         Me.Controls.Add(Me.DgvVentasRealizadas)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.TxtVentaPorCliente)
+        Me.Controls.Add(Me.LblBuscarVentaPorCliente)
+        Me.Controls.Add(Me.TxtVentaPorRubro)
+        Me.Controls.Add(Me.LblBuscarVentaPorRubro)
         Me.Controls.Add(Me.DateTimePickerHasta)
         Me.Controls.Add(Me.DateTimePickerDesde)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Lbl_ID_Venta)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.LblBuscarVentaPorFechas)
+        Me.Controls.Add(Me.LblBuscarVentaPorUsuario)
+        Me.Controls.Add(Me.TxtVentaPorUsuario)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Ventas"
         Me.Text = "Ventas"
@@ -173,14 +219,18 @@ Partial Class Ventas
 
     End Sub
 
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label7 As Label
+    Friend WithEvents TxtVentaPorCliente As TextBox
+    Friend WithEvents LblBuscarVentaPorCliente As Label
+    Friend WithEvents TxtVentaPorRubro As TextBox
+    Friend WithEvents LblBuscarVentaPorRubro As Label
     Friend WithEvents DateTimePickerHasta As DateTimePicker
     Friend WithEvents DateTimePickerDesde As DateTimePicker
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Lbl_ID_Venta As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents LblBuscarVentaPorFechas As Label
+    Friend WithEvents LblBuscarVentaPorUsuario As Label
+    Friend WithEvents TxtVentaPorUsuario As TextBox
     Friend WithEvents DgvVentasRealizadas As DataGridView
+    Friend WithEvents LblBuscarPorFormaDePago As Label
+    Friend WithEvents TxtBuscarVentaPorFormaPago As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents TxtBuscarVentaPorDetalleVenta As TextBox
 End Class
