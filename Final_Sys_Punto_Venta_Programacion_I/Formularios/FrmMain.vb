@@ -38,6 +38,11 @@
         FrmRubros.Show()
     End Sub
 
+    Private Sub BtnPuntoVenta_Click(sender As Object, e As EventArgs) Handles BtnPuntoVenta.Click
+        Dim FrmPOS As New FrmPOS()
+        FrmPOS.Show()
+    End Sub
+
     ' =========================================================
     ' INFORMES 
     ' =========================================================

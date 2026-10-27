@@ -29,16 +29,18 @@ Partial Class FrmMain
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.LblNombre_Negocio = New System.Windows.Forms.Label()
+        Me.BtnPuntoVenta = New System.Windows.Forms.Button()
         Me.BtnRubros = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnProductos = New System.Windows.Forms.Button()
+        Me.BtnClientes = New System.Windows.Forms.Button()
+        Me.BtnDetalleVentas = New System.Windows.Forms.Button()
         Me.BtnLocalidades = New System.Windows.Forms.Button()
         Me.BtnFormaDePago = New System.Windows.Forms.Button()
-        Me.BtnDetalleVentas = New System.Windows.Forms.Button()
-        Me.BtnClientes = New System.Windows.Forms.Button()
+        Me.LblNombre_Negocio = New System.Windows.Forms.Label()
         Me.lblhora = New System.Windows.Forms.Label()
         Me.Tiempo = New System.Windows.Forms.Timer(Me.components)
+        Me.BtnVentas = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,7 +52,7 @@ Partial Class FrmMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Backup, Me.SalirToolStripMenuItem, Me.InformesToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(832, 25)
+        Me.MenuStrip1.Size = New System.Drawing.Size(872, 25)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -83,6 +85,8 @@ Partial Class FrmMain
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Panel1.Controls.Add(Me.BtnVentas)
+        Me.Panel1.Controls.Add(Me.BtnPuntoVenta)
         Me.Panel1.Controls.Add(Me.BtnRubros)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.BtnProductos)
@@ -93,32 +97,21 @@ Partial Class FrmMain
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 492)
+        Me.Panel1.Size = New System.Drawing.Size(200, 615)
         Me.Panel1.TabIndex = 2
         '
-        'PictureBox1
+        'BtnPuntoVenta
         '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(200, 142)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'LblNombre_Negocio
-        '
-        Me.LblNombre_Negocio.AutoSize = True
-        Me.LblNombre_Negocio.BackColor = System.Drawing.Color.Black
-        Me.LblNombre_Negocio.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombre_Negocio.ForeColor = System.Drawing.Color.White
-        Me.LblNombre_Negocio.Location = New System.Drawing.Point(563, 492)
-        Me.LblNombre_Negocio.Name = "LblNombre_Negocio"
-        Me.LblNombre_Negocio.Size = New System.Drawing.Size(269, 25)
-        Me.LblNombre_Negocio.TabIndex = 7
-        Me.LblNombre_Negocio.Text = "Pollo Abasto: Tu Almacen "
-        Me.LblNombre_Negocio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.BtnPuntoVenta.FlatAppearance.BorderSize = 0
+        Me.BtnPuntoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnPuntoVenta.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnPuntoVenta.ForeColor = System.Drawing.Color.White
+        Me.BtnPuntoVenta.Location = New System.Drawing.Point(-3, 480)
+        Me.BtnPuntoVenta.Name = "BtnPuntoVenta"
+        Me.BtnPuntoVenta.Size = New System.Drawing.Size(200, 62)
+        Me.BtnPuntoVenta.TabIndex = 7
+        Me.BtnPuntoVenta.Text = "PuntoVenta"
+        Me.BtnPuntoVenta.UseVisualStyleBackColor = False
         '
         'BtnRubros
         '
@@ -133,6 +126,17 @@ Partial Class FrmMain
         Me.BtnRubros.Text = "Rubros"
         Me.BtnRubros.UseVisualStyleBackColor = False
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(200, 142)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
         'BtnProductos
         '
         Me.BtnProductos.FlatAppearance.BorderSize = 0
@@ -145,6 +149,32 @@ Partial Class FrmMain
         Me.BtnProductos.TabIndex = 5
         Me.BtnProductos.Text = "Productos"
         Me.BtnProductos.UseVisualStyleBackColor = False
+        '
+        'BtnClientes
+        '
+        Me.BtnClientes.FlatAppearance.BorderSize = 0
+        Me.BtnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnClientes.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.BtnClientes.ForeColor = System.Drawing.Color.White
+        Me.BtnClientes.Location = New System.Drawing.Point(0, 146)
+        Me.BtnClientes.Name = "BtnClientes"
+        Me.BtnClientes.Size = New System.Drawing.Size(200, 51)
+        Me.BtnClientes.TabIndex = 1
+        Me.BtnClientes.Text = "Clientes"
+        Me.BtnClientes.UseVisualStyleBackColor = False
+        '
+        'BtnDetalleVentas
+        '
+        Me.BtnDetalleVentas.FlatAppearance.BorderSize = 0
+        Me.BtnDetalleVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnDetalleVentas.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDetalleVentas.ForeColor = System.Drawing.Color.White
+        Me.BtnDetalleVentas.Location = New System.Drawing.Point(0, 197)
+        Me.BtnDetalleVentas.Name = "BtnDetalleVentas"
+        Me.BtnDetalleVentas.Size = New System.Drawing.Size(200, 55)
+        Me.BtnDetalleVentas.TabIndex = 2
+        Me.BtnDetalleVentas.Text = "Detalle Ventas"
+        Me.BtnDetalleVentas.UseVisualStyleBackColor = False
         '
         'BtnLocalidades
         '
@@ -172,31 +202,18 @@ Partial Class FrmMain
         Me.BtnFormaDePago.Text = "Forma de Pago"
         Me.BtnFormaDePago.UseVisualStyleBackColor = False
         '
-        'BtnDetalleVentas
+        'LblNombre_Negocio
         '
-        Me.BtnDetalleVentas.FlatAppearance.BorderSize = 0
-        Me.BtnDetalleVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnDetalleVentas.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnDetalleVentas.ForeColor = System.Drawing.Color.White
-        Me.BtnDetalleVentas.Location = New System.Drawing.Point(0, 197)
-        Me.BtnDetalleVentas.Name = "BtnDetalleVentas"
-        Me.BtnDetalleVentas.Size = New System.Drawing.Size(200, 55)
-        Me.BtnDetalleVentas.TabIndex = 2
-        Me.BtnDetalleVentas.Text = "Detalle Ventas"
-        Me.BtnDetalleVentas.UseVisualStyleBackColor = False
-        '
-        'BtnClientes
-        '
-        Me.BtnClientes.FlatAppearance.BorderSize = 0
-        Me.BtnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnClientes.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.BtnClientes.ForeColor = System.Drawing.Color.White
-        Me.BtnClientes.Location = New System.Drawing.Point(0, 146)
-        Me.BtnClientes.Name = "BtnClientes"
-        Me.BtnClientes.Size = New System.Drawing.Size(200, 51)
-        Me.BtnClientes.TabIndex = 1
-        Me.BtnClientes.Text = "Clientes"
-        Me.BtnClientes.UseVisualStyleBackColor = False
+        Me.LblNombre_Negocio.AutoSize = True
+        Me.LblNombre_Negocio.BackColor = System.Drawing.Color.Black
+        Me.LblNombre_Negocio.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNombre_Negocio.ForeColor = System.Drawing.Color.White
+        Me.LblNombre_Negocio.Location = New System.Drawing.Point(563, 492)
+        Me.LblNombre_Negocio.Name = "LblNombre_Negocio"
+        Me.LblNombre_Negocio.Size = New System.Drawing.Size(269, 25)
+        Me.LblNombre_Negocio.TabIndex = 7
+        Me.LblNombre_Negocio.Text = "Pollo Abasto: Tu Almacen "
+        Me.LblNombre_Negocio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblhora
         '
@@ -206,7 +223,7 @@ Partial Class FrmMain
         Me.lblhora.ForeColor = System.Drawing.Color.White
         Me.lblhora.Location = New System.Drawing.Point(200, 25)
         Me.lblhora.Name = "lblhora"
-        Me.lblhora.Size = New System.Drawing.Size(632, 45)
+        Me.lblhora.Size = New System.Drawing.Size(672, 45)
         Me.lblhora.TabIndex = 5
         Me.lblhora.Text = "Tiempo"
         Me.lblhora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -216,11 +233,24 @@ Partial Class FrmMain
         Me.Tiempo.Enabled = True
         Me.Tiempo.Interval = 1000
         '
+        'BtnVentas
+        '
+        Me.BtnVentas.FlatAppearance.BorderSize = 0
+        Me.BtnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnVentas.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnVentas.ForeColor = System.Drawing.Color.White
+        Me.BtnVentas.Location = New System.Drawing.Point(-3, 541)
+        Me.BtnVentas.Name = "BtnVentas"
+        Me.BtnVentas.Size = New System.Drawing.Size(200, 62)
+        Me.BtnVentas.TabIndex = 9
+        Me.BtnVentas.Text = "Ventas"
+        Me.BtnVentas.UseVisualStyleBackColor = False
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(832, 517)
+        Me.ClientSize = New System.Drawing.Size(872, 640)
         Me.Controls.Add(Me.LblNombre_Negocio)
         Me.Controls.Add(Me.lblhora)
         Me.Controls.Add(Me.Panel1)
@@ -256,4 +286,6 @@ Partial Class FrmMain
     Friend WithEvents lblhora As Label
     Friend WithEvents Tiempo As Timer
     Friend WithEvents LblNombre_Negocio As Label
+    Friend WithEvents BtnPuntoVenta As Button
+    Friend WithEvents BtnVentas As Button
 End Class
