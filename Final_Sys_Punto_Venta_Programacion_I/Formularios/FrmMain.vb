@@ -13,7 +13,7 @@
         FrmClientes.Show()
     End Sub
 
-    Private Sub BtnDetalleVentas_Click(sender As Object, e As EventArgs) Handles BtnDetalleVentas.Click
+    Private Sub BtnDetalleVentas_Click(sender As Object, e As EventArgs)
         Dim FrmDetalleVentas As New FrmDetalleVenta()
         FrmDetalleVenta.Show()
     End Sub

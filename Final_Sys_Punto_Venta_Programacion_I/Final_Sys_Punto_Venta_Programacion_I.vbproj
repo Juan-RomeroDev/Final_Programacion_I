@@ -91,6 +91,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormulariosImprimir\FrmImprimirVentas.Designer.vb">
+      <DependentUpon>FrmImprimirVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimirVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Rubros.Designer.vb">
+      <DependentUpon>FrmImprimir_Rubros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Rubros.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormulariosImprimir\FrmImprimir_Clientes.Designer.vb">
       <DependentUpon>FrmImprimir_Clientes.vb</DependentUpon>
     </Compile>
@@ -107,12 +119,6 @@
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmClientes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FrmDetalleVenta.Designer.vb">
-      <DependentUpon>FrmDetalleVenta.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\FrmDetalleVenta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmFormaDePago.Designer.vb">
@@ -151,6 +157,12 @@
     <Compile Include="Formularios\FrmVentas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Localidades.Designer.vb">
+      <DependentUpon>FrmImprimir_Localidades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Localidades.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Clases.vb" />
     <Compile Include="Modulos\Conectar.vb" />
     <Compile Include="Formularios\FrmMain.vb">
@@ -187,9 +199,6 @@
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmDetalleVenta.resx">
-      <DependentUpon>FrmDetalleVenta.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmFormaDePago.resx">
       <DependentUpon>FrmFormaDePago.vb</DependentUpon>
     </EmbeddedResource>
@@ -217,7 +226,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\RptDetalleVenta.rdlc" />
+    <EmbeddedResource Include="Reportes\RptComprobanteTicket.rdlc" />
     <EmbeddedResource Include="Formularios\FrmPOS.resx">
       <DependentUpon>FrmPOS.vb</DependentUpon>
     </EmbeddedResource>

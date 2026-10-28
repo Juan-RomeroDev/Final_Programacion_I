@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmMain
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmMain
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
@@ -29,18 +29,17 @@ Partial Class FrmMain
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.BtnVentas = New System.Windows.Forms.Button()
         Me.BtnPuntoVenta = New System.Windows.Forms.Button()
         Me.BtnRubros = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnProductos = New System.Windows.Forms.Button()
         Me.BtnClientes = New System.Windows.Forms.Button()
-        Me.BtnDetalleVentas = New System.Windows.Forms.Button()
         Me.BtnLocalidades = New System.Windows.Forms.Button()
         Me.BtnFormaDePago = New System.Windows.Forms.Button()
         Me.LblNombre_Negocio = New System.Windows.Forms.Label()
         Me.lblhora = New System.Windows.Forms.Label()
         Me.Tiempo = New System.Windows.Forms.Timer(Me.components)
-        Me.BtnVentas = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,14 +90,26 @@ Partial Class FrmMain
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.BtnProductos)
         Me.Panel1.Controls.Add(Me.BtnClientes)
-        Me.Panel1.Controls.Add(Me.BtnDetalleVentas)
         Me.Panel1.Controls.Add(Me.BtnLocalidades)
         Me.Panel1.Controls.Add(Me.BtnFormaDePago)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 615)
+        Me.Panel1.Size = New System.Drawing.Size(200, 532)
         Me.Panel1.TabIndex = 2
+        '
+        'BtnVentas
+        '
+        Me.BtnVentas.FlatAppearance.BorderSize = 0
+        Me.BtnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnVentas.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnVentas.ForeColor = System.Drawing.Color.White
+        Me.BtnVentas.Location = New System.Drawing.Point(0, 465)
+        Me.BtnVentas.Name = "BtnVentas"
+        Me.BtnVentas.Size = New System.Drawing.Size(200, 62)
+        Me.BtnVentas.TabIndex = 9
+        Me.BtnVentas.Text = "Ventas"
+        Me.BtnVentas.UseVisualStyleBackColor = False
         '
         'BtnPuntoVenta
         '
@@ -106,7 +117,7 @@ Partial Class FrmMain
         Me.BtnPuntoVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnPuntoVenta.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnPuntoVenta.ForeColor = System.Drawing.Color.White
-        Me.BtnPuntoVenta.Location = New System.Drawing.Point(-3, 480)
+        Me.BtnPuntoVenta.Location = New System.Drawing.Point(0, 410)
         Me.BtnPuntoVenta.Name = "BtnPuntoVenta"
         Me.BtnPuntoVenta.Size = New System.Drawing.Size(200, 62)
         Me.BtnPuntoVenta.TabIndex = 7
@@ -119,7 +130,7 @@ Partial Class FrmMain
         Me.BtnRubros.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnRubros.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnRubros.ForeColor = System.Drawing.Color.White
-        Me.BtnRubros.Location = New System.Drawing.Point(0, 421)
+        Me.BtnRubros.Location = New System.Drawing.Point(0, 356)
         Me.BtnRubros.Name = "BtnRubros"
         Me.BtnRubros.Size = New System.Drawing.Size(200, 62)
         Me.BtnRubros.TabIndex = 6
@@ -143,7 +154,7 @@ Partial Class FrmMain
         Me.BtnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnProductos.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnProductos.ForeColor = System.Drawing.Color.White
-        Me.BtnProductos.Location = New System.Drawing.Point(0, 365)
+        Me.BtnProductos.Location = New System.Drawing.Point(0, 303)
         Me.BtnProductos.Name = "BtnProductos"
         Me.BtnProductos.Size = New System.Drawing.Size(200, 56)
         Me.BtnProductos.TabIndex = 5
@@ -163,26 +174,13 @@ Partial Class FrmMain
         Me.BtnClientes.Text = "Clientes"
         Me.BtnClientes.UseVisualStyleBackColor = False
         '
-        'BtnDetalleVentas
-        '
-        Me.BtnDetalleVentas.FlatAppearance.BorderSize = 0
-        Me.BtnDetalleVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnDetalleVentas.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnDetalleVentas.ForeColor = System.Drawing.Color.White
-        Me.BtnDetalleVentas.Location = New System.Drawing.Point(0, 197)
-        Me.BtnDetalleVentas.Name = "BtnDetalleVentas"
-        Me.BtnDetalleVentas.Size = New System.Drawing.Size(200, 55)
-        Me.BtnDetalleVentas.TabIndex = 2
-        Me.BtnDetalleVentas.Text = "Detalle Ventas"
-        Me.BtnDetalleVentas.UseVisualStyleBackColor = False
-        '
         'BtnLocalidades
         '
         Me.BtnLocalidades.FlatAppearance.BorderSize = 0
         Me.BtnLocalidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnLocalidades.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnLocalidades.ForeColor = System.Drawing.Color.White
-        Me.BtnLocalidades.Location = New System.Drawing.Point(0, 309)
+        Me.BtnLocalidades.Location = New System.Drawing.Point(0, 247)
         Me.BtnLocalidades.Name = "BtnLocalidades"
         Me.BtnLocalidades.Size = New System.Drawing.Size(200, 56)
         Me.BtnLocalidades.TabIndex = 4
@@ -195,7 +193,7 @@ Partial Class FrmMain
         Me.BtnFormaDePago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnFormaDePago.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFormaDePago.ForeColor = System.Drawing.Color.White
-        Me.BtnFormaDePago.Location = New System.Drawing.Point(0, 252)
+        Me.BtnFormaDePago.Location = New System.Drawing.Point(0, 194)
         Me.BtnFormaDePago.Name = "BtnFormaDePago"
         Me.BtnFormaDePago.Size = New System.Drawing.Size(200, 57)
         Me.BtnFormaDePago.TabIndex = 3
@@ -204,11 +202,12 @@ Partial Class FrmMain
         '
         'LblNombre_Negocio
         '
+        Me.LblNombre_Negocio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LblNombre_Negocio.AutoSize = True
         Me.LblNombre_Negocio.BackColor = System.Drawing.Color.Black
         Me.LblNombre_Negocio.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblNombre_Negocio.ForeColor = System.Drawing.Color.White
-        Me.LblNombre_Negocio.Location = New System.Drawing.Point(563, 492)
+        Me.LblNombre_Negocio.Location = New System.Drawing.Point(603, 532)
         Me.LblNombre_Negocio.Name = "LblNombre_Negocio"
         Me.LblNombre_Negocio.Size = New System.Drawing.Size(269, 25)
         Me.LblNombre_Negocio.TabIndex = 7
@@ -233,24 +232,11 @@ Partial Class FrmMain
         Me.Tiempo.Enabled = True
         Me.Tiempo.Interval = 1000
         '
-        'BtnVentas
-        '
-        Me.BtnVentas.FlatAppearance.BorderSize = 0
-        Me.BtnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnVentas.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnVentas.ForeColor = System.Drawing.Color.White
-        Me.BtnVentas.Location = New System.Drawing.Point(-3, 541)
-        Me.BtnVentas.Name = "BtnVentas"
-        Me.BtnVentas.Size = New System.Drawing.Size(200, 62)
-        Me.BtnVentas.TabIndex = 9
-        Me.BtnVentas.Text = "Ventas"
-        Me.BtnVentas.UseVisualStyleBackColor = False
-        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(872, 640)
+        Me.ClientSize = New System.Drawing.Size(872, 557)
         Me.Controls.Add(Me.LblNombre_Negocio)
         Me.Controls.Add(Me.lblhora)
         Me.Controls.Add(Me.Panel1)
@@ -276,7 +262,6 @@ Partial Class FrmMain
     Friend WithEvents Panel1 As Panel
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents BtnDetalleVentas As Button
     Friend WithEvents BtnClientes As Button
     Friend WithEvents BtnRubros As Button
     Friend WithEvents BtnProductos As Button

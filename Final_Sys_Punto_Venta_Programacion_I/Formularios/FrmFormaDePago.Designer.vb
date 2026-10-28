@@ -24,9 +24,7 @@ Partial Class FrmFormaDePago
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmFormaDePago))
         Me.dgvFormaDePago = New System.Windows.Forms.DataGridView()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Lbl_ID_Forma_Pago = New System.Windows.Forms.Label()
         Me.Lbl_Forma_Pago = New System.Windows.Forms.Label()
         Me.TxtIDFormaPago = New System.Windows.Forms.TextBox()
@@ -38,8 +36,8 @@ Partial Class FrmFormaDePago
         Me.BtnAtrasFormaPago = New System.Windows.Forms.Button()
         Me.TxtBuscarFormaPago = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.LblFormaDePago = New System.Windows.Forms.Label()
         CType(Me.dgvFormaDePago, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,37 +55,15 @@ Partial Class FrmFormaDePago
         Me.dgvFormaDePago.Size = New System.Drawing.Size(654, 178)
         Me.dgvFormaDePago.TabIndex = 90
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Forma_de_pago
-        Me.PictureBox2.Location = New System.Drawing.Point(88, 24)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(130, 78)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 91
-        Me.PictureBox2.TabStop = False
-        '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(765, -1)
+        Me.PictureBox1.Location = New System.Drawing.Point(734, -1)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 67
         Me.PictureBox1.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(224, 24)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(125, 21)
-        Me.Label1.TabIndex = 92
-        Me.Label1.Text = "Forma De Pago"
         '
         'Lbl_ID_Forma_Pago
         '
@@ -124,7 +100,7 @@ Partial Class FrmFormaDePago
         '
         Me.TxtDescripcionFormaPago.Location = New System.Drawing.Point(307, 359)
         Me.TxtDescripcionFormaPago.Name = "TxtDescripcionFormaPago"
-        Me.TxtDescripcionFormaPago.Size = New System.Drawing.Size(105, 20)
+        Me.TxtDescripcionFormaPago.Size = New System.Drawing.Size(141, 20)
         Me.TxtDescripcionFormaPago.TabIndex = 105
         '
         'BtnGestionarLocalidades
@@ -173,7 +149,7 @@ Partial Class FrmFormaDePago
         'BtnAtrasFormaPago
         '
         Me.BtnAtrasFormaPago.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasFormaPago.Location = New System.Drawing.Point(0, -1)
+        Me.BtnAtrasFormaPago.Location = New System.Drawing.Point(-4, -1)
         Me.BtnAtrasFormaPago.Name = "BtnAtrasFormaPago"
         Me.BtnAtrasFormaPago.Size = New System.Drawing.Size(82, 33)
         Me.BtnAtrasFormaPago.TabIndex = 110
@@ -182,7 +158,7 @@ Partial Class FrmFormaDePago
         '
         'TxtBuscarFormaPago
         '
-        Me.TxtBuscarFormaPago.Location = New System.Drawing.Point(532, 84)
+        Me.TxtBuscarFormaPago.Location = New System.Drawing.Point(88, 83)
         Me.TxtBuscarFormaPago.Name = "TxtBuscarFormaPago"
         Me.TxtBuscarFormaPago.Size = New System.Drawing.Size(105, 20)
         Me.TxtBuscarFormaPago.TabIndex = 111
@@ -193,18 +169,31 @@ Partial Class FrmFormaDePago
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(347, 81)
+        Me.Label2.Location = New System.Drawing.Point(84, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(179, 21)
         Me.Label2.TabIndex = 112
         Me.Label2.Text = "Buscar Forma De Pago"
+        '
+        'LblFormaDePago
+        '
+        Me.LblFormaDePago.AutoSize = True
+        Me.LblFormaDePago.BackColor = System.Drawing.Color.Transparent
+        Me.LblFormaDePago.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.LblFormaDePago.ForeColor = System.Drawing.Color.White
+        Me.LblFormaDePago.Location = New System.Drawing.Point(271, 9)
+        Me.LblFormaDePago.Name = "LblFormaDePago"
+        Me.LblFormaDePago.Size = New System.Drawing.Size(283, 45)
+        Me.LblFormaDePago.TabIndex = 137
+        Me.LblFormaDePago.Text = "FORMA DE PAGO"
         '
         'FrmFormaDePago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(837, 460)
+        Me.ClientSize = New System.Drawing.Size(804, 460)
+        Me.Controls.Add(Me.LblFormaDePago)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TxtBuscarFormaPago)
         Me.Controls.Add(Me.BtnAtrasFormaPago)
@@ -216,8 +205,6 @@ Partial Class FrmFormaDePago
         Me.Controls.Add(Me.TxtIDFormaPago)
         Me.Controls.Add(Me.Lbl_ID_Forma_Pago)
         Me.Controls.Add(Me.Lbl_Forma_Pago)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.dgvFormaDePago)
         Me.Controls.Add(Me.PictureBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -225,7 +212,6 @@ Partial Class FrmFormaDePago
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FORMA DE PAGO "
         CType(Me.dgvFormaDePago, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -234,8 +220,6 @@ Partial Class FrmFormaDePago
 
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents dgvFormaDePago As DataGridView
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents Lbl_ID_Forma_Pago As Label
     Friend WithEvents Lbl_Forma_Pago As Label
     Friend WithEvents TxtIDFormaPago As TextBox
@@ -247,4 +231,5 @@ Partial Class FrmFormaDePago
     Friend WithEvents BtnAtrasFormaPago As Button
     Friend WithEvents TxtBuscarFormaPago As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents LblFormaDePago As Label
 End Class

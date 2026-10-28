@@ -46,7 +46,7 @@ Partial Class FrmLogin
         '
         'btnAceptar
         '
-        Me.btnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptar.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.Location = New System.Drawing.Point(314, 280)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
@@ -99,11 +99,11 @@ Partial Class FrmLogin
         '
         Me.Lbl_IniciarSesion.AutoSize = True
         Me.Lbl_IniciarSesion.BackColor = System.Drawing.Color.Transparent
-        Me.Lbl_IniciarSesion.Font = New System.Drawing.Font("Nirmala Text", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbl_IniciarSesion.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
         Me.Lbl_IniciarSesion.ForeColor = System.Drawing.Color.Transparent
-        Me.Lbl_IniciarSesion.Location = New System.Drawing.Point(193, 27)
+        Me.Lbl_IniciarSesion.Location = New System.Drawing.Point(150, 9)
         Me.Lbl_IniciarSesion.Name = "Lbl_IniciarSesion"
-        Me.Lbl_IniciarSesion.Size = New System.Drawing.Size(180, 30)
+        Me.Lbl_IniciarSesion.Size = New System.Drawing.Size(269, 45)
         Me.Lbl_IniciarSesion.TabIndex = 69
         Me.Lbl_IniciarSesion.Text = "INICIAR SESION "
         '

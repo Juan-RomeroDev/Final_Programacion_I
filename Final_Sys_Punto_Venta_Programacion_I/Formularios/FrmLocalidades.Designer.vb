@@ -38,6 +38,7 @@ Partial Class frmLocalidades
         Me.TxtLocalidad = New System.Windows.Forms.TextBox()
         Me.TxtCp = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LblLocalidades = New System.Windows.Forms.Label()
         CType(Me.dgvLocalidades, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -45,7 +46,7 @@ Partial Class frmLocalidades
         'BtnGestionarLocalidades
         '
         Me.BtnGestionarLocalidades.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGestionarLocalidades.Location = New System.Drawing.Point(370, 260)
+        Me.BtnGestionarLocalidades.Location = New System.Drawing.Point(390, 299)
         Me.BtnGestionarLocalidades.Name = "BtnGestionarLocalidades"
         Me.BtnGestionarLocalidades.Size = New System.Drawing.Size(206, 28)
         Me.BtnGestionarLocalidades.TabIndex = 27
@@ -55,7 +56,7 @@ Partial Class frmLocalidades
         'BtnAtrasLocalidades
         '
         Me.BtnAtrasLocalidades.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasLocalidades.Location = New System.Drawing.Point(0, -1)
+        Me.BtnAtrasLocalidades.Location = New System.Drawing.Point(-2, 0)
         Me.BtnAtrasLocalidades.Name = "BtnAtrasLocalidades"
         Me.BtnAtrasLocalidades.Size = New System.Drawing.Size(73, 30)
         Me.BtnAtrasLocalidades.TabIndex = 26
@@ -67,7 +68,7 @@ Partial Class frmLocalidades
         Me.lblBuscarXLocalidad.AutoSize = True
         Me.lblBuscarXLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBuscarXLocalidad.ForeColor = System.Drawing.Color.White
-        Me.lblBuscarXLocalidad.Location = New System.Drawing.Point(261, 28)
+        Me.lblBuscarXLocalidad.Location = New System.Drawing.Point(256, 63)
         Me.lblBuscarXLocalidad.Name = "lblBuscarXLocalidad"
         Me.lblBuscarXLocalidad.Size = New System.Drawing.Size(151, 21)
         Me.lblBuscarXLocalidad.TabIndex = 25
@@ -78,7 +79,7 @@ Partial Class frmLocalidades
         Me.lblBuscarXCp.AutoSize = True
         Me.lblBuscarXCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBuscarXCp.ForeColor = System.Drawing.Color.White
-        Me.lblBuscarXCp.Location = New System.Drawing.Point(89, 28)
+        Me.lblBuscarXCp.Location = New System.Drawing.Point(54, 63)
         Me.lblBuscarXCp.Name = "lblBuscarXCp"
         Me.lblBuscarXCp.Size = New System.Drawing.Size(97, 21)
         Me.lblBuscarXCp.TabIndex = 24
@@ -86,14 +87,14 @@ Partial Class frmLocalidades
         '
         'TxtFiltrarLocalidad
         '
-        Me.TxtFiltrarLocalidad.Location = New System.Drawing.Point(265, 52)
+        Me.TxtFiltrarLocalidad.Location = New System.Drawing.Point(260, 87)
         Me.TxtFiltrarLocalidad.Name = "TxtFiltrarLocalidad"
         Me.TxtFiltrarLocalidad.Size = New System.Drawing.Size(161, 20)
         Me.TxtFiltrarLocalidad.TabIndex = 23
         '
         'TxtFiltrarCp
         '
-        Me.TxtFiltrarCp.Location = New System.Drawing.Point(88, 52)
+        Me.TxtFiltrarCp.Location = New System.Drawing.Point(58, 87)
         Me.TxtFiltrarCp.Name = "TxtFiltrarCp"
         Me.TxtFiltrarCp.Size = New System.Drawing.Size(135, 20)
         Me.TxtFiltrarCp.TabIndex = 22
@@ -102,7 +103,7 @@ Partial Class frmLocalidades
         '
         Me.btnBajaLocalidad.Enabled = False
         Me.btnBajaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBajaLocalidad.Location = New System.Drawing.Point(545, 367)
+        Me.btnBajaLocalidad.Location = New System.Drawing.Point(529, 406)
         Me.btnBajaLocalidad.Name = "btnBajaLocalidad"
         Me.btnBajaLocalidad.Size = New System.Drawing.Size(67, 30)
         Me.btnBajaLocalidad.TabIndex = 21
@@ -113,7 +114,7 @@ Partial Class frmLocalidades
         '
         Me.btnModificaLocalidad.Enabled = False
         Me.btnModificaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificaLocalidad.Location = New System.Drawing.Point(273, 367)
+        Me.btnModificaLocalidad.Location = New System.Drawing.Point(293, 406)
         Me.btnModificaLocalidad.Name = "btnModificaLocalidad"
         Me.btnModificaLocalidad.Size = New System.Drawing.Size(97, 30)
         Me.btnModificaLocalidad.TabIndex = 20
@@ -125,19 +126,19 @@ Partial Class frmLocalidades
         Me.dgvLocalidades.AllowUserToAddRows = False
         Me.dgvLocalidades.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.dgvLocalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvLocalidades.Location = New System.Drawing.Point(63, 82)
+        Me.dgvLocalidades.Location = New System.Drawing.Point(58, 117)
         Me.dgvLocalidades.Name = "dgvLocalidades"
         Me.dgvLocalidades.ReadOnly = True
         Me.dgvLocalidades.RowHeadersVisible = False
         Me.dgvLocalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvLocalidades.Size = New System.Drawing.Size(457, 150)
+        Me.dgvLocalidades.Size = New System.Drawing.Size(524, 150)
         Me.dgvLocalidades.TabIndex = 19
         '
         'btnAltaLocalidad
         '
         Me.btnAltaLocalidad.Enabled = False
         Me.btnAltaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAltaLocalidad.Location = New System.Drawing.Point(28, 367)
+        Me.btnAltaLocalidad.Location = New System.Drawing.Point(48, 406)
         Me.btnAltaLocalidad.Name = "btnAltaLocalidad"
         Me.btnAltaLocalidad.Size = New System.Drawing.Size(82, 30)
         Me.btnAltaLocalidad.TabIndex = 18
@@ -149,7 +150,7 @@ Partial Class frmLocalidades
         Me.LblLocalidad.AutoSize = True
         Me.LblLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblLocalidad.ForeColor = System.Drawing.Color.White
-        Me.LblLocalidad.Location = New System.Drawing.Point(135, 317)
+        Me.LblLocalidad.Location = New System.Drawing.Point(155, 356)
         Me.LblLocalidad.Name = "LblLocalidad"
         Me.LblLocalidad.Size = New System.Drawing.Size(98, 21)
         Me.LblLocalidad.TabIndex = 17
@@ -160,7 +161,7 @@ Partial Class frmLocalidades
         Me.lblCp.AutoSize = True
         Me.lblCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCp.ForeColor = System.Drawing.Color.White
-        Me.lblCp.Location = New System.Drawing.Point(135, 262)
+        Me.lblCp.Location = New System.Drawing.Point(155, 301)
         Me.lblCp.Name = "lblCp"
         Me.lblCp.Size = New System.Drawing.Size(30, 21)
         Me.lblCp.TabIndex = 16
@@ -168,15 +169,15 @@ Partial Class frmLocalidades
         '
         'TxtLocalidad
         '
-        Me.TxtLocalidad.Location = New System.Drawing.Point(248, 318)
+        Me.TxtLocalidad.Location = New System.Drawing.Point(268, 357)
         Me.TxtLocalidad.Name = "TxtLocalidad"
-        Me.TxtLocalidad.Size = New System.Drawing.Size(288, 20)
+        Me.TxtLocalidad.Size = New System.Drawing.Size(211, 20)
         Me.TxtLocalidad.TabIndex = 15
         '
         'TxtCp
         '
         Me.TxtCp.BackColor = System.Drawing.Color.Yellow
-        Me.TxtCp.Location = New System.Drawing.Point(248, 260)
+        Me.TxtCp.Location = New System.Drawing.Point(268, 299)
         Me.TxtCp.MaxLength = 4
         Me.TxtCp.Name = "TxtCp"
         Me.TxtCp.Size = New System.Drawing.Size(100, 20)
@@ -185,19 +186,32 @@ Partial Class frmLocalidades
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(574, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(583, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 67
         Me.PictureBox1.TabStop = False
         '
+        'LblLocalidades
+        '
+        Me.LblLocalidades.AutoSize = True
+        Me.LblLocalidades.BackColor = System.Drawing.Color.Transparent
+        Me.LblLocalidades.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.LblLocalidades.ForeColor = System.Drawing.Color.White
+        Me.LblLocalidades.Location = New System.Drawing.Point(213, 9)
+        Me.LblLocalidades.Name = "LblLocalidades"
+        Me.LblLocalidades.Size = New System.Drawing.Size(233, 45)
+        Me.LblLocalidades.TabIndex = 137
+        Me.LblLocalidades.Text = "LOCALIDADES"
+        '
         'frmLocalidades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(645, 428)
+        Me.ClientSize = New System.Drawing.Size(650, 472)
+        Me.Controls.Add(Me.LblLocalidades)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BtnGestionarLocalidades)
         Me.Controls.Add(Me.BtnAtrasLocalidades)
@@ -239,4 +253,5 @@ Partial Class frmLocalidades
     Friend WithEvents TxtLocalidad As TextBox
     Friend WithEvents TxtCp As TextBox
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents LblLocalidades As Label
 End Class

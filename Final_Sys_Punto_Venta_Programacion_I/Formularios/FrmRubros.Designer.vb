@@ -36,6 +36,7 @@ Partial Class FrmRubros
         Me.BtnGestionarRubros = New System.Windows.Forms.Button()
         Me.TxtBuscarRubro = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.LblRubros = New System.Windows.Forms.Label()
         CType(Me.dgvRubros, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -136,7 +137,7 @@ Partial Class FrmRubros
         'BtnAtrasRubros
         '
         Me.BtnAtrasRubros.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasRubros.Location = New System.Drawing.Point(1, -1)
+        Me.BtnAtrasRubros.Location = New System.Drawing.Point(-1, -1)
         Me.BtnAtrasRubros.Name = "BtnAtrasRubros"
         Me.BtnAtrasRubros.Size = New System.Drawing.Size(87, 30)
         Me.BtnAtrasRubros.TabIndex = 81
@@ -155,9 +156,9 @@ Partial Class FrmRubros
         '
         'TxtBuscarRubro
         '
-        Me.TxtBuscarRubro.Location = New System.Drawing.Point(254, 35)
+        Me.TxtBuscarRubro.Location = New System.Drawing.Point(85, 58)
         Me.TxtBuscarRubro.Name = "TxtBuscarRubro"
-        Me.TxtBuscarRubro.Size = New System.Drawing.Size(100, 20)
+        Me.TxtBuscarRubro.Size = New System.Drawing.Size(141, 20)
         Me.TxtBuscarRubro.TabIndex = 83
         '
         'Label1
@@ -166,11 +167,23 @@ Partial Class FrmRubros
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(119, 32)
+        Me.Label1.Location = New System.Drawing.Point(81, 32)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(110, 21)
         Me.Label1.TabIndex = 84
         Me.Label1.Text = "Buscar Rubro"
+        '
+        'LblRubros
+        '
+        Me.LblRubros.AutoSize = True
+        Me.LblRubros.BackColor = System.Drawing.Color.Transparent
+        Me.LblRubros.Font = New System.Drawing.Font("Nirmala Text", 26.0!, System.Drawing.FontStyle.Bold)
+        Me.LblRubros.ForeColor = System.Drawing.Color.White
+        Me.LblRubros.Location = New System.Drawing.Point(327, 11)
+        Me.LblRubros.Name = "LblRubros"
+        Me.LblRubros.Size = New System.Drawing.Size(160, 47)
+        Me.LblRubros.TabIndex = 85
+        Me.LblRubros.Text = "RUBROS"
         '
         'FrmRubros
         '
@@ -178,6 +191,7 @@ Partial Class FrmRubros
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(823, 518)
+        Me.Controls.Add(Me.LblRubros)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtBuscarRubro)
         Me.Controls.Add(Me.BtnGestionarRubros)
@@ -214,4 +228,5 @@ Partial Class FrmRubros
     Friend WithEvents BtnGestionarRubros As Button
     Friend WithEvents TxtBuscarRubro As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents LblRubros As Label
 End Class

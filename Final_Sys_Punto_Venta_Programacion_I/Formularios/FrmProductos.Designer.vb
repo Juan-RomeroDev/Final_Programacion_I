@@ -41,26 +41,27 @@ Partial Class FrmProductos
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
         Me.LblBuscarProducto = New System.Windows.Forms.Label()
         Me.TxtBuscarProducto = New System.Windows.Forms.TextBox()
-        Me.PictureBoxProductos = New System.Windows.Forms.PictureBox()
         Me.TxtBuscarRubroPorProducto = New System.Windows.Forms.TextBox()
         Me.LblBuscarRubroPorProducto = New System.Windows.Forms.Label()
         Me.BtnAtrasProductos = New System.Windows.Forms.Button()
         Me.LblRubroFiltrado = New System.Windows.Forms.Label()
         Me.BtnBuscarRubro = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LblProductos = New System.Windows.Forms.Label()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBoxProductos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtPrecio
         '
-        Me.TxtPrecio.Location = New System.Drawing.Point(263, 412)
+        Me.TxtPrecio.Location = New System.Drawing.Point(266, 470)
         Me.TxtPrecio.Name = "TxtPrecio"
         Me.TxtPrecio.Size = New System.Drawing.Size(105, 20)
         Me.TxtPrecio.TabIndex = 120
         '
         'TxtDescripcion
         '
-        Me.TxtDescripcion.Location = New System.Drawing.Point(263, 378)
+        Me.TxtDescripcion.Location = New System.Drawing.Point(266, 436)
         Me.TxtDescripcion.Name = "TxtDescripcion"
         Me.TxtDescripcion.Size = New System.Drawing.Size(105, 20)
         Me.TxtDescripcion.TabIndex = 119
@@ -71,7 +72,7 @@ Partial Class FrmProductos
         Me.Lbl_Precio.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Precio.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbl_Precio.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Precio.Location = New System.Drawing.Point(99, 411)
+        Me.Lbl_Precio.Location = New System.Drawing.Point(102, 469)
         Me.Lbl_Precio.Name = "Lbl_Precio"
         Me.Lbl_Precio.Size = New System.Drawing.Size(66, 21)
         Me.Lbl_Precio.TabIndex = 118
@@ -83,7 +84,7 @@ Partial Class FrmProductos
         Me.Lbl_Descripcion.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Descripcion.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbl_Descripcion.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Descripcion.Location = New System.Drawing.Point(99, 375)
+        Me.Lbl_Descripcion.Location = New System.Drawing.Point(102, 433)
         Me.Lbl_Descripcion.Name = "Lbl_Descripcion"
         Me.Lbl_Descripcion.Size = New System.Drawing.Size(115, 21)
         Me.Lbl_Descripcion.TabIndex = 117
@@ -92,7 +93,7 @@ Partial Class FrmProductos
         'BtnGestionarProducto
         '
         Me.BtnGestionarProducto.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGestionarProducto.Location = New System.Drawing.Point(909, 405)
+        Me.BtnGestionarProducto.Location = New System.Drawing.Point(651, 459)
         Me.BtnGestionarProducto.Name = "BtnGestionarProducto"
         Me.BtnGestionarProducto.Size = New System.Drawing.Size(186, 31)
         Me.BtnGestionarProducto.TabIndex = 113
@@ -101,7 +102,7 @@ Partial Class FrmProductos
         '
         'TxtID_Producto
         '
-        Me.TxtID_Producto.Location = New System.Drawing.Point(263, 340)
+        Me.TxtID_Producto.Location = New System.Drawing.Point(266, 398)
         Me.TxtID_Producto.Name = "TxtID_Producto"
         Me.TxtID_Producto.Size = New System.Drawing.Size(105, 20)
         Me.TxtID_Producto.TabIndex = 112
@@ -112,7 +113,7 @@ Partial Class FrmProductos
         Me.Lbl_ID_Producto.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_ID_Producto.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbl_ID_Producto.ForeColor = System.Drawing.Color.White
-        Me.Lbl_ID_Producto.Location = New System.Drawing.Point(99, 340)
+        Me.Lbl_ID_Producto.Location = New System.Drawing.Point(102, 398)
         Me.Lbl_ID_Producto.Name = "Lbl_ID_Producto"
         Me.Lbl_ID_Producto.Size = New System.Drawing.Size(120, 21)
         Me.Lbl_ID_Producto.TabIndex = 111
@@ -121,7 +122,7 @@ Partial Class FrmProductos
         'TxtID_Rubro
         '
         Me.TxtID_Rubro.BackColor = System.Drawing.Color.Yellow
-        Me.TxtID_Rubro.Location = New System.Drawing.Point(263, 477)
+        Me.TxtID_Rubro.Location = New System.Drawing.Point(266, 535)
         Me.TxtID_Rubro.Name = "TxtID_Rubro"
         Me.TxtID_Rubro.Size = New System.Drawing.Size(105, 20)
         Me.TxtID_Rubro.TabIndex = 110
@@ -132,7 +133,7 @@ Partial Class FrmProductos
         Me.Lbl_id_rubro.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_id_rubro.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbl_id_rubro.ForeColor = System.Drawing.Color.White
-        Me.Lbl_id_rubro.Location = New System.Drawing.Point(99, 482)
+        Me.Lbl_id_rubro.Location = New System.Drawing.Point(102, 540)
         Me.Lbl_id_rubro.Name = "Lbl_id_rubro"
         Me.Lbl_id_rubro.Size = New System.Drawing.Size(88, 21)
         Me.Lbl_id_rubro.TabIndex = 109
@@ -144,7 +145,7 @@ Partial Class FrmProductos
         Me.Lbl_Stock.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Stock.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbl_Stock.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Stock.Location = New System.Drawing.Point(99, 445)
+        Me.Lbl_Stock.Location = New System.Drawing.Point(102, 503)
         Me.Lbl_Stock.Name = "Lbl_Stock"
         Me.Lbl_Stock.Size = New System.Drawing.Size(59, 21)
         Me.Lbl_Stock.TabIndex = 108
@@ -152,7 +153,7 @@ Partial Class FrmProductos
         '
         'TxtStock
         '
-        Me.TxtStock.Location = New System.Drawing.Point(263, 445)
+        Me.TxtStock.Location = New System.Drawing.Point(266, 503)
         Me.TxtStock.Name = "TxtStock"
         Me.TxtStock.Size = New System.Drawing.Size(105, 20)
         Me.TxtStock.TabIndex = 107
@@ -160,7 +161,7 @@ Partial Class FrmProductos
         'btnBajaProducto
         '
         Me.btnBajaProducto.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBajaProducto.Location = New System.Drawing.Point(841, 511)
+        Me.btnBajaProducto.Location = New System.Drawing.Point(766, 578)
         Me.btnBajaProducto.Name = "btnBajaProducto"
         Me.btnBajaProducto.Size = New System.Drawing.Size(62, 30)
         Me.btnBajaProducto.TabIndex = 106
@@ -170,7 +171,7 @@ Partial Class FrmProductos
         'btnModificaProducto
         '
         Me.btnModificaProducto.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificaProducto.Location = New System.Drawing.Point(567, 511)
+        Me.btnModificaProducto.Location = New System.Drawing.Point(453, 578)
         Me.btnModificaProducto.Name = "btnModificaProducto"
         Me.btnModificaProducto.Size = New System.Drawing.Size(93, 30)
         Me.btnModificaProducto.TabIndex = 105
@@ -181,7 +182,7 @@ Partial Class FrmProductos
         '
         Me.btnAltaProducto.BackColor = System.Drawing.Color.White
         Me.btnAltaProducto.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAltaProducto.Location = New System.Drawing.Point(328, 511)
+        Me.btnAltaProducto.Location = New System.Drawing.Point(147, 578)
         Me.btnAltaProducto.Name = "btnAltaProducto"
         Me.btnAltaProducto.Size = New System.Drawing.Size(70, 30)
         Me.btnAltaProducto.TabIndex = 104
@@ -194,7 +195,7 @@ Partial Class FrmProductos
         Me.dgvProductos.BackgroundColor = System.Drawing.Color.RoyalBlue
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProductos.GridColor = System.Drawing.Color.RoyalBlue
-        Me.dgvProductos.Location = New System.Drawing.Point(217, 82)
+        Me.dgvProductos.Location = New System.Drawing.Point(37, 132)
         Me.dgvProductos.Name = "dgvProductos"
         Me.dgvProductos.ReadOnly = True
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -207,7 +208,7 @@ Partial Class FrmProductos
         Me.dgvProductos.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvProductos.RowHeadersVisible = False
         Me.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProductos.Size = New System.Drawing.Size(786, 242)
+        Me.dgvProductos.Size = New System.Drawing.Size(912, 242)
         Me.dgvProductos.TabIndex = 121
         '
         'LblBuscarProducto
@@ -216,7 +217,7 @@ Partial Class FrmProductos
         Me.LblBuscarProducto.BackColor = System.Drawing.Color.Transparent
         Me.LblBuscarProducto.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblBuscarProducto.ForeColor = System.Drawing.Color.White
-        Me.LblBuscarProducto.Location = New System.Drawing.Point(375, 23)
+        Me.LblBuscarProducto.Location = New System.Drawing.Point(34, 76)
         Me.LblBuscarProducto.Name = "LblBuscarProducto"
         Me.LblBuscarProducto.Size = New System.Drawing.Size(134, 21)
         Me.LblBuscarProducto.TabIndex = 122
@@ -224,26 +225,16 @@ Partial Class FrmProductos
         '
         'TxtBuscarProducto
         '
-        Me.TxtBuscarProducto.Location = New System.Drawing.Point(510, 23)
+        Me.TxtBuscarProducto.Location = New System.Drawing.Point(38, 106)
         Me.TxtBuscarProducto.Name = "TxtBuscarProducto"
-        Me.TxtBuscarProducto.Size = New System.Drawing.Size(105, 20)
+        Me.TxtBuscarProducto.Size = New System.Drawing.Size(130, 20)
         Me.TxtBuscarProducto.TabIndex = 123
-        '
-        'PictureBoxProductos
-        '
-        Me.PictureBoxProductos.BackgroundImage = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Productos
-        Me.PictureBoxProductos.Location = New System.Drawing.Point(143, 6)
-        Me.PictureBoxProductos.Name = "PictureBoxProductos"
-        Me.PictureBoxProductos.Size = New System.Drawing.Size(147, 70)
-        Me.PictureBoxProductos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxProductos.TabIndex = 124
-        Me.PictureBoxProductos.TabStop = False
         '
         'TxtBuscarRubroPorProducto
         '
-        Me.TxtBuscarRubroPorProducto.Location = New System.Drawing.Point(510, 51)
+        Me.TxtBuscarRubroPorProducto.Location = New System.Drawing.Point(230, 106)
         Me.TxtBuscarRubroPorProducto.Name = "TxtBuscarRubroPorProducto"
-        Me.TxtBuscarRubroPorProducto.Size = New System.Drawing.Size(105, 20)
+        Me.TxtBuscarRubroPorProducto.Size = New System.Drawing.Size(129, 20)
         Me.TxtBuscarRubroPorProducto.TabIndex = 125
         '
         'LblBuscarRubroPorProducto
@@ -252,7 +243,7 @@ Partial Class FrmProductos
         Me.LblBuscarRubroPorProducto.BackColor = System.Drawing.Color.Transparent
         Me.LblBuscarRubroPorProducto.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblBuscarRubroPorProducto.ForeColor = System.Drawing.Color.White
-        Me.LblBuscarRubroPorProducto.Location = New System.Drawing.Point(296, 50)
+        Me.LblBuscarRubroPorProducto.Location = New System.Drawing.Point(226, 76)
         Me.LblBuscarRubroPorProducto.Name = "LblBuscarRubroPorProducto"
         Me.LblBuscarRubroPorProducto.Size = New System.Drawing.Size(213, 21)
         Me.LblBuscarRubroPorProducto.TabIndex = 126
@@ -273,7 +264,7 @@ Partial Class FrmProductos
         Me.LblRubroFiltrado.AutoSize = True
         Me.LblRubroFiltrado.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.LblRubroFiltrado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblRubroFiltrado.Location = New System.Drawing.Point(433, 485)
+        Me.LblRubroFiltrado.Location = New System.Drawing.Point(436, 543)
         Me.LblRubroFiltrado.Name = "LblRubroFiltrado"
         Me.LblRubroFiltrado.Size = New System.Drawing.Size(15, 13)
         Me.LblRubroFiltrado.TabIndex = 130
@@ -282,25 +273,49 @@ Partial Class FrmProductos
         'BtnBuscarRubro
         '
         Me.BtnBuscarRubro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnBuscarRubro.Location = New System.Drawing.Point(379, 475)
+        Me.BtnBuscarRubro.Location = New System.Drawing.Point(382, 533)
         Me.BtnBuscarRubro.Name = "BtnBuscarRubro"
         Me.BtnBuscarRubro.Size = New System.Drawing.Size(48, 23)
         Me.BtnBuscarRubro.TabIndex = 129
         Me.BtnBuscarRubro.Text = "..."
         Me.BtnBuscarRubro.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
+        Me.PictureBox1.Location = New System.Drawing.Point(904, -4)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 131
+        Me.PictureBox1.TabStop = False
+        '
+        'LblProductos
+        '
+        Me.LblProductos.AutoSize = True
+        Me.LblProductos.BackColor = System.Drawing.Color.Transparent
+        Me.LblProductos.Font = New System.Drawing.Font("Nirmala Text", 26.0!, System.Drawing.FontStyle.Bold)
+        Me.LblProductos.ForeColor = System.Drawing.Color.White
+        Me.LblProductos.Location = New System.Drawing.Point(374, 9)
+        Me.LblProductos.Name = "LblProductos"
+        Me.LblProductos.Size = New System.Drawing.Size(231, 47)
+        Me.LblProductos.TabIndex = 132
+        Me.LblProductos.Text = "PRODUCTOS"
+        '
         'FrmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(1147, 553)
+        Me.ClientSize = New System.Drawing.Size(972, 620)
+        Me.Controls.Add(Me.LblProductos)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.LblRubroFiltrado)
         Me.Controls.Add(Me.BtnBuscarRubro)
         Me.Controls.Add(Me.BtnAtrasProductos)
         Me.Controls.Add(Me.LblBuscarRubroPorProducto)
         Me.Controls.Add(Me.TxtBuscarRubroPorProducto)
-        Me.Controls.Add(Me.PictureBoxProductos)
         Me.Controls.Add(Me.TxtBuscarProducto)
         Me.Controls.Add(Me.LblBuscarProducto)
         Me.Controls.Add(Me.dgvProductos)
@@ -320,9 +335,10 @@ Partial Class FrmProductos
         Me.Controls.Add(Me.btnAltaProducto)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmProductos"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PRODUCTOS"
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBoxProductos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -345,10 +361,11 @@ Partial Class FrmProductos
     Friend WithEvents dgvProductos As DataGridView
     Friend WithEvents LblBuscarProducto As Label
     Friend WithEvents TxtBuscarProducto As TextBox
-    Friend WithEvents PictureBoxProductos As PictureBox
     Friend WithEvents TxtBuscarRubroPorProducto As TextBox
     Friend WithEvents LblBuscarRubroPorProducto As Label
     Friend WithEvents BtnAtrasProductos As Button
     Friend WithEvents LblRubroFiltrado As Label
     Friend WithEvents BtnBuscarRubro As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents LblProductos As Label
 End Class
