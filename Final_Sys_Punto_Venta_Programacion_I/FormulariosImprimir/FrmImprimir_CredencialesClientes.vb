@@ -1,3 +1,0 @@
-﻿Public Class FrmImprimir_CredencialesClientes
-
-End Class

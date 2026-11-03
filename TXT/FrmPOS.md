@@ -33,13 +33,16 @@ Public Class FrmPOS
         Me.DgvCarritoProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
     End Sub
 
+
+
+
     ' =========================================================
     ' FUNCIONES
     ' =========================================================
 
     Private Sub llenarProductos()
         ' Llamo al procedimiento almacenado que me devuelve todos los clientes
-        Dim sql As String = "exec spu_buscar_producto_X_producto"
+        Dim sql As String = "exec spu_mostrar_productos"
         Dim adp As New SqlClient.SqlDataAdapter(sql, conexion)
         Dim ds As New DataSet
 
@@ -68,24 +71,25 @@ Public Class FrmPOS
         Me.dgvBusquedaProductosPOS.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
 
-    'FUNCION PARA GENERAR + 1 ID DE VENTA
-    Private Sub generarIdCliente()
+    ' FUNCIÓN PARA GENERAR + 1 ID DE VENTA (DEBE SER FUNCTION, NO SUB)
+    Private Function generarIdVenta() As Integer
+        Dim idVenta As Integer = 1
         Try
             AbrirConexion()
-            cmd.CommandText = "exec spu_generar_id_cliente"
+            cmd.CommandText = "exec spu_generar_id_venta"
 
-            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos
+            Dim nuevoID As Object = cmd.ExecuteScalar()
 
             If nuevoID IsNot Nothing AndAlso Not IsDBNull(nuevoID) Then
-                'Me.TxtIDCliente.Text = nuevoID.ToString()
-            Else
-                'Me.TxtIDCliente.Text = "1"
+                idVenta = Convert.ToInt32(nuevoID)
             End If
 
         Catch ex As Exception
             MsgBox("Error al generar ID: " & ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
-    End Sub
+
+        Return idVenta ' <--- Esto es lo que devuelve el número hacia afuera
+    End Function
 
     ' =========================================================
     ' CONVERSION DE VARIABLE PARA INSERTAR EN EL CARRITO
@@ -110,6 +114,8 @@ Public Class FrmPOS
 
             ' 4. Inyectamos los datos en la tabla temporal del carrito
             dtCarrito.Rows.Add(idProducto, descripcion, precio, cantidad)
+
+            CalcularTotalGeneral()
         End If
     End Sub
 
@@ -122,11 +128,81 @@ Public Class FrmPOS
         Next
 
         ' Mostramos el resultado en tu etiqueta de total (ajusta el nombre al que tenga tu diseño)
-        ' Me.LblTotal.Text = "$ " & totalGeneral.ToString("N2")
+        Me.LblTotal.Text = "$ " & totalGeneral.ToString("N2")
+    End Sub
+
+    ' =========================================================
+    ' BOTONES
+    ' =========================================================
+    Private Sub BtnAtrasPOS_Click(sender As Object, e As EventArgs) Handles BtnAtrasPOS.Click
+        Me.Close()
     End Sub
 
     Private Sub BtnFinalizarVenta_Click(sender As Object, e As EventArgs) Handles BtnFinalizarVenta.Click
+        ' Validaciones previas
+        If dtCarrito.Rows.Count = 0 Then
+            MsgBox("El carrito está vacío. Agregue productos antes de finalizar la venta.", MsgBoxStyle.Exclamation, "Carrito Vacío")
+            Exit Sub
+        End If
 
+        If Me.CB_Clientes.SelectedValue Is Nothing OrElse Me.CB_FormaPago.SelectedValue Is Nothing Then
+            MsgBox("Debe seleccionar un cliente y una forma de pago.", MsgBoxStyle.Exclamation, "Datos incompletos")
+            Exit Sub
+        End If
+
+        Try
+            AbrirConexion()
+
+            ' A. Obtenemos el ID de venta nuevo
+            Dim idVenta As Integer = generarIdVenta()
+
+            ' B. Calculamos el total general del carrito
+            Dim totalVenta As Decimal = 0
+            For Each fila As DataRow In dtCarrito.Rows
+                totalVenta += Convert.ToDecimal(fila("SUBTOTAL"))
+            Next
+
+            ' C. Obtenemos los IDs seleccionados en los combos y usuario actual
+            Dim idCliente As Integer = Convert.ToInt32(Me.CB_Clientes.SelectedValue)
+            Dim idFormaPago As Integer = Convert.ToInt32(Me.CB_FormaPago.SelectedValue)
+            Dim idUsuario As Integer = 1 ' O la variable global de usuario logueado en tu sistema
+
+            ' D. Ejecutamos el alta de la cabecera de venta
+            Dim sqlVenta As String = "exec spu_alta_ventas " & idVenta & ", " & idFormaPago & ", " & idCliente & ", " & idUsuario & ", " & totalVenta.ToString(System.Globalization.CultureInfo.InvariantCulture)
+            cmd.CommandText = sqlVenta
+            cmd.ExecuteNonQuery()
+
+            ' E. Recorremos el carrito para dar de alta cada renglón en detalle_venta
+            Dim idFila As Integer = 1
+            For Each fila As DataRow In dtCarrito.Rows
+                Dim idProducto As Integer = Convert.ToInt32(fila("ID_PRODUCTO"))
+                Dim precio As Decimal = Convert.ToDecimal(fila("PRECIO"))
+                Dim cantidad As Decimal = Convert.ToDecimal(fila("CANTIDAD"))
+                Dim precioR As Decimal = precio * cantidad ' Precio renglón
+
+                ' VALIDACION DE NUMEROS
+                ' Usamos los puntos en el formato decimal por seguridad en SQL
+                Dim pStr As String = precio.ToString(System.Globalization.CultureInfo.InvariantCulture)
+                Dim cantStr As String = cantidad.ToString(System.Globalization.CultureInfo.InvariantCulture)
+                Dim prStr As String = precioR.ToString(System.Globalization.CultureInfo.InvariantCulture)
+
+                Dim sqlDetalle As String = "exec spu_alta_detalle_venta " & idVenta & ", " & idProducto & ", " & idFila & ", " & pStr & ", " & cantStr & ", " & prStr
+                cmd.CommandText = sqlDetalle
+                cmd.ExecuteNonQuery()
+
+                idFila += 1
+            Next
+
+            MsgBox("¡Venta registrada con éxito! Nro de Venta: " & idVenta, MsgBoxStyle.Information, "Éxito")
+
+            ' F. Limpiamos el carrito y actualizamos la pantalla
+            dtCarrito.Clear()
+            CalcularTotalGeneral()
+            llenarProductos() ' Recarga el stock actualizado en la grilla superior
+
+        Catch ex As Exception
+            MsgBox("Error al registrar la venta: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
     ' =========================================================
@@ -184,7 +260,7 @@ Public Class FrmPOS
 
         ' Suponiendo que tu ComboBox de pago se llama ComboBoxFormaPago
         Me.CB_FormaPago.DataSource = dsFP.Tables("FormaPago")
-        Me.CB_FormaPago.DisplayMember = "descripcion"
+        Me.CB_FormaPago.DisplayMember = "DESCRIPCION_FORMA_PAGO"
         Me.CB_FormaPago.ValueMember = "id_forma_pago"
 
     End Sub

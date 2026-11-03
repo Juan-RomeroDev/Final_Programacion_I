@@ -66,6 +66,24 @@
     <ApplicationIcon>Pollo-Abasto-Tu-Almacen.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -91,10 +109,21 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormulariosImprimir\FrmImprimirVentas.Designer.vb">
-      <DependentUpon>FrmImprimirVentas.vb</DependentUpon>
+    <Compile Include="Final_Punto_Venta_Programacion_IDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Final_Punto_Venta_Programacion_IDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FormulariosImprimir\FrmImprimirVentas.vb">
+    <Compile Include="FormulariosImprimir\FrmImprimir_ComprobanteTicket.Designer.vb">
+      <DependentUpon>FrmImprimir_ComprobanteTicket.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ComprobanteTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Ventas.Designer.vb">
+      <DependentUpon>FrmImprimir_Ventas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Ventas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormulariosImprimir\FrmImprimir_Rubros.Designer.vb">
@@ -107,12 +136,6 @@
       <DependentUpon>FrmImprimir_Clientes.vb</DependentUpon>
     </Compile>
     <Compile Include="FormulariosImprimir\FrmImprimir_Clientes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormulariosImprimir\FrmImprimir_CredencialesClientes.Designer.vb">
-      <DependentUpon>FrmImprimir_CredencialesClientes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FormulariosImprimir\FrmImprimir_CredencialesClientes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmClientes.Designer.vb">
@@ -196,6 +219,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_ComprobanteTicket.resx">
+      <DependentUpon>FrmImprimir_ComprobanteTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Clientes.resx">
+      <DependentUpon>FrmImprimir_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Localidades.resx">
+      <DependentUpon>FrmImprimir_Localidades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Rubros.resx">
+      <DependentUpon>FrmImprimir_Rubros.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Ventas.resx">
+      <DependentUpon>FrmImprimir_Ventas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -226,12 +264,29 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptClientes.rdlc" />
     <EmbeddedResource Include="Reportes\RptComprobanteTicket.rdlc" />
     <EmbeddedResource Include="Formularios\FrmPOS.resx">
       <DependentUpon>FrmPOS.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RptFormaPago.rdlc" />
+    <EmbeddedResource Include="Reportes\RptLocalidades.rdlc" />
+    <EmbeddedResource Include="Reportes\RptProductos.rdlc" />
+    <EmbeddedResource Include="Reportes\RptRubros.rdlc" />
+    <EmbeddedResource Include="Reportes\RptVentas.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Final_Punto_Venta_Programacion_IDataSet.xsc">
+      <DependentUpon>Final_Punto_Venta_Programacion_IDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Final_Punto_Venta_Programacion_IDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Final_Punto_Venta_Programacion_IDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Final_Punto_Venta_Programacion_IDataSet.xss">
+      <DependentUpon>Final_Punto_Venta_Programacion_IDataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -245,6 +300,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\Imagen_Main_Pollo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +314,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pollo-Abasto-Tu-Almacen.ico" />
+    <Content Include="SqlServerTypes\Loader.cs" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Productos.jpg" />
     <None Include="Resources\Forma_de_pago.jpg" />
     <None Include="Resources\DetalleVenta.png" />

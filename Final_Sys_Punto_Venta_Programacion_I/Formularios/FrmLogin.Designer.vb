@@ -24,8 +24,8 @@ Partial Class FrmLogin
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmLogin))
         Me.lblPsw = New System.Windows.Forms.Label()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.txtPsw = New System.Windows.Forms.TextBox()
+        Me.BtnIngresar = New System.Windows.Forms.Button()
+        Me.TxtPassword = New System.Windows.Forms.TextBox()
         Me.dgvUsuarios = New System.Windows.Forms.DataGridView()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -44,23 +44,23 @@ Partial Class FrmLogin
         Me.lblPsw.TabIndex = 8
         Me.lblPsw.Text = "--"
         '
-        'btnAceptar
+        'BtnIngresar
         '
-        Me.btnAceptar.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.Location = New System.Drawing.Point(314, 280)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAceptar.TabIndex = 7
-        Me.btnAceptar.Text = "ACEPTAR"
-        Me.btnAceptar.UseVisualStyleBackColor = True
+        Me.BtnIngresar.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnIngresar.Location = New System.Drawing.Point(308, 280)
+        Me.BtnIngresar.Name = "BtnIngresar"
+        Me.BtnIngresar.Size = New System.Drawing.Size(86, 31)
+        Me.BtnIngresar.TabIndex = 7
+        Me.BtnIngresar.Text = "Ingresar"
+        Me.BtnIngresar.UseVisualStyleBackColor = True
         '
-        'txtPsw
+        'TxtPassword
         '
-        Me.txtPsw.Location = New System.Drawing.Point(300, 254)
-        Me.txtPsw.Name = "txtPsw"
-        Me.txtPsw.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPsw.Size = New System.Drawing.Size(100, 20)
-        Me.txtPsw.TabIndex = 6
+        Me.TxtPassword.Location = New System.Drawing.Point(300, 254)
+        Me.TxtPassword.Name = "TxtPassword"
+        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TxtPassword.Size = New System.Drawing.Size(100, 20)
+        Me.TxtPassword.TabIndex = 6
         '
         'dgvUsuarios
         '
@@ -117,8 +117,8 @@ Partial Class FrmLogin
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblPsw)
-        Me.Controls.Add(Me.btnAceptar)
-        Me.Controls.Add(Me.txtPsw)
+        Me.Controls.Add(Me.BtnIngresar)
+        Me.Controls.Add(Me.TxtPassword)
         Me.Controls.Add(Me.dgvUsuarios)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -133,8 +133,8 @@ Partial Class FrmLogin
     End Sub
 
     Friend WithEvents lblPsw As Label
-    Friend WithEvents btnAceptar As Button
-    Friend WithEvents txtPsw As TextBox
+    Friend WithEvents BtnIngresar As Button
+    Friend WithEvents TxtPassword As TextBox
     Friend WithEvents dgvUsuarios As DataGridView
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox

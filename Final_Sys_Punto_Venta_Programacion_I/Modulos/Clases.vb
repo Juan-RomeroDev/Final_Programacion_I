@@ -64,11 +64,15 @@ Module Clases
     ' =========================================================
     ' CLASE RUBROS
     ' =========================================================
-
     Class Rubros
         Public idRubro As Integer
         Public descripcionRubro As String
     End Class
+
+    ' =========================================================
+    ' VARIABLES PARA COMPROBANTE TICKET 
+    ' =========================================================
+    Public wID_Venta As Integer = 0
 
     ' =========================================================
     ' BANDERA DE ESTADO (Controla qué formulario hizo la llamada)
@@ -89,5 +93,10 @@ Module Clases
     Public wID_Rubro As Integer = 0
     Public wNombre_Rubro As String = ""
 
+    ' =========================================================
+    ' RECEPTORA DE USUARIO SELECCIONADO
+    ' =========================================================
+    Public wID_UsuarioLogueado As Integer = 0
+    Public wNombre_UsuarioLogueado As String = ""
 
 End Module

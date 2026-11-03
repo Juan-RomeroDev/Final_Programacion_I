@@ -1,6 +1,6 @@
 Public Class FrmProductos
-    'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION 
-    Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
+'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION
+Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
 
     ' Listado completo de productos (spu_mostrar_productos). Los buscadores muestran otros resultados
     ' en la grilla, pero al hacer clic en una fila siempre completo las cajas desde este listado.
@@ -18,7 +18,7 @@ Public Class FrmProductos
     End Sub
 
     ' =========================================================
-    ' CELDAS DE LA GRILLA Y SUS FUNCIONES 
+    ' CELDAS DE LA GRILLA Y SUS FUNCIONES
     ' =========================================================
 
     Private Sub dgvProductos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProductos.CellContentClick
@@ -54,7 +54,7 @@ Public Class FrmProductos
     End Sub
 
     ' =========================================================
-    ' EVENTOS KEYDOWN (ENTER) PARA ABRIR BÚSQUEDAS Y BOTONES 
+    ' EVENTOS KEYDOWN (ENTER) PARA ABRIR BÚSQUEDAS Y BOTONES
     ' =========================================================
 
     Private Sub dgvProductos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProductos.CellDoubleClick
@@ -94,7 +94,7 @@ Public Class FrmProductos
                 Me.TxtID_Rubro.Text = wID_Rubro
             End If
 
-            ' Reset a las variables de control 
+            ' Reset a las variables de control
             wflag = 0
             wID_Rubro = 0
         End If
@@ -114,7 +114,7 @@ Public Class FrmProductos
     End Sub
 
     ' =========================================================
-    ' BUSCADORES 
+    ' BUSCADORES
     ' =========================================================
 
     Private Sub TxtBuscarProducto_TextChanged(sender As Object, e As EventArgs) Handles TxtBuscarProducto.TextChanged
@@ -203,7 +203,7 @@ Public Class FrmProductos
         ' Asigno los datos a la grilla
         Me.dgvProductos.DataSource = ds.Tables("Productos")
 
-        ' FORMATO DE LA GRILLA 
+        ' FORMATO DE LA GRILLA
         ' Acá solo tengo 6 columnas, así que no hace falta ocultar nada
 
         ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
@@ -231,7 +231,7 @@ Public Class FrmProductos
             AbrirConexion()
             cmd.CommandText = "exec spu_generar_id_producto"
 
-            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos 
+            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos
 
             If nuevoID IsNot Nothing AndAlso Not IsDBNull(nuevoID) Then
                 Me.TxtID_Producto.Text = nuevoID.ToString()
@@ -258,7 +258,7 @@ Public Class FrmProductos
         Dim sql As String = "exec spu_alta_producto " & altaProd.id_producto & ", '" & altaProd.descripcion & "', " & altaProd.precio & ", " & altaProd.stock & ", " & altaProd.id_rubro
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UN PRODUCTO",, "INFO")
-        'Captura de error(Por si ocurre un improbable error en la BD :) ) 
+        'Captura de error(Por si ocurre un improbable error en la BD :) )
         Try
             AbrirConexion()
             cmd.ExecuteNonQuery()
@@ -370,7 +370,7 @@ Public Class FrmProductos
         LimpiarCajas()
     End Sub
 
-    ' EVENTO DEL BOTÓN MODIFICA 
+    ' EVENTO DEL BOTÓN MODIFICA
     Private Sub btnModificaProducto_Click(sender As Object, e As EventArgs) Handles btnModificaProducto.Click
         ' Validar que haya un ID seleccionado
         If Me.TxtID_Producto.Text.Trim() = "" Then
@@ -434,7 +434,7 @@ Public Class FrmProductos
         'HABLITO LOS BTN BUSCAR PARA FILTRAR LOCALIDAD
         Me.BtnBuscarRubro.Enabled = True
 
-        ' El usuario decide escribir para dar de Alta. 
+        ' El usuario decide escribir para dar de Alta.
         ' Desbloqueo Alta y Bloqueo Modifica y Baja.
         Me.btnAltaProducto.Enabled = True
         Me.btnModificaProducto.Enabled = False
@@ -444,7 +444,7 @@ Public Class FrmProductos
     End Sub
 
     ' =========================================================
-    ' VALIDACIONES  
+    ' VALIDACIONES
     ' =========================================================
 
     ' Precio y Stock son DECIMAL en la BD: permito dígitos, teclas de control y UN solo separador decimal (coma o punto)

@@ -13,11 +13,6 @@
         FrmClientes.Show()
     End Sub
 
-    Private Sub BtnDetalleVentas_Click(sender As Object, e As EventArgs)
-        Dim FrmDetalleVentas As New FrmDetalleVenta()
-        FrmDetalleVenta.Show()
-    End Sub
-
     Private Sub BtnFormaDePago_Click(sender As Object, e As EventArgs) Handles BtnFormaDePago.Click
         Dim FrmFormaDePago As New FrmFormaDePago()
         FrmFormaDePago.Show()
@@ -41,6 +36,11 @@
     Private Sub BtnPuntoVenta_Click(sender As Object, e As EventArgs) Handles BtnPuntoVenta.Click
         Dim FrmPOS As New FrmPOS()
         FrmPOS.Show()
+    End Sub
+
+    Private Sub BtnVentas_Click(sender As Object, e As EventArgs) Handles BtnVentas.Click
+        Dim FrmVentas As New FrmVentas()
+        FrmVentas.Show()
     End Sub
 
     ' =========================================================

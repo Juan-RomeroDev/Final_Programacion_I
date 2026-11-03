@@ -24,7 +24,6 @@ Partial Class FrmClientes
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientes))
-        Me.BtnGenerarCredencialClientes = New System.Windows.Forms.Button()
         Me.BtnGestionarClientes = New System.Windows.Forms.Button()
         Me.BtnAtrasClientes = New System.Windows.Forms.Button()
         Me.TxtIDCliente = New System.Windows.Forms.TextBox()
@@ -45,19 +44,10 @@ Partial Class FrmClientes
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.LblTelefonoCliente = New System.Windows.Forms.Label()
         Me.LblClientes = New System.Windows.Forms.Label()
+        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'BtnGenerarCredencialClientes
-        '
-        Me.BtnGenerarCredencialClientes.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarCredencialClientes.Location = New System.Drawing.Point(804, 449)
-        Me.BtnGenerarCredencialClientes.Name = "BtnGenerarCredencialClientes"
-        Me.BtnGenerarCredencialClientes.Size = New System.Drawing.Size(159, 28)
-        Me.BtnGenerarCredencialClientes.TabIndex = 63
-        Me.BtnGenerarCredencialClientes.Text = "Generar Credencial"
-        Me.BtnGenerarCredencialClientes.UseVisualStyleBackColor = True
         '
         'BtnGestionarClientes
         '
@@ -272,6 +262,17 @@ Partial Class FrmClientes
         Me.LblClientes.TabIndex = 137
         Me.LblClientes.Text = "CLIENTES"
         '
+        'BtnGenerarComprobante
+        '
+        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
+        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(797, 453)
+        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 54)
+        Me.BtnGenerarComprobante.TabIndex = 144
+        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -279,11 +280,11 @@ Partial Class FrmClientes
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1156, 629)
+        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblClientes)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.TxtEmail)
         Me.Controls.Add(Me.LblEmail)
-        Me.Controls.Add(Me.BtnGenerarCredencialClientes)
         Me.Controls.Add(Me.BtnGestionarClientes)
         Me.Controls.Add(Me.BtnAtrasClientes)
         Me.Controls.Add(Me.TxtIDCliente)
@@ -311,8 +312,6 @@ Partial Class FrmClientes
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents BtnGenerarCredencialClientes As Button
     Friend WithEvents BtnGestionarClientes As Button
     Friend WithEvents BtnAtrasClientes As Button
     Friend WithEvents TxtIDCliente As TextBox
@@ -333,4 +332,5 @@ Partial Class FrmClientes
     Friend WithEvents TxtTelefono As TextBox
     Friend WithEvents LblTelefonoCliente As Label
     Friend WithEvents LblClientes As Label
+    Friend WithEvents BtnGenerarComprobante As Button
 End Class

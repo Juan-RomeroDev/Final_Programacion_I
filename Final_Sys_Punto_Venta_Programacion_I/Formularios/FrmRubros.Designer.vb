@@ -37,13 +37,14 @@ Partial Class FrmRubros
         Me.TxtBuscarRubro = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LblRubros = New System.Windows.Forms.Label()
+        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         CType(Me.dgvRubros, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtIDRubro
         '
-        Me.TxtIDRubro.Location = New System.Drawing.Point(275, 342)
+        Me.TxtIDRubro.Location = New System.Drawing.Point(273, 372)
         Me.TxtIDRubro.Name = "TxtIDRubro"
         Me.TxtIDRubro.Size = New System.Drawing.Size(105, 20)
         Me.TxtIDRubro.TabIndex = 79
@@ -54,7 +55,7 @@ Partial Class FrmRubros
         Me.lblIDRubro.BackColor = System.Drawing.Color.Transparent
         Me.lblIDRubro.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIDRubro.ForeColor = System.Drawing.Color.White
-        Me.lblIDRubro.Location = New System.Drawing.Point(81, 341)
+        Me.lblIDRubro.Location = New System.Drawing.Point(79, 371)
         Me.lblIDRubro.Name = "lblIDRubro"
         Me.lblIDRubro.Size = New System.Drawing.Size(88, 21)
         Me.lblIDRubro.TabIndex = 78
@@ -66,7 +67,7 @@ Partial Class FrmRubros
         Me.lblDescrip_rubro.BackColor = System.Drawing.Color.Transparent
         Me.lblDescrip_rubro.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescrip_rubro.ForeColor = System.Drawing.Color.White
-        Me.lblDescrip_rubro.Location = New System.Drawing.Point(82, 371)
+        Me.lblDescrip_rubro.Location = New System.Drawing.Point(80, 401)
         Me.lblDescrip_rubro.Name = "lblDescrip_rubro"
         Me.lblDescrip_rubro.Size = New System.Drawing.Size(173, 21)
         Me.lblDescrip_rubro.TabIndex = 72
@@ -74,7 +75,7 @@ Partial Class FrmRubros
         '
         'TxtDescripcionRubro
         '
-        Me.TxtDescripcionRubro.Location = New System.Drawing.Point(275, 371)
+        Me.TxtDescripcionRubro.Location = New System.Drawing.Point(273, 401)
         Me.TxtDescripcionRubro.Name = "TxtDescripcionRubro"
         Me.TxtDescripcionRubro.Size = New System.Drawing.Size(172, 20)
         Me.TxtDescripcionRubro.TabIndex = 70
@@ -185,12 +186,24 @@ Partial Class FrmRubros
         Me.LblRubros.TabIndex = 85
         Me.LblRubros.Text = "RUBROS"
         '
+        'BtnGenerarComprobante
+        '
+        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
+        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(561, 407)
+        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 31)
+        Me.BtnGenerarComprobante.TabIndex = 144
+        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
+        '
         'FrmRubros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(823, 518)
+        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblRubros)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtBuscarRubro)
@@ -229,4 +242,5 @@ Partial Class FrmRubros
     Friend WithEvents TxtBuscarRubro As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents LblRubros As Label
+    Friend WithEvents BtnGenerarComprobante As Button
 End Class

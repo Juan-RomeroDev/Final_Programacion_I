@@ -1,9 +1,9 @@
 Public Class FrmClientes
-    'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION 
-    Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
-    Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AbrirConexion()
-        llenarClientes()
+'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION
+Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
+Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+AbrirConexion()
+llenarClientes()
 
         ' Al arrancar, bloqueo todo para que solo se pueda dar de Alta o Buscar
         Bloquear()
@@ -13,7 +13,7 @@ Public Class FrmClientes
     End Sub
 
     ' =========================================================
-    ' CELDAS DE LA GRILLA Y SUS FUNCIONES 
+    ' CELDAS DE LA GRILLA Y SUS FUNCIONES
     ' =========================================================
 
     Private Sub dgvClientes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellContentClick
@@ -49,7 +49,7 @@ Public Class FrmClientes
     End Sub
 
     ' =========================================================
-    ' EVENTOS KEYDOWN (ENTER) PARA ABRIR BÚSQUEDAS Y BOTONES 
+    ' EVENTOS KEYDOWN (ENTER) PARA ABRIR BÚSQUEDAS Y BOTONES
     ' =========================================================
 
     Private Sub dgvClientes_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellDoubleClick
@@ -84,13 +84,13 @@ Public Class FrmClientes
             Dim frm As New frmLocalidades()
             frm.ShowDialog()
 
-            ' Suspension del binding para evitar que se actualice la interfaz 
+            ' Suspension del binding para evitar que se actualice la interfaz
             If wCP <> 0 Then
                 Me.TxtCPCLiente.Text = wCP
                 Me.LblCPFiltrado.Text = wCP
             End If
 
-            ' Reset a las variables de control 
+            ' Reset a las variables de control
             wflag = 0
             wCP = 0
         End If
@@ -134,7 +134,7 @@ Public Class FrmClientes
         ' Asigno los datos a la grilla
         Me.dgvClientes.DataSource = ds.Tables("clientes")
 
-        ' FORMATO DE LA GRILLA 
+        ' FORMATO DE LA GRILLA
         ' Acá solo tengo 6 columnas, así que no hace falta ocultar nada
 
         ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
@@ -164,7 +164,7 @@ Public Class FrmClientes
             AbrirConexion()
             cmd.CommandText = "exec spu_generar_id_cliente"
 
-            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos 
+            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos
 
             If nuevoID IsNot Nothing AndAlso Not IsDBNull(nuevoID) Then
                 Me.TxtIDCliente.Text = nuevoID.ToString()
@@ -190,7 +190,7 @@ Public Class FrmClientes
         Dim sql As String = "exec spu_alta_clientes" & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UN CLIENTE",, "INFO")
-        'Captura de error(Por si ocurre un improbable error en la BD :) ) 
+        'Captura de error(Por si ocurre un improbable error en la BD :) )
         Try
             AbrirConexion()
             cmd.ExecuteNonQuery()
@@ -301,7 +301,7 @@ Public Class FrmClientes
         Me.TxtTelefono.Clear()
     End Sub
 
-    ' EVENTO DEL BOTÓN MODIFICA 
+    ' EVENTO DEL BOTÓN MODIFICA
     Private Sub btnModificaCliente_Click(sender As Object, e As EventArgs) Handles btnModificaCliente.Click
         ' Validar que haya un ID seleccionado
         If Me.TxtIDCliente.Text.Trim() = "" Then
@@ -371,14 +371,14 @@ Public Class FrmClientes
         Me.TxtEmail.Enabled = True
         Me.TxtTelefono.Enabled = True
 
-        ' Primero la habilito y despues le doy el ReadOnly para poder seleccionar el Txt 
+        ' Primero la habilito y despues le doy el ReadOnly para poder seleccionar el Txt
         Me.TxtCPCLiente.Enabled = True
         Me.TxtCPCLiente.ReadOnly = True
 
         'HABLITO LOS BTN BUSCAR PARA FILTRAR LOCALIDAD
         Me.BtnBuscarLocalidad.Enabled = True
 
-        ' Paso 3: El usuario decide escribir para dar de Alta. 
+        ' Paso 3: El usuario decide escribir para dar de Alta.
         ' Desbloqueo Alta y Bloqueo Modifica y Baja.
         Me.btnAltaCliente.Enabled = True
         Me.btnModificaCliente.Enabled = False
@@ -396,7 +396,7 @@ Public Class FrmClientes
     End Sub
 
     ' =========================================================
-    ' VALIDACIONES DE SOLO NUMEROS EN CAMPOS 
+    ' VALIDACIONES DE SOLO NUMEROS EN CAMPOS
     ' =========================================================
 
     Private Sub TxtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTelefono.KeyPress

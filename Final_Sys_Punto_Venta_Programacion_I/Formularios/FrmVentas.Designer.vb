@@ -28,12 +28,12 @@ Partial Class FrmVentas
         Me.LblBuscarVentaPorCliente = New System.Windows.Forms.Label()
         Me.TxtVentaPorRubro = New System.Windows.Forms.TextBox()
         Me.LblBuscarVentaPorRubro = New System.Windows.Forms.Label()
-        Me.DateTimePickerHasta = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePickerDesde = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaHasta = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaDesde = New System.Windows.Forms.DateTimePicker()
         Me.LblBuscarVentaPorFechas = New System.Windows.Forms.Label()
         Me.LblBuscarVentaPorUsuario = New System.Windows.Forms.Label()
         Me.TxtVentaPorUsuario = New System.Windows.Forms.TextBox()
-        Me.DgvVentasRealizadas = New System.Windows.Forms.DataGridView()
+        Me.dgvVentasRealizadas = New System.Windows.Forms.DataGridView()
         Me.LblBuscarPorFormaDePago = New System.Windows.Forms.Label()
         Me.TxtBuscarVentaPorFormaPago = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -41,7 +41,7 @@ Partial Class FrmVentas
         Me.BtnAtrasVentas = New System.Windows.Forms.Button()
         Me.LblVentaPorProducto = New System.Windows.Forms.Label()
         Me.TxtBuscarVentaPorProducto = New System.Windows.Forms.TextBox()
-        Me.TxtBoxVentaPorLocalidad = New System.Windows.Forms.TextBox()
+        Me.TxtBuscarVentaPorLocalidad = New System.Windows.Forms.TextBox()
         Me.BtnBuscarVentaPorLocalidad = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BtnImprimirVenta = New System.Windows.Forms.Button()
@@ -50,7 +50,7 @@ Partial Class FrmVentas
         Me.LblHastaFecha = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        CType(Me.DgvVentasRealizadas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvVentasRealizadas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,25 +92,25 @@ Partial Class FrmVentas
         Me.LblBuscarVentaPorRubro.TabIndex = 111
         Me.LblBuscarVentaPorRubro.Text = "Buscar Venta Por Rubro"
         '
-        'DateTimePickerHasta
+        'dtpFechaHasta
         '
-        Me.DateTimePickerHasta.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.DateTimePickerHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerHasta.Location = New System.Drawing.Point(654, 206)
-        Me.DateTimePickerHasta.Name = "DateTimePickerHasta"
-        Me.DateTimePickerHasta.Size = New System.Drawing.Size(130, 28)
-        Me.DateTimePickerHasta.TabIndex = 110
-        Me.DateTimePickerHasta.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
+        Me.dtpFechaHasta.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaHasta.Location = New System.Drawing.Point(654, 206)
+        Me.dtpFechaHasta.Name = "dtpFechaHasta"
+        Me.dtpFechaHasta.Size = New System.Drawing.Size(130, 28)
+        Me.dtpFechaHasta.TabIndex = 110
+        Me.dtpFechaHasta.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
         '
-        'DateTimePickerDesde
+        'dtpFechaDesde
         '
-        Me.DateTimePickerDesde.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.DateTimePickerDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePickerDesde.Location = New System.Drawing.Point(460, 206)
-        Me.DateTimePickerDesde.Name = "DateTimePickerDesde"
-        Me.DateTimePickerDesde.Size = New System.Drawing.Size(130, 28)
-        Me.DateTimePickerDesde.TabIndex = 109
-        Me.DateTimePickerDesde.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
+        Me.dtpFechaDesde.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaDesde.Location = New System.Drawing.Point(460, 206)
+        Me.dtpFechaDesde.Name = "dtpFechaDesde"
+        Me.dtpFechaDesde.Size = New System.Drawing.Size(130, 28)
+        Me.dtpFechaDesde.TabIndex = 109
+        Me.dtpFechaDesde.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
         '
         'LblBuscarVentaPorFechas
         '
@@ -143,15 +143,15 @@ Partial Class FrmVentas
         Me.TxtVentaPorUsuario.Size = New System.Drawing.Size(135, 20)
         Me.TxtVentaPorUsuario.TabIndex = 106
         '
-        'DgvVentasRealizadas
+        'dgvVentasRealizadas
         '
-        Me.DgvVentasRealizadas.AllowUserToAddRows = False
-        Me.DgvVentasRealizadas.BackgroundColor = System.Drawing.Color.RoyalBlue
-        Me.DgvVentasRealizadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvVentasRealizadas.GridColor = System.Drawing.Color.RoyalBlue
-        Me.DgvVentasRealizadas.Location = New System.Drawing.Point(49, 246)
-        Me.DgvVentasRealizadas.Name = "DgvVentasRealizadas"
-        Me.DgvVentasRealizadas.ReadOnly = True
+        Me.dgvVentasRealizadas.AllowUserToAddRows = False
+        Me.dgvVentasRealizadas.BackgroundColor = System.Drawing.Color.RoyalBlue
+        Me.dgvVentasRealizadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvVentasRealizadas.GridColor = System.Drawing.Color.RoyalBlue
+        Me.dgvVentasRealizadas.Location = New System.Drawing.Point(49, 246)
+        Me.dgvVentasRealizadas.Name = "dgvVentasRealizadas"
+        Me.dgvVentasRealizadas.ReadOnly = True
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Nirmala Text", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -159,11 +159,11 @@ Partial Class FrmVentas
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Chartreuse
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DgvVentasRealizadas.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DgvVentasRealizadas.RowHeadersVisible = False
-        Me.DgvVentasRealizadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvVentasRealizadas.Size = New System.Drawing.Size(1014, 270)
-        Me.DgvVentasRealizadas.TabIndex = 115
+        Me.dgvVentasRealizadas.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvVentasRealizadas.RowHeadersVisible = False
+        Me.dgvVentasRealizadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvVentasRealizadas.Size = New System.Drawing.Size(1014, 270)
+        Me.dgvVentasRealizadas.TabIndex = 115
         '
         'LblBuscarPorFormaDePago
         '
@@ -206,7 +206,7 @@ Partial Class FrmVentas
         'BtnAtrasVentas
         '
         Me.BtnAtrasVentas.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasVentas.Location = New System.Drawing.Point(-2, -1)
+        Me.BtnAtrasVentas.Location = New System.Drawing.Point(-1, -5)
         Me.BtnAtrasVentas.Name = "BtnAtrasVentas"
         Me.BtnAtrasVentas.Size = New System.Drawing.Size(82, 33)
         Me.BtnAtrasVentas.TabIndex = 129
@@ -232,12 +232,12 @@ Partial Class FrmVentas
         Me.TxtBuscarVentaPorProducto.Size = New System.Drawing.Size(133, 20)
         Me.TxtBuscarVentaPorProducto.TabIndex = 131
         '
-        'TxtBoxVentaPorLocalidad
+        'TxtBuscarVentaPorLocalidad
         '
-        Me.TxtBoxVentaPorLocalidad.Location = New System.Drawing.Point(740, 163)
-        Me.TxtBoxVentaPorLocalidad.Name = "TxtBoxVentaPorLocalidad"
-        Me.TxtBoxVentaPorLocalidad.Size = New System.Drawing.Size(133, 20)
-        Me.TxtBoxVentaPorLocalidad.TabIndex = 133
+        Me.TxtBuscarVentaPorLocalidad.Location = New System.Drawing.Point(740, 163)
+        Me.TxtBuscarVentaPorLocalidad.Name = "TxtBuscarVentaPorLocalidad"
+        Me.TxtBuscarVentaPorLocalidad.Size = New System.Drawing.Size(133, 20)
+        Me.TxtBuscarVentaPorLocalidad.TabIndex = 133
         '
         'BtnBuscarVentaPorLocalidad
         '
@@ -345,7 +345,7 @@ Partial Class FrmVentas
         Me.Controls.Add(Me.LblVentas)
         Me.Controls.Add(Me.BtnImprimirVenta)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.TxtBoxVentaPorLocalidad)
+        Me.Controls.Add(Me.TxtBuscarVentaPorLocalidad)
         Me.Controls.Add(Me.BtnBuscarVentaPorLocalidad)
         Me.Controls.Add(Me.TxtBuscarVentaPorProducto)
         Me.Controls.Add(Me.LblVentaPorProducto)
@@ -354,13 +354,13 @@ Partial Class FrmVentas
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtBuscarVentaPorFormaPago)
         Me.Controls.Add(Me.LblBuscarPorFormaDePago)
-        Me.Controls.Add(Me.DgvVentasRealizadas)
+        Me.Controls.Add(Me.dgvVentasRealizadas)
         Me.Controls.Add(Me.TxtVentaPorCliente)
         Me.Controls.Add(Me.LblBuscarVentaPorCliente)
         Me.Controls.Add(Me.TxtVentaPorRubro)
         Me.Controls.Add(Me.LblBuscarVentaPorRubro)
-        Me.Controls.Add(Me.DateTimePickerHasta)
-        Me.Controls.Add(Me.DateTimePickerDesde)
+        Me.Controls.Add(Me.dtpFechaHasta)
+        Me.Controls.Add(Me.dtpFechaDesde)
         Me.Controls.Add(Me.LblBuscarVentaPorFechas)
         Me.Controls.Add(Me.LblBuscarVentaPorUsuario)
         Me.Controls.Add(Me.TxtVentaPorUsuario)
@@ -368,7 +368,7 @@ Partial Class FrmVentas
         Me.Name = "FrmVentas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ventas"
-        CType(Me.DgvVentasRealizadas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvVentasRealizadas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -379,12 +379,12 @@ Partial Class FrmVentas
     Friend WithEvents LblBuscarVentaPorCliente As Label
     Friend WithEvents TxtVentaPorRubro As TextBox
     Friend WithEvents LblBuscarVentaPorRubro As Label
-    Friend WithEvents DateTimePickerHasta As DateTimePicker
-    Friend WithEvents DateTimePickerDesde As DateTimePicker
+    Friend WithEvents dtpFechaHasta As DateTimePicker
+    Friend WithEvents dtpFechaDesde As DateTimePicker
     Friend WithEvents LblBuscarVentaPorFechas As Label
     Friend WithEvents LblBuscarVentaPorUsuario As Label
     Friend WithEvents TxtVentaPorUsuario As TextBox
-    Friend WithEvents DgvVentasRealizadas As DataGridView
+    Friend WithEvents dgvVentasRealizadas As DataGridView
     Friend WithEvents LblBuscarPorFormaDePago As Label
     Friend WithEvents TxtBuscarVentaPorFormaPago As TextBox
     Friend WithEvents Label1 As Label
@@ -392,7 +392,7 @@ Partial Class FrmVentas
     Friend WithEvents BtnAtrasVentas As Button
     Friend WithEvents LblVentaPorProducto As Label
     Friend WithEvents TxtBuscarVentaPorProducto As TextBox
-    Friend WithEvents TxtBoxVentaPorLocalidad As TextBox
+    Friend WithEvents TxtBuscarVentaPorLocalidad As TextBox
     Friend WithEvents BtnBuscarVentaPorLocalidad As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnImprimirVenta As Button

@@ -387,14 +387,6 @@
         Me.TxtRazonSocial.Focus() ' El foco va directo a Razón Social
     End Sub
 
-    Private Sub BtnGenerarCredencialClientes_Click(sender As Object, e As EventArgs) Handles BtnGenerarCredencialClientes.Click
-        wID_Cliente = Me.dgvClientes.CurrentRow.Cells(0).Value ' Asigno el ID del cliente a la variable global
-        MsgBox("Se generará la credencial para el cliente con ID: " & wID_Cliente, MsgBoxStyle.Information, "Generar Credencial")
-
-        Dim frm As New FrmImprimir_CredencialesClientes
-        frm.ShowDialog()
-    End Sub
-
     ' =========================================================
     ' VALIDACIONES DE SOLO NUMEROS EN CAMPOS 
     ' =========================================================

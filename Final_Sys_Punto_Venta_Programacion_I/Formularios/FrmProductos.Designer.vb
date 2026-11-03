@@ -48,6 +48,7 @@ Partial Class FrmProductos
         Me.BtnBuscarRubro = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.LblProductos = New System.Windows.Forms.Label()
+        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -303,12 +304,24 @@ Partial Class FrmProductos
         Me.LblProductos.TabIndex = 132
         Me.LblProductos.Text = "PRODUCTOS"
         '
+        'BtnGenerarComprobante
+        '
+        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
+        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(655, 500)
+        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 28)
+        Me.BtnGenerarComprobante.TabIndex = 144
+        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
+        '
         'FrmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(972, 620)
+        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblProductos)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.LblRubroFiltrado)
@@ -368,4 +381,5 @@ Partial Class FrmProductos
     Friend WithEvents BtnBuscarRubro As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LblProductos As Label
+    Friend WithEvents BtnGenerarComprobante As Button
 End Class

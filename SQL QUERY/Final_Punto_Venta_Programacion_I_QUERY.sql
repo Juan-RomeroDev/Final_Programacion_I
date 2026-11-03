@@ -188,6 +188,61 @@ GO
 -- PROCEDIMIENTOS ALMACENADOS BUSCAR
 -- ============================================
 
+
+-- ============================================
+-- BUSCAR VENTAS TOOD JUNTO 
+-- ============================================
+
+CREATE PROCEDURE spu_buscar_ventas_cruzado
+    @usuario VARCHAR(50),
+    @rubro VARCHAR(50),
+    @producto VARCHAR(100),
+    @cliente VARCHAR(100),
+    @detalle VARCHAR(100),
+    @localidad VARCHAR(100),
+    @formaPago VARCHAR(50),
+    @fechaDesde DATE,
+    @fechaHasta DATE
+AS
+BEGIN
+    SELECT 
+        ventas.id_venta AS ID_VENTA,
+        ventas.fecha AS FECHA,
+        clientes.razon_social AS CLIENTE,
+        productos.descripcion AS PRODUCTOS,
+        rubros.descrip_rubro AS RUBRO,
+        detalle_venta.cantidad AS CANTIDAD,
+        detalle_venta.precio AS PRECIO,
+        detalle_venta.precio_r AS SUBTOTAL, 
+        forma_de_pago.descrip_forma_pago AS FORMA_PAGO,
+        localidades.localidad AS LOCALIDAD,
+        usuarios.usuario AS USUARIO 
+    FROM ventas
+    
+    INNER JOIN clientes ON ventas.id_cliente = clientes.id_cliente
+	
+    INNER JOIN detalle_venta ON ventas.id_venta = detalle_venta.id_venta
+	
+    INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+	
+    INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
+	
+    INNER JOIN localidades ON clientes.cp = localidades.cp
+	
+    INNER JOIN forma_de_pago ON ventas.id_forma_pago = forma_de_pago.id_forma_pago
+	
+    INNER JOIN usuarios ON ventas.id_usuario = usuarios.id_usuario
+    
+    WHERE (@usuario = '' OR usuarios.usuario LIKE '%' + @usuario + '%')
+      AND (@rubro = '' OR rubros.descrip_rubro LIKE '%' + @rubro + '%')
+      AND (@producto = '' OR productos.descripcion LIKE '%' + @producto + '%')
+      AND (@cliente = '' OR clientes.razon_social LIKE '%' + @cliente + '%')
+      AND (@detalle = '' OR detalle_venta.id_fila LIKE '%' + @detalle + '%')
+      AND (@localidad = '' OR localidades.localidad LIKE '%' + @localidad + '%')
+      AND (@formaPago = '' OR forma_de_pago.descrip_forma_pago LIKE '%' + @formaPago + '%')
+      AND (ventas.fecha BETWEEN @fechaDesde AND @fechaHasta)
+END
+
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS LOCALIDADES BUSCAR X CP - LOCALIDADES 
 -- ============================================
@@ -219,7 +274,7 @@ GO
 -- ============================================
 
 -- ============================================
--- BUSCAR CLIENTE X VENTA  
+-- BUSCAR CLIENTE X VENTA  -- PANTALLA 21/10/26 
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_cliente_X_venta
@@ -239,7 +294,7 @@ END;
 GO	
 
 -- ============================================
--- BUSCAR FORMA PAGO 
+-- BUSCAR FORMA PAGO --PANTALLA 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_forma_pago
@@ -254,7 +309,7 @@ BEGIN
 END;
 GO
 -- ============================================
--- BUSCAR FORMA PAGO X VENTA  
+-- BUSCAR FORMA PAGO X VENTA  21/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_forma_pago_X_venta
@@ -271,7 +326,7 @@ BEGIN
 END;
 GO
 -- ============================================
--- BUSCAR PRODUCTO X PRODUCTO
+-- BUSCAR PRODUCTO X PRODUCTO --PANTALLA 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_producto_X_producto 
@@ -289,7 +344,7 @@ END;
 GO
 
 -- ============================================
--- BUSCAR PRODUCTO X DETALLE VENTA  
+-- BUSCAR PRODUCTO X DETALLE VENTA --  PANTALLA 21/10/26 
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_producto_X_detalle_venta
@@ -306,7 +361,7 @@ BEGIN
 END;
 GO
 -- ============================================
--- BUSCAR RUBRO  
+-- BUSCAR RUBRO  -- PANTALLA 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_rubro
@@ -321,7 +376,7 @@ BEGIN
 END;
 GO
 -- ============================================
--- BUSCAR RUBRO x PRODUCTO 
+-- BUSCAR RUBRO x PRODUCTO -- PANTALLA 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_rubro_X_producto
@@ -339,7 +394,7 @@ BEGIN
 END;
 GO
 -- ============================================
--- BUSCAR USUARIO x VENTA 
+-- BUSCAR USUARIO x VENTA --PANTALLAS 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_usuario_X_venta 
@@ -356,7 +411,7 @@ BEGIN
 END;
 GO
 -- ============================================
--- BUSCAR VENTAS x FECHA 
+-- BUSCAR VENTAS x FECHA -- PANTALLA 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_ventas_X_fecha
@@ -376,7 +431,7 @@ BEGIN
 END; 
 GO
 -- ============================================
--- BUSCAR VENTAS x RUBRO
+-- BUSCAR VENTAS x RUBRO -- PANTALLA 20/10/26
 -- ============================================
 GO
 CREATE PROCEDURE spu_buscar_ventas_X_rubro
@@ -840,11 +895,10 @@ BEGIN
 
 			-- DATOS DEL CLIENTE
 			clientes.razon_social AS RAZON_SOCIAL,
-			clientes.telefono AS TELEFONO_CLIENTE,
-			clientes.mail AS MAIL_CLIENTE,
 
 			-- DATOS DEL DETALLE DE LA VENTA (RENGLONES DE LA FACTURA) 
 			detalle_venta.id_fila AS RENGLON,
+			rubros.descrip_rubro AS RUBRO,
 			productos.descripcion AS PRODUCTO,
 			detalle_venta.precio AS PRECIO_UNITARIO,
 			detalle_venta.cantidad AS CANTIDAD,
@@ -860,6 +914,9 @@ BEGIN
 
 			-- UNIR EL DETALLLE DE VENTA CON LOS PRODUCTOS PARA SABER LOS NOMBRES 
 			INNER JOIN productos ON detalle_venta.id_producto = productos.id_producto
+			
+			-- UNIR EL RUBRO CON EL PRODUCTO 
+			INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
 
 			-- UNIR LA CABECERA VENTA CON EL CLIENTE,  
 			INNER JOIN clientes ON ventas.id_cliente = clientes.id_cliente

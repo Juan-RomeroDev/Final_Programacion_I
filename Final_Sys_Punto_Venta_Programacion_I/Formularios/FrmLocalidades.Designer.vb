@@ -39,6 +39,7 @@ Partial Class frmLocalidades
         Me.TxtCp = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.LblLocalidades = New System.Windows.Forms.Label()
+        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         CType(Me.dgvLocalidades, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -70,9 +71,9 @@ Partial Class frmLocalidades
         Me.lblBuscarXLocalidad.ForeColor = System.Drawing.Color.White
         Me.lblBuscarXLocalidad.Location = New System.Drawing.Point(256, 63)
         Me.lblBuscarXLocalidad.Name = "lblBuscarXLocalidad"
-        Me.lblBuscarXLocalidad.Size = New System.Drawing.Size(151, 21)
+        Me.lblBuscarXLocalidad.Size = New System.Drawing.Size(167, 21)
         Me.lblBuscarXLocalidad.TabIndex = 25
-        Me.lblBuscarXLocalidad.Text = "Buscar x Localidad"
+        Me.lblBuscarXLocalidad.Text = "Buscar Por Localidad"
         '
         'lblBuscarXCp
         '
@@ -81,9 +82,9 @@ Partial Class frmLocalidades
         Me.lblBuscarXCp.ForeColor = System.Drawing.Color.White
         Me.lblBuscarXCp.Location = New System.Drawing.Point(54, 63)
         Me.lblBuscarXCp.Name = "lblBuscarXCp"
-        Me.lblBuscarXCp.Size = New System.Drawing.Size(97, 21)
+        Me.lblBuscarXCp.Size = New System.Drawing.Size(113, 21)
         Me.lblBuscarXCp.TabIndex = 24
-        Me.lblBuscarXCp.Text = "Buscar x Cp"
+        Me.lblBuscarXCp.Text = "Buscar Por Cp"
         '
         'TxtFiltrarLocalidad
         '
@@ -103,7 +104,7 @@ Partial Class frmLocalidades
         '
         Me.btnBajaLocalidad.Enabled = False
         Me.btnBajaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBajaLocalidad.Location = New System.Drawing.Point(529, 406)
+        Me.btnBajaLocalidad.Location = New System.Drawing.Point(529, 390)
         Me.btnBajaLocalidad.Name = "btnBajaLocalidad"
         Me.btnBajaLocalidad.Size = New System.Drawing.Size(67, 30)
         Me.btnBajaLocalidad.TabIndex = 21
@@ -114,7 +115,7 @@ Partial Class frmLocalidades
         '
         Me.btnModificaLocalidad.Enabled = False
         Me.btnModificaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnModificaLocalidad.Location = New System.Drawing.Point(293, 406)
+        Me.btnModificaLocalidad.Location = New System.Drawing.Point(293, 390)
         Me.btnModificaLocalidad.Name = "btnModificaLocalidad"
         Me.btnModificaLocalidad.Size = New System.Drawing.Size(97, 30)
         Me.btnModificaLocalidad.TabIndex = 20
@@ -138,7 +139,7 @@ Partial Class frmLocalidades
         '
         Me.btnAltaLocalidad.Enabled = False
         Me.btnAltaLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAltaLocalidad.Location = New System.Drawing.Point(48, 406)
+        Me.btnAltaLocalidad.Location = New System.Drawing.Point(48, 390)
         Me.btnAltaLocalidad.Name = "btnAltaLocalidad"
         Me.btnAltaLocalidad.Size = New System.Drawing.Size(82, 30)
         Me.btnAltaLocalidad.TabIndex = 18
@@ -150,7 +151,7 @@ Partial Class frmLocalidades
         Me.LblLocalidad.AutoSize = True
         Me.LblLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblLocalidad.ForeColor = System.Drawing.Color.White
-        Me.LblLocalidad.Location = New System.Drawing.Point(155, 356)
+        Me.LblLocalidad.Location = New System.Drawing.Point(59, 337)
         Me.LblLocalidad.Name = "LblLocalidad"
         Me.LblLocalidad.Size = New System.Drawing.Size(98, 21)
         Me.LblLocalidad.TabIndex = 17
@@ -161,7 +162,7 @@ Partial Class frmLocalidades
         Me.lblCp.AutoSize = True
         Me.lblCp.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCp.ForeColor = System.Drawing.Color.White
-        Me.lblCp.Location = New System.Drawing.Point(155, 301)
+        Me.lblCp.Location = New System.Drawing.Point(59, 301)
         Me.lblCp.Name = "lblCp"
         Me.lblCp.Size = New System.Drawing.Size(30, 21)
         Me.lblCp.TabIndex = 16
@@ -169,7 +170,7 @@ Partial Class frmLocalidades
         '
         'TxtLocalidad
         '
-        Me.TxtLocalidad.Location = New System.Drawing.Point(268, 357)
+        Me.TxtLocalidad.Location = New System.Drawing.Point(172, 338)
         Me.TxtLocalidad.Name = "TxtLocalidad"
         Me.TxtLocalidad.Size = New System.Drawing.Size(211, 20)
         Me.TxtLocalidad.TabIndex = 15
@@ -177,7 +178,7 @@ Partial Class frmLocalidades
         'TxtCp
         '
         Me.TxtCp.BackColor = System.Drawing.Color.Yellow
-        Me.TxtCp.Location = New System.Drawing.Point(268, 299)
+        Me.TxtCp.Location = New System.Drawing.Point(172, 299)
         Me.TxtCp.MaxLength = 4
         Me.TxtCp.Name = "TxtCp"
         Me.TxtCp.Size = New System.Drawing.Size(100, 20)
@@ -205,12 +206,24 @@ Partial Class frmLocalidades
         Me.LblLocalidades.TabIndex = 137
         Me.LblLocalidades.Text = "LOCALIDADES"
         '
+        'BtnGenerarComprobante
+        '
+        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
+        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(405, 334)
+        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 31)
+        Me.BtnGenerarComprobante.TabIndex = 144
+        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
+        '
         'frmLocalidades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(650, 472)
+        Me.ClientSize = New System.Drawing.Size(650, 440)
+        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblLocalidades)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BtnGestionarLocalidades)
@@ -254,4 +267,5 @@ Partial Class frmLocalidades
     Friend WithEvents TxtCp As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LblLocalidades As Label
+    Friend WithEvents BtnGenerarComprobante As Button
 End Class
