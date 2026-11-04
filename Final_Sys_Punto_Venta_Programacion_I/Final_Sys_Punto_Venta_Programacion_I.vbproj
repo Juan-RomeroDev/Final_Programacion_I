@@ -114,10 +114,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Final_Punto_Venta_Programacion_IDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ListaPrecios.Designer.vb">
+      <DependentUpon>FrmImprimir_ListaPrecios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ListaPrecios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Productos.Designer.vb">
+      <DependentUpon>FrmImprimir_Productos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_Productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormulariosImprimir\FrmImprimir_ComprobanteTicket.Designer.vb">
       <DependentUpon>FrmImprimir_ComprobanteTicket.vb</DependentUpon>
     </Compile>
     <Compile Include="FormulariosImprimir\FrmImprimir_ComprobanteTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ReportePorFechas.Designer.vb">
+      <DependentUpon>FrmImprimir_ReportePorFechas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ReportePorFechas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ReportePorRubros.Designer.vb">
+      <DependentUpon>FrmImprimir_ReportePorRubros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormulariosImprimir\FrmImprimir_ReportePorRubros.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormulariosImprimir\FrmImprimir_Ventas.Designer.vb">
@@ -219,6 +243,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_ListaPrecios.resx">
+      <DependentUpon>FrmImprimir_ListaPrecios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_ComprobanteTicket.resx">
       <DependentUpon>FrmImprimir_ComprobanteTicket.vb</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +254,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Localidades.resx">
       <DependentUpon>FrmImprimir_Localidades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Productos.resx">
+      <DependentUpon>FrmImprimir_Productos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_ReportePorFechas.resx">
+      <DependentUpon>FrmImprimir_ReportePorFechas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_ReportePorRubros.resx">
+      <DependentUpon>FrmImprimir_ReportePorRubros.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormulariosImprimir\FrmImprimir_Rubros.resx">
       <DependentUpon>FrmImprimir_Rubros.vb</DependentUpon>
@@ -265,15 +301,16 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RptClientes.rdlc" />
+    <EmbeddedResource Include="Reportes\RptListaDePrecios.rdlc" />
     <EmbeddedResource Include="Reportes\RptComprobanteTicket.rdlc" />
     <EmbeddedResource Include="Formularios\FrmPOS.resx">
       <DependentUpon>FrmPOS.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\RptFormaPago.rdlc" />
-    <EmbeddedResource Include="Reportes\RptLocalidades.rdlc" />
     <EmbeddedResource Include="Reportes\RptProductos.rdlc" />
+    <EmbeddedResource Include="Reportes\RptReportePorRubro.rdlc" />
     <EmbeddedResource Include="Reportes\RptRubros.rdlc" />
     <EmbeddedResource Include="Reportes\RptVentas.rdlc" />
+    <EmbeddedResource Include="Reportes\RptVentasPorFechas.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Final_Punto_Venta_Programacion_IDataSet.xsc">

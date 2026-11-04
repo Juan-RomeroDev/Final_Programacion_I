@@ -49,6 +49,7 @@ Partial Class FrmProductos
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.LblProductos = New System.Windows.Forms.Label()
         Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
+        Me.BtnListaPrecios = New System.Windows.Forms.Button()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -94,7 +95,7 @@ Partial Class FrmProductos
         'BtnGestionarProducto
         '
         Me.BtnGestionarProducto.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGestionarProducto.Location = New System.Drawing.Point(651, 459)
+        Me.BtnGestionarProducto.Location = New System.Drawing.Point(654, 429)
         Me.BtnGestionarProducto.Name = "BtnGestionarProducto"
         Me.BtnGestionarProducto.Size = New System.Drawing.Size(186, 31)
         Me.BtnGestionarProducto.TabIndex = 113
@@ -228,14 +229,14 @@ Partial Class FrmProductos
         '
         Me.TxtBuscarProducto.Location = New System.Drawing.Point(38, 106)
         Me.TxtBuscarProducto.Name = "TxtBuscarProducto"
-        Me.TxtBuscarProducto.Size = New System.Drawing.Size(130, 20)
+        Me.TxtBuscarProducto.Size = New System.Drawing.Size(166, 20)
         Me.TxtBuscarProducto.TabIndex = 123
         '
         'TxtBuscarRubroPorProducto
         '
-        Me.TxtBuscarRubroPorProducto.Location = New System.Drawing.Point(230, 106)
+        Me.TxtBuscarRubroPorProducto.Location = New System.Drawing.Point(290, 106)
         Me.TxtBuscarRubroPorProducto.Name = "TxtBuscarRubroPorProducto"
-        Me.TxtBuscarRubroPorProducto.Size = New System.Drawing.Size(129, 20)
+        Me.TxtBuscarRubroPorProducto.Size = New System.Drawing.Size(164, 20)
         Me.TxtBuscarRubroPorProducto.TabIndex = 125
         '
         'LblBuscarRubroPorProducto
@@ -244,7 +245,7 @@ Partial Class FrmProductos
         Me.LblBuscarRubroPorProducto.BackColor = System.Drawing.Color.Transparent
         Me.LblBuscarRubroPorProducto.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblBuscarRubroPorProducto.ForeColor = System.Drawing.Color.White
-        Me.LblBuscarRubroPorProducto.Location = New System.Drawing.Point(226, 76)
+        Me.LblBuscarRubroPorProducto.Location = New System.Drawing.Point(286, 76)
         Me.LblBuscarRubroPorProducto.Name = "LblBuscarRubroPorProducto"
         Me.LblBuscarRubroPorProducto.Size = New System.Drawing.Size(213, 21)
         Me.LblBuscarRubroPorProducto.TabIndex = 126
@@ -308,12 +309,23 @@ Partial Class FrmProductos
         '
         Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
         Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(655, 500)
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(673, 469)
         Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
-        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 28)
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(144, 28)
         Me.BtnGenerarComprobante.TabIndex = 144
-        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.Text = "Imprimir Reporte"
         Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
+        '
+        'BtnListaPrecios
+        '
+        Me.BtnListaPrecios.BackColor = System.Drawing.Color.GreenYellow
+        Me.BtnListaPrecios.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnListaPrecios.Location = New System.Drawing.Point(661, 500)
+        Me.BtnListaPrecios.Name = "BtnListaPrecios"
+        Me.BtnListaPrecios.Size = New System.Drawing.Size(167, 28)
+        Me.BtnListaPrecios.TabIndex = 145
+        Me.BtnListaPrecios.Text = "Generar Lista Precios"
+        Me.BtnListaPrecios.UseVisualStyleBackColor = False
         '
         'FrmProductos
         '
@@ -321,6 +333,7 @@ Partial Class FrmProductos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(972, 620)
+        Me.Controls.Add(Me.BtnListaPrecios)
         Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblProductos)
         Me.Controls.Add(Me.PictureBox1)
@@ -382,4 +395,5 @@ Partial Class FrmProductos
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LblProductos As Label
     Friend WithEvents BtnGenerarComprobante As Button
+    Friend WithEvents BtnListaPrecios As Button
 End Class

@@ -138,7 +138,7 @@ Partial Class FrmRubros
         'BtnAtrasRubros
         '
         Me.BtnAtrasRubros.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasRubros.Location = New System.Drawing.Point(-1, -1)
+        Me.BtnAtrasRubros.Location = New System.Drawing.Point(-2, -1)
         Me.BtnAtrasRubros.Name = "BtnAtrasRubros"
         Me.BtnAtrasRubros.Size = New System.Drawing.Size(87, 30)
         Me.BtnAtrasRubros.TabIndex = 81
@@ -190,11 +190,11 @@ Partial Class FrmRubros
         '
         Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
         Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(561, 407)
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(581, 408)
         Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
-        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 31)
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(140, 31)
         Me.BtnGenerarComprobante.TabIndex = 144
-        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.Text = "Imprimir Informe"
         Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
         '
         'FrmRubros

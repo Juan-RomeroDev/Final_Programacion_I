@@ -302,7 +302,7 @@ Public Class frmLocalidades
 
         'Consulta llamando al procedimiento almacenado que filtra por CP
         Dim cp As String = Me.TxtFiltrarCp.Text.Trim()
-        Dim sql As String = "exec spu_buscar_loc_cp " & cp
+        Dim sql As String = "exec spu_buscar_localidad_X_cp " & cp
 
         Try
             'DataAdapter para ejecutar la búsqueda y refrescar la grilla en tiempo real
@@ -333,7 +333,7 @@ Public Class frmLocalidades
 
         'Consulta llamando al procedimiento almacenado que filtra por CP
         Dim localidad As String = Me.TxtFiltrarLocalidad.Text.Trim()
-        Dim sql As String = "exec spu_buscar_loc_loc '" & localidad & "'"
+        Dim sql As String = "exec spu_buscar_localidad_X_localidad '" & localidad & "'"
 
         Try
             'DataAdapter para ejecutar la búsqueda y refrescar la grilla en tiempo real

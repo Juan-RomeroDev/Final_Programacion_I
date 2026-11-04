@@ -5,4 +5,8 @@
 
         Me.ReportViewer2.RefreshReport()
     End Sub
+
+    Private Sub ReportViewer2_Load(sender As Object, e As EventArgs) Handles ReportViewer2.Load
+
+    End Sub
 End Class

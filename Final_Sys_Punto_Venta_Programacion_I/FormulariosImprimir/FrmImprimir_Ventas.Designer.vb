@@ -25,34 +25,43 @@ Partial Class FrmImprimir_Ventas
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmImprimir_Ventas))
-        Me.SpumostrarventasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.spu_mostrar_ventasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Final_Punto_Venta_Programacion_IDataSet = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSet()
+        Me.SpumostrarventasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ReportViewerVentas = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.VentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VentasTableAdapter = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSetTableAdapters.ventasTableAdapter()
         Me.Spu_mostrar_ventasTableAdapter = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSetTableAdapters.spu_mostrar_ventasTableAdapter()
-        CType(Me.SpumostrarventasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SpumostrarventasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        CType(Me.spu_mostrar_ventasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpumostrarventasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpumostrarventasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'SpumostrarventasBindingSource
+        'spu_mostrar_ventasBindingSource
         '
-        Me.SpumostrarventasBindingSource.DataMember = "spu_mostrar_ventas"
-        Me.SpumostrarventasBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
+        Me.spu_mostrar_ventasBindingSource.DataMember = "spu_mostrar_ventas"
+        Me.spu_mostrar_ventasBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
         '
         'Final_Punto_Venta_Programacion_IDataSet
         '
         Me.Final_Punto_Venta_Programacion_IDataSet.DataSetName = "Final_Punto_Venta_Programacion_IDataSet"
         Me.Final_Punto_Venta_Programacion_IDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'SpumostrarventasBindingSource
+        '
+        Me.SpumostrarventasBindingSource.DataMember = "spu_mostrar_ventas"
+        Me.SpumostrarventasBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
+        '
         'ReportViewerVentas
         '
         Me.ReportViewerVentas.Dock = System.Windows.Forms.DockStyle.Fill
-        ReportDataSource1.Name = "DataSetComprobanteTicket"
-        ReportDataSource1.Value = Me.SpumostrarventasBindingSource
+        ReportDataSource1.Name = "DataSetVentas"
+        ReportDataSource1.Value = Me.SpumostrarventasBindingSource1
         Me.ReportViewerVentas.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewerVentas.LocalReport.ReportEmbeddedResource = "Final_Sys_Punto_Venta_Programacion_I.RptComprobanteTicket.rdlc"
+        Me.ReportViewerVentas.LocalReport.ReportEmbeddedResource = "Final_Sys_Punto_Venta_Programacion_I.RptVentas.rdlc"
         Me.ReportViewerVentas.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewerVentas.Name = "ReportViewerVentas"
         Me.ReportViewerVentas.ServerReport.BearerToken = Nothing
@@ -78,6 +87,11 @@ Partial Class FrmImprimir_Ventas
         '
         Me.Spu_mostrar_ventasTableAdapter.ClearBeforeFill = True
         '
+        'SpumostrarventasBindingSource1
+        '
+        Me.SpumostrarventasBindingSource1.DataMember = "spu_mostrar_ventas"
+        Me.SpumostrarventasBindingSource1.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
+        '
         'FrmImprimir_Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -89,9 +103,11 @@ Partial Class FrmImprimir_Ventas
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "IMPRIMIR VENTAS"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.SpumostrarventasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spu_mostrar_ventasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpumostrarventasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpumostrarventasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -102,4 +118,6 @@ Partial Class FrmImprimir_Ventas
     Friend WithEvents VentasTableAdapter As Final_Punto_Venta_Programacion_IDataSetTableAdapters.ventasTableAdapter
     Friend WithEvents SpumostrarventasBindingSource As BindingSource
     Friend WithEvents Spu_mostrar_ventasTableAdapter As Final_Punto_Venta_Programacion_IDataSetTableAdapters.spu_mostrar_ventasTableAdapter
+    Friend WithEvents spu_mostrar_ventasBindingSource As BindingSource
+    Friend WithEvents SpumostrarventasBindingSource1 As BindingSource
 End Class

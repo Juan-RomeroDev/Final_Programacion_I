@@ -44,12 +44,12 @@ Partial Class FrmVentas
         Me.TxtBuscarVentaPorLocalidad = New System.Windows.Forms.TextBox()
         Me.BtnBuscarVentaPorLocalidad = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.BtnImprimirVenta = New System.Windows.Forms.Button()
         Me.LblVentas = New System.Windows.Forms.Label()
         Me.LblDesdeFecha = New System.Windows.Forms.Label()
         Me.LblHastaFecha = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
+        Me.BtnReportePorFechas = New System.Windows.Forms.Button()
+        Me.BtnReportePorRubro = New System.Windows.Forms.Button()
         CType(Me.dgvVentasRealizadas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -96,21 +96,21 @@ Partial Class FrmVentas
         '
         Me.dtpFechaHasta.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold)
         Me.dtpFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaHasta.Location = New System.Drawing.Point(654, 206)
+        Me.dtpFechaHasta.Location = New System.Drawing.Point(961, 206)
         Me.dtpFechaHasta.Name = "dtpFechaHasta"
         Me.dtpFechaHasta.Size = New System.Drawing.Size(130, 28)
         Me.dtpFechaHasta.TabIndex = 110
-        Me.dtpFechaHasta.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
+        Me.dtpFechaHasta.Value = New Date(2026, 11, 4, 0, 0, 0, 0)
         '
         'dtpFechaDesde
         '
         Me.dtpFechaDesde.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold)
         Me.dtpFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaDesde.Location = New System.Drawing.Point(460, 206)
+        Me.dtpFechaDesde.Location = New System.Drawing.Point(767, 206)
         Me.dtpFechaDesde.Name = "dtpFechaDesde"
         Me.dtpFechaDesde.Size = New System.Drawing.Size(130, 28)
         Me.dtpFechaDesde.TabIndex = 109
-        Me.dtpFechaDesde.Value = New Date(2026, 10, 20, 0, 0, 0, 0)
+        Me.dtpFechaDesde.Value = New Date(2026, 10, 31, 0, 0, 0, 0)
         '
         'LblBuscarVentaPorFechas
         '
@@ -118,7 +118,7 @@ Partial Class FrmVentas
         Me.LblBuscarVentaPorFechas.BackColor = System.Drawing.Color.Transparent
         Me.LblBuscarVentaPorFechas.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblBuscarVentaPorFechas.ForeColor = System.Drawing.Color.White
-        Me.LblBuscarVentaPorFechas.Location = New System.Drawing.Point(389, 182)
+        Me.LblBuscarVentaPorFechas.Location = New System.Drawing.Point(700, 182)
         Me.LblBuscarVentaPorFechas.Name = "LblBuscarVentaPorFechas"
         Me.LblBuscarVentaPorFechas.Size = New System.Drawing.Size(192, 21)
         Me.LblBuscarVentaPorFechas.TabIndex = 108
@@ -162,7 +162,7 @@ Partial Class FrmVentas
         Me.dgvVentasRealizadas.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvVentasRealizadas.RowHeadersVisible = False
         Me.dgvVentasRealizadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvVentasRealizadas.Size = New System.Drawing.Size(1014, 270)
+        Me.dgvVentasRealizadas.Size = New System.Drawing.Size(1100, 379)
         Me.dgvVentasRealizadas.TabIndex = 115
         '
         'LblBuscarPorFormaDePago
@@ -219,7 +219,7 @@ Partial Class FrmVentas
         Me.LblVentaPorProducto.BackColor = System.Drawing.Color.Transparent
         Me.LblVentaPorProducto.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblVentaPorProducto.ForeColor = System.Drawing.Color.White
-        Me.LblVentaPorProducto.Location = New System.Drawing.Point(736, 68)
+        Me.LblVentaPorProducto.Location = New System.Drawing.Point(389, 182)
         Me.LblVentaPorProducto.Name = "LblVentaPorProducto"
         Me.LblVentaPorProducto.Size = New System.Drawing.Size(211, 21)
         Me.LblVentaPorProducto.TabIndex = 130
@@ -227,14 +227,14 @@ Partial Class FrmVentas
         '
         'TxtBuscarVentaPorProducto
         '
-        Me.TxtBuscarVentaPorProducto.Location = New System.Drawing.Point(740, 92)
+        Me.TxtBuscarVentaPorProducto.Location = New System.Drawing.Point(393, 206)
         Me.TxtBuscarVentaPorProducto.Name = "TxtBuscarVentaPorProducto"
         Me.TxtBuscarVentaPorProducto.Size = New System.Drawing.Size(133, 20)
         Me.TxtBuscarVentaPorProducto.TabIndex = 131
         '
         'TxtBuscarVentaPorLocalidad
         '
-        Me.TxtBuscarVentaPorLocalidad.Location = New System.Drawing.Point(740, 163)
+        Me.TxtBuscarVentaPorLocalidad.Location = New System.Drawing.Point(704, 92)
         Me.TxtBuscarVentaPorLocalidad.Name = "TxtBuscarVentaPorLocalidad"
         Me.TxtBuscarVentaPorLocalidad.Size = New System.Drawing.Size(133, 20)
         Me.TxtBuscarVentaPorLocalidad.TabIndex = 133
@@ -245,7 +245,7 @@ Partial Class FrmVentas
         Me.BtnBuscarVentaPorLocalidad.BackColor = System.Drawing.Color.Transparent
         Me.BtnBuscarVentaPorLocalidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnBuscarVentaPorLocalidad.ForeColor = System.Drawing.Color.White
-        Me.BtnBuscarVentaPorLocalidad.Location = New System.Drawing.Point(736, 139)
+        Me.BtnBuscarVentaPorLocalidad.Location = New System.Drawing.Point(700, 68)
         Me.BtnBuscarVentaPorLocalidad.Name = "BtnBuscarVentaPorLocalidad"
         Me.BtnBuscarVentaPorLocalidad.Size = New System.Drawing.Size(215, 21)
         Me.BtnBuscarVentaPorLocalidad.TabIndex = 132
@@ -255,22 +255,12 @@ Partial Class FrmVentas
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = Global.Final_Sys_Punto_Venta_Programacion_I.My.Resources.Resources.Pollo_Abasto_Tu_Almacen
-        Me.PictureBox1.Location = New System.Drawing.Point(1038, -1)
+        Me.PictureBox1.Location = New System.Drawing.Point(1133, -5)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(71, 66)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 134
         Me.PictureBox1.TabStop = False
-        '
-        'BtnImprimirVenta
-        '
-        Me.BtnImprimirVenta.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnImprimirVenta.Location = New System.Drawing.Point(49, 534)
-        Me.BtnImprimirVenta.Name = "BtnImprimirVenta"
-        Me.BtnImprimirVenta.Size = New System.Drawing.Size(183, 28)
-        Me.BtnImprimirVenta.TabIndex = 135
-        Me.BtnImprimirVenta.Text = "Imprimir Comprobante"
-        Me.BtnImprimirVenta.UseVisualStyleBackColor = True
         '
         'LblVentas
         '
@@ -278,7 +268,7 @@ Partial Class FrmVentas
         Me.LblVentas.BackColor = System.Drawing.Color.Transparent
         Me.LblVentas.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
         Me.LblVentas.ForeColor = System.Drawing.Color.White
-        Me.LblVentas.Location = New System.Drawing.Point(494, 9)
+        Me.LblVentas.Location = New System.Drawing.Point(550, 9)
         Me.LblVentas.Name = "LblVentas"
         Me.LblVentas.Size = New System.Drawing.Size(141, 45)
         Me.LblVentas.TabIndex = 136
@@ -290,7 +280,7 @@ Partial Class FrmVentas
         Me.LblDesdeFecha.BackColor = System.Drawing.Color.Transparent
         Me.LblDesdeFecha.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDesdeFecha.ForeColor = System.Drawing.Color.White
-        Me.LblDesdeFecha.Location = New System.Drawing.Point(393, 210)
+        Me.LblDesdeFecha.Location = New System.Drawing.Point(700, 210)
         Me.LblDesdeFecha.Name = "LblDesdeFecha"
         Me.LblDesdeFecha.Size = New System.Drawing.Size(61, 21)
         Me.LblDesdeFecha.TabIndex = 137
@@ -302,48 +292,57 @@ Partial Class FrmVentas
         Me.LblHastaFecha.BackColor = System.Drawing.Color.Transparent
         Me.LblHastaFecha.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblHastaFecha.ForeColor = System.Drawing.Color.White
-        Me.LblHastaFecha.Location = New System.Drawing.Point(596, 210)
+        Me.LblHastaFecha.Location = New System.Drawing.Point(903, 210)
         Me.LblHastaFecha.Name = "LblHastaFecha"
         Me.LblHastaFecha.Size = New System.Drawing.Size(57, 21)
         Me.LblHastaFecha.TabIndex = 138
         Me.LblHastaFecha.Text = "Hasta:"
         '
-        'Label2
+        'BtnGenerarComprobante
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(389, 213)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 21)
-        Me.Label2.TabIndex = 137
-        Me.Label2.Text = "Desde:"
+        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(49, 631)
+        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
+        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 54)
+        Me.BtnGenerarComprobante.TabIndex = 144
+        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
+        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
         '
-        'Label3
+        'BtnReportePorFechas
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(592, 213)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 21)
-        Me.Label3.TabIndex = 138
-        Me.Label3.Text = "Hasta:"
+        Me.BtnReportePorFechas.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.BtnReportePorFechas.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnReportePorFechas.Location = New System.Drawing.Point(513, 631)
+        Me.BtnReportePorFechas.Name = "BtnReportePorFechas"
+        Me.BtnReportePorFechas.Size = New System.Drawing.Size(178, 54)
+        Me.BtnReportePorFechas.TabIndex = 145
+        Me.BtnReportePorFechas.Text = "Reporte Por Fechas"
+        Me.BtnReportePorFechas.UseVisualStyleBackColor = False
+        '
+        'BtnReportePorRubro
+        '
+        Me.BtnReportePorRubro.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.BtnReportePorRubro.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnReportePorRubro.Location = New System.Drawing.Point(971, 631)
+        Me.BtnReportePorRubro.Name = "BtnReportePorRubro"
+        Me.BtnReportePorRubro.Size = New System.Drawing.Size(178, 54)
+        Me.BtnReportePorRubro.TabIndex = 146
+        Me.BtnReportePorRubro.Text = "Reporte Por Rubro"
+        Me.BtnReportePorRubro.UseVisualStyleBackColor = False
         '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(1106, 592)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(1203, 709)
+        Me.Controls.Add(Me.BtnReportePorRubro)
+        Me.Controls.Add(Me.BtnReportePorFechas)
+        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblHastaFecha)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.LblDesdeFecha)
         Me.Controls.Add(Me.LblVentas)
-        Me.Controls.Add(Me.BtnImprimirVenta)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.TxtBuscarVentaPorLocalidad)
         Me.Controls.Add(Me.BtnBuscarVentaPorLocalidad)
@@ -395,10 +394,10 @@ Partial Class FrmVentas
     Friend WithEvents TxtBuscarVentaPorLocalidad As TextBox
     Friend WithEvents BtnBuscarVentaPorLocalidad As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents BtnImprimirVenta As Button
     Friend WithEvents LblVentas As Label
     Friend WithEvents LblDesdeFecha As Label
     Friend WithEvents LblHastaFecha As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents BtnGenerarComprobante As Button
+    Friend WithEvents BtnReportePorFechas As Button
+    Friend WithEvents BtnReportePorRubro As Button
 End Class

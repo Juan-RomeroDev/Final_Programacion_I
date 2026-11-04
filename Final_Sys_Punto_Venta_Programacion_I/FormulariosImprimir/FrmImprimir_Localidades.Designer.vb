@@ -25,14 +25,28 @@ Partial Class FrmImprimir_Localidades
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmImprimir_Localidades))
+        Me.SpumostrarlocalidadesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Final_Punto_Venta_Programacion_IDataSet = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSet()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.ReportViewer2 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.Final_Punto_Venta_Programacion_IDataSet = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSet()
-        Me.SpumostrarlocalidadesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Spu_mostrar_localidadesTableAdapter = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSetTableAdapters.spu_mostrar_localidadesTableAdapter()
-        CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.spu_imprimir_comprobante_ventaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SpumostrarlocalidadesBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.SpumostrarlocalidadesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spu_imprimir_comprobante_ventaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpumostrarlocalidadesBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'SpumostrarlocalidadesBindingSource
+        '
+        Me.SpumostrarlocalidadesBindingSource.DataMember = "spu_mostrar_localidades"
+        Me.SpumostrarlocalidadesBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
+        '
+        'Final_Punto_Venta_Programacion_IDataSet
+        '
+        Me.Final_Punto_Venta_Programacion_IDataSet.DataSetName = "Final_Punto_Venta_Programacion_IDataSet"
+        Me.Final_Punto_Venta_Programacion_IDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ReportViewer1
         '
@@ -45,10 +59,10 @@ Partial Class FrmImprimir_Localidades
         'ReportViewer2
         '
         Me.ReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill
-        ReportDataSource1.Name = "DataSetComprobanteTicket"
-        ReportDataSource1.Value = Me.SpumostrarlocalidadesBindingSource
+        ReportDataSource1.Name = "DataSetLocalidades"
+        ReportDataSource1.Value = Me.SpumostrarlocalidadesBindingSource1
         Me.ReportViewer2.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer2.LocalReport.ReportEmbeddedResource = "Final_Sys_Punto_Venta_Programacion_I.RptComprobanteTicket.rdlc"
+        Me.ReportViewer2.LocalReport.ReportEmbeddedResource = "Final_Sys_Punto_Venta_Programacion_I.RptLocalidades.rdlc"
         Me.ReportViewer2.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer2.Name = "ReportViewer2"
         Me.ReportViewer2.ServerReport.BearerToken = Nothing
@@ -61,19 +75,19 @@ Partial Class FrmImprimir_Localidades
         Me.ReportViewer2.Size = New System.Drawing.Size(800, 450)
         Me.ReportViewer2.TabIndex = 0
         '
-        'Final_Punto_Venta_Programacion_IDataSet
-        '
-        Me.Final_Punto_Venta_Programacion_IDataSet.DataSetName = "Final_Punto_Venta_Programacion_IDataSet"
-        Me.Final_Punto_Venta_Programacion_IDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SpumostrarlocalidadesBindingSource
-        '
-        Me.SpumostrarlocalidadesBindingSource.DataMember = "spu_mostrar_localidades"
-        Me.SpumostrarlocalidadesBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
-        '
         'Spu_mostrar_localidadesTableAdapter
         '
         Me.Spu_mostrar_localidadesTableAdapter.ClearBeforeFill = True
+        '
+        'spu_imprimir_comprobante_ventaBindingSource
+        '
+        Me.spu_imprimir_comprobante_ventaBindingSource.DataMember = "spu_imprimir_comprobante_venta"
+        Me.spu_imprimir_comprobante_ventaBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
+        '
+        'SpumostrarlocalidadesBindingSource1
+        '
+        Me.SpumostrarlocalidadesBindingSource1.DataMember = "spu_mostrar_localidades"
+        Me.SpumostrarlocalidadesBindingSource1.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
         '
         'FrmImprimir_Localidades
         '
@@ -84,8 +98,10 @@ Partial Class FrmImprimir_Localidades
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmImprimir_Localidades"
         Me.Text = "IMPRIMIR LOCALIDADES"
-        CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpumostrarlocalidadesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spu_imprimir_comprobante_ventaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpumostrarlocalidadesBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -95,4 +111,6 @@ Partial Class FrmImprimir_Localidades
     Friend WithEvents Final_Punto_Venta_Programacion_IDataSet As Final_Punto_Venta_Programacion_IDataSet
     Friend WithEvents SpumostrarlocalidadesBindingSource As BindingSource
     Friend WithEvents Spu_mostrar_localidadesTableAdapter As Final_Punto_Venta_Programacion_IDataSetTableAdapters.spu_mostrar_localidadesTableAdapter
+    Friend WithEvents spu_imprimir_comprobante_ventaBindingSource As BindingSource
+    Friend WithEvents SpumostrarlocalidadesBindingSource1 As BindingSource
 End Class

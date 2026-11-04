@@ -36,21 +36,22 @@
         End If
     End Sub
 
-    ' EVENTO: DOBLE CLIC EN LA GRILLA
+    ' EVENTO: DOBLE CLIC EN LA GRILLA DE RUBROS
     Private Sub dgvRubros_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRubros.CellDoubleClick
-        If wflag = 1 Then ' LO ESTOY LLAMANDO DESDE CLIENTES, ASÍ QUE ME INTERESA EL DOBLE CLIC
-            wCP = Me.dgvRubros.CurrentRow.Cells(0).Value
+        If wflag = 6 OrElse wflag = 5 Then ' wflag 6 = Reporte, wflag 5 = Selección desde Productos
+            wID_Rubro = Convert.ToInt32(Me.dgvRubros.CurrentRow.Cells(0).Value)
+            wNombre_Rubro = Me.dgvRubros.CurrentRow.Cells(1).Value.ToString()
             Me.Close()
         End If
     End Sub
 
-    ' EVENTO: APRETAR LA TECLA ENTER
+    ' EVENTO: APRETAR LA TECLA ENTER EN LA GRILLA DE RUBROS
     Private Sub dgvRubros_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvRubros.KeyDown
-        If wflag = 1 Then ' LO ESTOY LLAMANDO DESDE CLIENTES, ASÍ QUE ME INTERESA EL ENTER
-            If e.KeyCode = Keys.Enter Then
-                wCP = Me.dgvRubros.CurrentRow.Cells(0).Value
-                Me.Close()
-            End If
+        If (wflag = 6 OrElse wflag = 5) AndAlso e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            wID_Rubro = Convert.ToInt32(Me.dgvRubros.CurrentRow.Cells(0).Value)
+            wNombre_Rubro = Me.dgvRubros.CurrentRow.Cells(1).Value.ToString()
+            Me.Close()
         End If
     End Sub
 
@@ -297,4 +298,43 @@
         Me.Close()
     End Sub
 
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
+        Dim frmImprimirRubros As New FrmImprimir_Rubros
+        frmImprimirRubros.ShowDialog()
+    End Sub
+
+    Private Sub TxtBuscarRubro_TextChanged(sender As Object, e As EventArgs) Handles TxtBuscarRubro.TextChanged
+        Dim rubroBuscado As String = Me.TxtBuscarRubro.Text.Trim()
+
+        If rubroBuscado = "" Then
+            llenarRubros()
+            Exit Sub
+        End If
+
+        ' Consulta llamando al procedimiento almacenado de búsqueda
+        Dim sql As String = "exec spu_buscar_rubro '" & rubroBuscado & "'"
+
+        Try
+            Dim adp As New SqlClient.SqlDataAdapter(sql, conexion)
+            Dim ds As New DataSet
+
+            ds.Tables.Add("RubrosFiltrados")
+            adp.Fill(ds.Tables("RubrosFiltrados"))
+
+            ' Asignamos los datos filtrados a la grilla
+            Me.dgvRubros.DataSource = ds.Tables("RubrosFiltrados")
+
+            ' Aplicamos el formato prolijo a las columnas
+            Me.dgvRubros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            If Me.dgvRubros.Columns.Count >= 2 Then
+                Me.dgvRubros.Columns(0).Width = 50
+                Me.dgvRubros.Columns(1).Width = 350
+                Me.dgvRubros.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                Me.dgvRubros.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al buscar rubro: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
 End Class

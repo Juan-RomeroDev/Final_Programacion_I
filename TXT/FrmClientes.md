@@ -187,7 +187,7 @@ llenarClientes()
         altaCli.telefono = Me.TxtTelefono.Text.Trim()
 
         'Cuidado con los espacios Por Ejemplo: Dim sql As String = "exec spu_alta_localidad" & altaLoc.cp & ",'" & altaLoc.localidad & "'"
-        Dim sql As String = "exec spu_alta_clientes" & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', '" & altaCli.telefono & "', " & altaCli.cp & ", '" & altaCli.email & "'"
+        Dim sql As String = "exec spu_alta_clientes " & altaCli.id_cliente & ", '" & altaCli.razonSocial & "', " & altaCli.cp & ", '" & altaCli.email & "', '" & altaCli.telefono & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UN CLIENTE",, "INFO")
         'Captura de error(Por si ocurre un improbable error en la BD :) )
@@ -212,7 +212,7 @@ llenarClientes()
 
         'SQL Store Procedure para modificar el cliente.
         'CUIDADO: ID y CP van SIN comillas simples (porque son INT). Razon, Telefono y DNI van CON comillas simples.
-        Dim sql As String = "exec spu_up_cliente " & id & ", '" & razonSocial & "', '" & cp & "', " & email & ", '" & telefono & "'"
+        Dim sql As String = "exec spu_modificar_clientes " & id & ", '" & razonSocial & "', '" & cp & "', '" & email & "', '" & telefono & "'"
         cmd.CommandText = sql
 
         MsgBox("SE MODIFICARÁ EL CLIENTE", , "INFO")
@@ -252,7 +252,7 @@ llenarClientes()
         If respuesta = DialogResult.Yes Then
             Dim id As String = Me.TxtIDCliente.Text
             ' Armo la consulta apuntando al procedimiento de baja (usa el ID)
-            Dim sql As String = "exec spu_del_cliente " & id
+            Dim sql As String = "exec spu_baja_clientes " & id
             cmd.CommandText = sql
 
             Try
@@ -284,7 +284,7 @@ llenarClientes()
     Private Sub btnAltaCliente_Click(sender As Object, e As EventArgs) Handles btnAltaCliente.Click
 
         ' Valida que no haya nada en blanco
-        If TxtRazonSocial.Text.Trim() = "" Or TxtTelefono.Text.Trim() = "" Or TxtEmail.Text.Trim() = "" Or TxtCPCLiente.Text.Trim() = "" Then
+        If TxtRazonSocial.Text.Trim() = "" Or TxtCPCLiente.Text.Trim() = "" Then
             MsgBox("Por favor, complete todos los campos obligatorios.", MsgBoxStyle.Exclamation, "Datos incompletos")
             Exit Sub
         End If
@@ -387,14 +387,6 @@ llenarClientes()
         Me.TxtRazonSocial.Focus() ' El foco va directo a Razón Social
     End Sub
 
-    Private Sub BtnGenerarCredencialClientes_Click(sender As Object, e As EventArgs) Handles BtnGenerarCredencialClientes.Click
-        wID_Cliente = Me.dgvClientes.CurrentRow.Cells(0).Value ' Asigno el ID del cliente a la variable global
-        MsgBox("Se generará la credencial para el cliente con ID: " & wID_Cliente, MsgBoxStyle.Information, "Generar Credencial")
-
-        Dim frm As New FrmImprimir_CredencialesClientes
-        frm.ShowDialog()
-    End Sub
-
     ' =========================================================
     ' VALIDACIONES DE SOLO NUMEROS EN CAMPOS
     ' =========================================================
@@ -405,6 +397,11 @@ llenarClientes()
             e.Handled = True
             MsgBox("Atención: El campo Telefono solo acepta números.", MsgBoxStyle.Exclamation, "Dato inválido")
         End If
+    End Sub
+
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
+        Dim FrmComprobante As New FrmImprimir_Clientes()
+        FrmComprobante.ShowDialog()
     End Sub
 
 End Class

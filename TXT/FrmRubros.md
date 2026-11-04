@@ -1,16 +1,16 @@
 Public Class FrmRubros
-'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION
-Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
-Private Sub FrmRubros_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-AbrirConexion()
-llenarRubros()
+    'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION 
+    Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
+    Private Sub FrmRubros_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AbrirConexion()
+        llenarRubros()
 
-        ' Al arrancar, bloqueo todo
+        ' Al arrancar, bloqueo todo 
         Bloquear()
     End Sub
 
     ' =========================================================
-    ' CELDAS DE LA GRILLA Y SUS FUNCIONES
+    ' CELDAS DE LA GRILLA Y SUS FUNCIONES 
     ' =========================================================
 
     Private Sub dgvRubros_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRubros.CellContentClick
@@ -27,7 +27,7 @@ llenarRubros()
                 Me.btnModificaRubro.Enabled = True
                 Me.btnBajaRubro.Enabled = True
 
-                ' REGLA DE ORO: Bloqueo el CP para que no lo cambie,
+                ' REGLA DE ORO: Bloqueo el CP para que no lo cambie, 
                 ' pero habilitamos la Localidad por si quiere modificar el nombre.
                 Me.TxtIDRubro.Enabled = False
                 Me.TxtDescripcionRubro.Enabled = True
@@ -36,21 +36,22 @@ llenarRubros()
         End If
     End Sub
 
-    ' EVENTO: DOBLE CLIC EN LA GRILLA
+    ' EVENTO: DOBLE CLIC EN LA GRILLA DE RUBROS
     Private Sub dgvRubros_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRubros.CellDoubleClick
-        If wflag = 1 Then ' LO ESTOY LLAMANDO DESDE CLIENTES, ASÍ QUE ME INTERESA EL DOBLE CLIC
-            wCP = Me.dgvRubros.CurrentRow.Cells(0).Value
+        If wflag = 6 Then ' Bandera específica para el reporte por rubro
+            wID_Rubro = Convert.ToInt32(Me.dgvRubros.CurrentRow.Cells(0).Value)
+            wNombre_Rubro = Me.dgvRubros.CurrentRow.Cells(1).Value.ToString()
             Me.Close()
         End If
     End Sub
 
-    ' EVENTO: APRETAR LA TECLA ENTER
+    ' EVENTO: APRETAR LA TECLA ENTER EN LA GRILLA DE RUBROS
     Private Sub dgvRubros_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvRubros.KeyDown
-        If wflag = 1 Then ' LO ESTOY LLAMANDO DESDE CLIENTES, ASÍ QUE ME INTERESA EL ENTER
-            If e.KeyCode = Keys.Enter Then
-                wCP = Me.dgvRubros.CurrentRow.Cells(0).Value
-                Me.Close()
-            End If
+        If wflag = 6 AndAlso e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            wID_Rubro = Convert.ToInt32(Me.dgvRubros.CurrentRow.Cells(0).Value)
+            wNombre_Rubro = Me.dgvRubros.CurrentRow.Cells(1).Value.ToString()
+            Me.Close()
         End If
     End Sub
 
@@ -84,7 +85,7 @@ llenarRubros()
         Dim sql As String = "exec spu_alta_rubro " & altaRubro.idRubro & ", '" & altaRubro.descripcionRubro & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UN RUBRO",, "INFO")
-        'Captura de error(Por si ocurre un improbable error en la BD :) )
+        'Captura de error(Por si ocurre un improbable error en la BD :) ) 
         Try
             AbrirConexion()
             cmd.ExecuteNonQuery()
@@ -94,7 +95,7 @@ llenarRubros()
         End Try
     End Sub
 
-    'FUNCION LLENAR Y RECARGAR COMO F5 GRILLA RUBROS
+    'FUNCION LLENAR Y RECARGAR COMO F5 GRILLA RUBROS 
     Private Sub llenarRubros()
         ' Llamo al procedimiento almacenado que me devuelve todos los rubros
         Dim sql As String = "exec spu_mostrar_rubros"
@@ -107,7 +108,7 @@ llenarRubros()
 
         ' Asigno los datos a la grilla
         Me.dgvRubros.DataSource = ds.Tables("rubros")
-        ' FORMATO DE LA GRILLA
+        ' FORMATO DE LA GRILLA 
         ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
         Me.dgvRubros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
@@ -126,7 +127,7 @@ llenarRubros()
             AbrirConexion()
             cmd.CommandText = "exec spu_generar_id_rubro"
 
-            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos
+            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos 
 
             If nuevoID IsNot Nothing AndAlso Not IsDBNull(nuevoID) Then
                 Me.TxtIDRubro.Text = nuevoID.ToString()
@@ -219,7 +220,7 @@ llenarRubros()
 
     'BOTON DE DAR ALTA UN RUBRO
     Private Sub btnAltaRubro_Click(sender As Object, e As EventArgs) Handles btnAltaRubro.Click
-        ' Validar que no haya campos en blanco
+        ' Validar que no haya campos en blanco 
         If Me.TxtIDRubro.Text.Trim() = "" Or Me.TxtDescripcionRubro.Text.Trim() = "" Then
             MsgBox("Por favor, complete el ID y la Descripción del Rubro.", MsgBoxStyle.Exclamation, "Datos incompletos")
             Exit Sub
@@ -259,7 +260,7 @@ llenarRubros()
         ' Habilito las cajas para que se pueda escribir los datos nuevos
         Me.TxtDescripcionRubro.Enabled = True
 
-        ' Paso 3: El usuario decide escribir para dar de Alta.
+        ' Paso 3: El usuario decide escribir para dar de Alta. 
         ' Desbloqueo Alta y Bloqueo Modifica y Baja.
         Me.btnAltaRubro.Enabled = True
         Me.btnModificaRubro.Enabled = False
@@ -281,7 +282,7 @@ llenarRubros()
             Exit Sub
         End If
 
-        ' Validar que no queden campos en blanco
+        ' Validar que no queden campos en blanco 
         If Me.TxtIDRubro.Text.Trim() = "" Or Me.TxtDescripcionRubro.Text.Trim() = "" Then
             MsgBox("No puede dejar campos vacíos al modificar el rubro.", MsgBoxStyle.Exclamation, "Datos incompletos")
             Exit Sub
@@ -297,4 +298,43 @@ llenarRubros()
         Me.Close()
     End Sub
 
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
+        Dim frmImprimirRubros As New FrmImprimir_Rubros
+        frmImprimirRubros.ShowDialog()
+    End Sub
+
+    Private Sub TxtBuscarRubro_TextChanged(sender As Object, e As EventArgs) Handles TxtBuscarRubro.TextChanged
+        Dim rubroBuscado As String = Me.TxtBuscarRubro.Text.Trim()
+
+        If rubroBuscado = "" Then
+            llenarRubros()
+            Exit Sub
+        End If
+
+        ' Consulta llamando al procedimiento almacenado de búsqueda
+        Dim sql As String = "exec spu_buscar_rubro '" & rubroBuscado & "'"
+
+        Try
+            Dim adp As New SqlClient.SqlDataAdapter(sql, conexion)
+            Dim ds As New DataSet
+
+            ds.Tables.Add("RubrosFiltrados")
+            adp.Fill(ds.Tables("RubrosFiltrados"))
+
+            ' Asignamos los datos filtrados a la grilla
+            Me.dgvRubros.DataSource = ds.Tables("RubrosFiltrados")
+
+            ' Aplicamos el formato prolijo a las columnas
+            Me.dgvRubros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            If Me.dgvRubros.Columns.Count >= 2 Then
+                Me.dgvRubros.Columns(0).Width = 50
+                Me.dgvRubros.Columns(1).Width = 350
+                Me.dgvRubros.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                Me.dgvRubros.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al buscar rubro: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
 End Class

@@ -44,7 +44,7 @@ Partial Class FrmClientes
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.LblTelefonoCliente = New System.Windows.Forms.Label()
         Me.LblClientes = New System.Windows.Forms.Label()
-        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
+        Me.BtnImprimirClientes = New System.Windows.Forms.Button()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -62,7 +62,7 @@ Partial Class FrmClientes
         'BtnAtrasClientes
         '
         Me.BtnAtrasClientes.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasClientes.Location = New System.Drawing.Point(-1, -1)
+        Me.BtnAtrasClientes.Location = New System.Drawing.Point(-5, -1)
         Me.BtnAtrasClientes.Name = "BtnAtrasClientes"
         Me.BtnAtrasClientes.Size = New System.Drawing.Size(82, 33)
         Me.BtnAtrasClientes.TabIndex = 59
@@ -262,16 +262,16 @@ Partial Class FrmClientes
         Me.LblClientes.TabIndex = 137
         Me.LblClientes.Text = "CLIENTES"
         '
-        'BtnGenerarComprobante
+        'BtnImprimirClientes
         '
-        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
-        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(797, 453)
-        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
-        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 54)
-        Me.BtnGenerarComprobante.TabIndex = 144
-        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
-        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
+        Me.BtnImprimirClientes.BackColor = System.Drawing.Color.GreenYellow
+        Me.BtnImprimirClientes.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnImprimirClientes.Location = New System.Drawing.Point(808, 448)
+        Me.BtnImprimirClientes.Name = "BtnImprimirClientes"
+        Me.BtnImprimirClientes.Size = New System.Drawing.Size(153, 30)
+        Me.BtnImprimirClientes.TabIndex = 144
+        Me.BtnImprimirClientes.Text = "Imprimir Informe"
+        Me.BtnImprimirClientes.UseVisualStyleBackColor = False
         '
         'FrmClientes
         '
@@ -280,7 +280,7 @@ Partial Class FrmClientes
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1156, 629)
-        Me.Controls.Add(Me.BtnGenerarComprobante)
+        Me.Controls.Add(Me.BtnImprimirClientes)
         Me.Controls.Add(Me.LblClientes)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.TxtEmail)
@@ -332,5 +332,5 @@ Partial Class FrmClientes
     Friend WithEvents TxtTelefono As TextBox
     Friend WithEvents LblTelefonoCliente As Label
     Friend WithEvents LblClientes As Label
-    Friend WithEvents BtnGenerarComprobante As Button
+    Friend WithEvents BtnImprimirClientes As Button
 End Class

@@ -29,8 +29,10 @@ Partial Class FrmImprimir_Rubros
         Me.Final_Punto_Venta_Programacion_IDataSet = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSet()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Spu_mostrar_rubrosTableAdapter = New Final_Sys_Punto_Venta_Programacion_I.Final_Punto_Venta_Programacion_IDataSetTableAdapters.spu_mostrar_rubrosTableAdapter()
+        Me.spu_mostrar_rubrosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.SpumostrarrubrosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spu_mostrar_rubrosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SpumostrarrubrosBindingSource
@@ -46,10 +48,10 @@ Partial Class FrmImprimir_Rubros
         'ReportViewer1
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        ReportDataSource1.Name = "DataSetComprobanteTicket"
-        ReportDataSource1.Value = Me.SpumostrarrubrosBindingSource
+        ReportDataSource1.Name = "DataSetRubros"
+        ReportDataSource1.Value = Me.spu_mostrar_rubrosBindingSource
         Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "Final_Sys_Punto_Venta_Programacion_I.RptComprobanteTicket.rdlc"
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "Final_Sys_Punto_Venta_Programacion_I.RptRubros.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.ServerReport.BearerToken = Nothing
@@ -66,6 +68,11 @@ Partial Class FrmImprimir_Rubros
         '
         Me.Spu_mostrar_rubrosTableAdapter.ClearBeforeFill = True
         '
+        'spu_mostrar_rubrosBindingSource
+        '
+        Me.spu_mostrar_rubrosBindingSource.DataMember = "spu_mostrar_rubros"
+        Me.spu_mostrar_rubrosBindingSource.DataSource = Me.Final_Punto_Venta_Programacion_IDataSet
+        '
         'FrmImprimir_Rubros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -77,6 +84,7 @@ Partial Class FrmImprimir_Rubros
         Me.Text = "IMPRIMIR RUBROS"
         CType(Me.SpumostrarrubrosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Final_Punto_Venta_Programacion_IDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spu_mostrar_rubrosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -85,4 +93,5 @@ Partial Class FrmImprimir_Rubros
     Friend WithEvents Final_Punto_Venta_Programacion_IDataSet As Final_Punto_Venta_Programacion_IDataSet
     Friend WithEvents SpumostrarrubrosBindingSource As BindingSource
     Friend WithEvents Spu_mostrar_rubrosTableAdapter As Final_Punto_Venta_Programacion_IDataSetTableAdapters.spu_mostrar_rubrosTableAdapter
+    Friend WithEvents spu_mostrar_rubrosBindingSource As BindingSource
 End Class

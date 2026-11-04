@@ -39,7 +39,6 @@ Partial Class frmLocalidades
         Me.TxtCp = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.LblLocalidades = New System.Windows.Forms.Label()
-        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         CType(Me.dgvLocalidades, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -57,7 +56,7 @@ Partial Class frmLocalidades
         'BtnAtrasLocalidades
         '
         Me.BtnAtrasLocalidades.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAtrasLocalidades.Location = New System.Drawing.Point(-2, 0)
+        Me.BtnAtrasLocalidades.Location = New System.Drawing.Point(-1, 0)
         Me.BtnAtrasLocalidades.Name = "BtnAtrasLocalidades"
         Me.BtnAtrasLocalidades.Size = New System.Drawing.Size(73, 30)
         Me.BtnAtrasLocalidades.TabIndex = 26
@@ -206,24 +205,12 @@ Partial Class frmLocalidades
         Me.LblLocalidades.TabIndex = 137
         Me.LblLocalidades.Text = "LOCALIDADES"
         '
-        'BtnGenerarComprobante
-        '
-        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
-        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(405, 334)
-        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
-        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 31)
-        Me.BtnGenerarComprobante.TabIndex = 144
-        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
-        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
-        '
         'frmLocalidades
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(650, 440)
-        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblLocalidades)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BtnGestionarLocalidades)
@@ -267,5 +254,4 @@ Partial Class frmLocalidades
     Friend WithEvents TxtCp As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LblLocalidades As Label
-    Friend WithEvents BtnGenerarComprobante As Button
 End Class

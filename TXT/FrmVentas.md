@@ -13,7 +13,7 @@ Public Class FrmVentas
 
 
     ' =========================================================
-    ' CELDAS DE LA GRILLA Y SUS FUNCIONES 
+    ' CELDAS DE LA GRILLA Y SUS FUNCIONES
     ' =========================================================
 
     ' Evento único que se dispara cuando escribes en CUALQUIER TextBox de búsqueda
@@ -69,6 +69,39 @@ Public Class FrmVentas
         Catch ex As Exception
             MsgBox("Error al filtrar las ventas: " & ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
+    End Sub
+
+    Private Sub BtnAtrasVentas_Click(sender As Object, e As EventArgs) Handles BtnAtrasVentas.Click
+        Me.Close()
+    End Sub
+
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
+        ' 1. Validar que haya una fila seleccionada en la grilla de ventas realizadas
+        If Me.dgvVentasRealizadas.CurrentRow IsNot Nothing AndAlso Me.dgvVentasRealizadas.CurrentRow.Index >= 0 Then
+
+            ' 2. Extraemos el ID de la venta (asumiendo que está en la primera columna, Cells(0))
+            wID_Venta = Convert.ToInt32(Me.dgvVentasRealizadas.CurrentRow.Cells(0).Value)
+
+            MsgBox("Se generará el comprobante para la Venta N°: " & wID_Venta, MsgBoxStyle.Information, "Generar Comprobante")
+
+            ' 3. Abrimos el formulario de impresión del ticket pasándole la variable global
+            Dim frm As New FrmImprimir_ComprobanteTicket()
+            frm.ShowDialog()
+
+        Else
+            MsgBox("Por favor, seleccione una venta de la lista para generar el comprobante.", MsgBoxStyle.Exclamation, "Sin selección")
+        End If
+    End Sub
+
+    Private Sub BtnReportePorFechas_Click(sender As Object, e As EventArgs) Handles BtnReportePorFechas.Click
+        ' 1. Extraemos las fechas de los selectores con el formato compatible con SQL (yyyy-MM-dd)
+        wFechaDesde = Me.dtpFechaDesde.Value.ToString("yyyy-MM-dd")
+        wFechaHasta = Me.dtpFechaHasta.Value.ToString("yyyy-MM-dd")
+
+        ' 2. Abrimos el formulario de impresión del reporte por fechas
+        ' (Asegúrate de cambiar 'FrmImprimir_ReporteFechas' por el nombre real de tu formulario de reporte)
+        Dim frm As New FrmImprimir_ReportePorFechas()
+        frm.ShowDialog()
     End Sub
 
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmFormaDePago
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmFormaDePago
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmFormaDePago))
         Me.dgvFormaDePago = New System.Windows.Forms.DataGridView()
@@ -37,7 +37,6 @@ Partial Class FrmFormaDePago
         Me.TxtBuscarFormaPago = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.LblFormaDePago = New System.Windows.Forms.Label()
-        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         CType(Me.dgvFormaDePago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -161,7 +160,7 @@ Partial Class FrmFormaDePago
         '
         Me.TxtBuscarFormaPago.Location = New System.Drawing.Point(88, 83)
         Me.TxtBuscarFormaPago.Name = "TxtBuscarFormaPago"
-        Me.TxtBuscarFormaPago.Size = New System.Drawing.Size(105, 20)
+        Me.TxtBuscarFormaPago.Size = New System.Drawing.Size(164, 20)
         Me.TxtBuscarFormaPago.TabIndex = 111
         '
         'Label2
@@ -188,24 +187,12 @@ Partial Class FrmFormaDePago
         Me.LblFormaDePago.TabIndex = 137
         Me.LblFormaDePago.Text = "FORMA DE PAGO"
         '
-        'BtnGenerarComprobante
-        '
-        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
-        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(495, 365)
-        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
-        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 31)
-        Me.BtnGenerarComprobante.TabIndex = 144
-        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
-        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
-        '
         'FrmFormaDePago
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(804, 460)
-        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.LblFormaDePago)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TxtBuscarFormaPago)
@@ -245,5 +232,4 @@ Partial Class FrmFormaDePago
     Friend WithEvents TxtBuscarFormaPago As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents LblFormaDePago As Label
-    Friend WithEvents BtnGenerarComprobante As Button
 End Class

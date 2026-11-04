@@ -91,5 +91,29 @@
         End If
     End Sub
 
+    Private Sub ListaDePreciosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaDePreciosToolStripMenuItem.Click
+        Dim FrmImprimirListaPrecios As New FrmImprimirListaPrecios()
+        FrmImprimirListaPrecios.Show()
+    End Sub
 
+    Private Sub ClientesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem1.Click
+        Dim FrmImprimirClientes As New FrmImprimir_Clientes()
+        FrmImprimirClientes.Show()
+    End Sub
+
+    Private Sub ProductosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductosToolStripMenuItem.Click
+        Dim FrmImprimirProductos As New FrmImprimir_Productos()
+        FrmImprimirProductos.Show()
+    End Sub
+
+    Private Sub RubrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RubrosToolStripMenuItem.Click
+        Dim FrmImprimirRubros As New FrmImprimir_Rubros()
+        FrmImprimir_Rubros.Show()
+
+    End Sub
+
+    Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
+        Dim FrmImprimirVentas As New FrmImprimir_Ventas()
+        FrmImprimirVentas.Show()
+    End Sub
 End Class

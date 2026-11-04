@@ -99,4 +99,14 @@ Module Clases
     Public wID_UsuarioLogueado As Integer = 0
     Public wNombre_UsuarioLogueado As String = ""
 
+    Public wNombre_Localidad As String = ""
+
+    ' =========================================================
+    ' VARIABLES PARA EL REPORTE DE VENTAS POR FECHA
+    ' =========================================================
+
+    ' Variables globales para el reporte de ventas por fecha
+    Public wFechaDesde As String = ""
+    Public wFechaHasta As String = ""
+
 End Module

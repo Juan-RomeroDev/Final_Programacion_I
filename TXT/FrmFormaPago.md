@@ -2,18 +2,18 @@ Imports System.Drawing.Imaging
 Imports sys_banco_izo.clases
 
 Public Class FrmFormaDePago
-    'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION 
-    Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
-    Private Sub FrmFormaDePago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AbrirConexion()
-        llenarFormaPago()
+'FUNCION MODO EDICION PARA ACTIVAR O DESACTIVAR BOTONES DE MODIFICACION Y ELIMINACION
+Private modoEdicion As Boolean = False ' Variable para controlar el modo de edición
+Private Sub FrmFormaDePago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+AbrirConexion()
+llenarFormaPago()
 
-        ' Al arrancar, bloqueo todo 
+        ' Al arrancar, bloqueo todo
         Bloquear()
     End Sub
 
     ' =========================================================
-    ' CELDAS DE LA GRILLA Y SUS FUNCIONES 
+    ' CELDAS DE LA GRILLA Y SUS FUNCIONES
     ' =========================================================
 
     ' Este evento hace que al hacer clic en la grilla, los datos pasen a las cajas de texto solos
@@ -31,7 +31,7 @@ Public Class FrmFormaDePago
                 Me.btnModificaFormaPago.Enabled = True
                 Me.btnBajaFormaPago.Enabled = True
 
-                ' REGLA DE ORO: Bloqueo el CP para que no lo cambie, 
+                ' REGLA DE ORO: Bloqueo el CP para que no lo cambie,
                 ' pero habilitamos la Localidad por si quiere modificar el nombre.
                 Me.TxtIDFormaPago.Enabled = False
                 Me.TxtDescripcionFormaPago.Enabled = True
@@ -88,7 +88,7 @@ Public Class FrmFormaDePago
         Dim sql As String = "exec spu_alta_forma_de_pago" & altaFormaPago.idFormaPago & ", '" & altaFormaPago.descripcionFormaPago & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UNA FORMA DE PAGO",, "INFO")
-        'Captura de error(Por si ocurre un improbable error en la BD :) ) 
+        'Captura de error(Por si ocurre un improbable error en la BD :) )
         Try
             AbrirConexion()
             cmd.ExecuteNonQuery()
@@ -98,7 +98,7 @@ Public Class FrmFormaDePago
         End Try
     End Sub
 
-    'FUNCION LLENAR Y RECARGAR COMO F5 GRILLA LOCALIDADES 
+    'FUNCION LLENAR Y RECARGAR COMO F5 GRILLA LOCALIDADES
     Private Sub llenarFormaPago()
         ' Llamo al procedimiento almacenado que me devuelve todas las localidades
         Dim sql As String = "exec spu_mostrar_forma_pago"
@@ -111,7 +111,7 @@ Public Class FrmFormaDePago
 
         ' Asigno los datos a la grilla
         Me.dgvFormaDePago.DataSource = ds.Tables("FormaPago")
-        ' FORMATO DE LA GRILLA 
+        ' FORMATO DE LA GRILLA
         ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
         Me.dgvFormaDePago.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
@@ -131,7 +131,7 @@ Public Class FrmFormaDePago
             AbrirConexion()
             cmd.CommandText = "exec spu_generar_id_forma_de_pago"
 
-            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos 
+            Dim nuevoID As Object = cmd.ExecuteScalar() 'Lo mejor para escalar ID, devuelve un objeto que puede ser DBNull si no hay datos
 
             If nuevoID IsNot Nothing AndAlso Not IsDBNull(nuevoID) Then
                 Me.TxtIDFormaPago.Text = nuevoID.ToString()
@@ -235,7 +235,7 @@ Public Class FrmFormaDePago
 
     ' 4- o sino vuelve a hacer click en la grila para seleccionar alguna localidad bloqueando Alta y desbloqueandose Modifica y Baja
 
-    ' 5- ahi decide el usario si modificar o dar de baja, una vez hecha la accion, la grila vuelve a estar toda bloqueda, menos el boton gestionar localidades 
+    ' 5- ahi decide el usario si modificar o dar de baja, una vez hecha la accion, la grila vuelve a estar toda bloqueda, menos el boton gestionar localidades
 
     Private Sub BtnGestionarLocalidades_Click(sender As Object, e As EventArgs) Handles BtnGestionarLocalidades.Click
         ' ESTA ES LA LLAVE para el error de antes de apretar el boton gestionar localidades hagas click en la grilla y se activen los modifica y baja
@@ -254,7 +254,7 @@ Public Class FrmFormaDePago
         Me.TxtIDFormaPago.ReadOnly = True ' El ID se genera automáticamente, así que lo dejo en solo lectura
         Me.TxtDescripcionFormaPago.Enabled = True
 
-        ' Paso 3: El usuario decide escribir para dar de Alta. 
+        ' Paso 3: El usuario decide escribir para dar de Alta.
         ' Desbloqueo Alta y Bloqueo Modifica y Baja.
         Me.btnAltaFormaPago.Enabled = True
         Me.btnModificaFormaPago.Enabled = False
@@ -268,7 +268,7 @@ Public Class FrmFormaDePago
         bajaFormaPago()
     End Sub
 
-    ' EVENTO DEL BOTÓN MODIFICA 
+    ' EVENTO DEL BOTÓN MODIFICA
     Private Sub btnModificaFormaPago_Click(sender As Object, e As EventArgs) Handles btnModificaFormaPago.Click
         modificarFormaPago()
     End Sub

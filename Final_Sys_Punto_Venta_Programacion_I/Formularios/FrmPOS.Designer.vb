@@ -49,9 +49,11 @@ Partial Class FrmPOS
         Me.LblProductos = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.BtnAtrasPOS = New System.Windows.Forms.Button()
-        Me.BtnGenerarComprobante = New System.Windows.Forms.Button()
         Me.TxtCantidad = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LblCantidad_Ingresar = New System.Windows.Forms.Label()
+        Me.LblModificarCantidadCarrito = New System.Windows.Forms.Label()
+        Me.TxtCantidad_A_Cambiar = New System.Windows.Forms.TextBox()
         CType(Me.dgvBusquedaProductosPOS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DgvCarritoProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,7 +108,7 @@ Partial Class FrmPOS
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(857, 300)
+        Me.Label1.Location = New System.Drawing.Point(873, 335)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(38, 45)
         Me.Label1.TabIndex = 47
@@ -117,7 +119,7 @@ Partial Class FrmPOS
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(850, 255)
+        Me.Label2.Location = New System.Drawing.Point(866, 290)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(126, 45)
         Me.Label2.TabIndex = 48
@@ -128,7 +130,7 @@ Partial Class FrmPOS
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(850, 146)
+        Me.Label4.Location = New System.Drawing.Point(866, 181)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(187, 45)
         Me.Label4.TabIndex = 100
@@ -139,7 +141,7 @@ Partial Class FrmPOS
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Nirmala Text", 24.0!, System.Drawing.FontStyle.Bold)
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(857, 191)
+        Me.Label6.Location = New System.Drawing.Point(873, 226)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(38, 45)
         Me.Label6.TabIndex = 101
@@ -168,7 +170,7 @@ Partial Class FrmPOS
         '
         Me.BtnQuitarRenglon.BackColor = System.Drawing.Color.Khaki
         Me.BtnQuitarRenglon.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnQuitarRenglon.Location = New System.Drawing.Point(911, 587)
+        Me.BtnQuitarRenglon.Location = New System.Drawing.Point(927, 643)
         Me.BtnQuitarRenglon.Name = "BtnQuitarRenglon"
         Me.BtnQuitarRenglon.Size = New System.Drawing.Size(128, 31)
         Me.BtnQuitarRenglon.TabIndex = 117
@@ -180,7 +182,7 @@ Partial Class FrmPOS
         Me.BtnFinalizarVenta.BackColor = System.Drawing.Color.MediumSpringGreen
         Me.BtnFinalizarVenta.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFinalizarVenta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BtnFinalizarVenta.Location = New System.Drawing.Point(858, 432)
+        Me.BtnFinalizarVenta.Location = New System.Drawing.Point(874, 488)
         Me.BtnFinalizarVenta.Name = "BtnFinalizarVenta"
         Me.BtnFinalizarVenta.Size = New System.Drawing.Size(242, 55)
         Me.BtnFinalizarVenta.TabIndex = 118
@@ -190,7 +192,7 @@ Partial Class FrmPOS
         'CB_Clientes
         '
         Me.CB_Clientes.FormattingEnabled = True
-        Me.CB_Clientes.Location = New System.Drawing.Point(554, 47)
+        Me.CB_Clientes.Location = New System.Drawing.Point(704, 47)
         Me.CB_Clientes.Name = "CB_Clientes"
         Me.CB_Clientes.Size = New System.Drawing.Size(175, 21)
         Me.CB_Clientes.TabIndex = 119
@@ -198,7 +200,7 @@ Partial Class FrmPOS
         'CB_FormaPago
         '
         Me.CB_FormaPago.FormattingEnabled = True
-        Me.CB_FormaPago.Location = New System.Drawing.Point(554, 101)
+        Me.CB_FormaPago.Location = New System.Drawing.Point(704, 101)
         Me.CB_FormaPago.Name = "CB_FormaPago"
         Me.CB_FormaPago.Size = New System.Drawing.Size(175, 21)
         Me.CB_FormaPago.TabIndex = 120
@@ -208,7 +210,7 @@ Partial Class FrmPOS
         Me.BtnCancelarVenta.BackColor = System.Drawing.Color.Crimson
         Me.BtnCancelarVenta.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCancelarVenta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BtnCancelarVenta.Location = New System.Drawing.Point(858, 507)
+        Me.BtnCancelarVenta.Location = New System.Drawing.Point(874, 563)
         Me.BtnCancelarVenta.Name = "BtnCancelarVenta"
         Me.BtnCancelarVenta.Size = New System.Drawing.Size(242, 58)
         Me.BtnCancelarVenta.TabIndex = 124
@@ -221,7 +223,7 @@ Partial Class FrmPOS
         Me.LblUsuario.BackColor = System.Drawing.Color.Transparent
         Me.LblUsuario.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblUsuario.ForeColor = System.Drawing.Color.White
-        Me.LblUsuario.Location = New System.Drawing.Point(931, 10)
+        Me.LblUsuario.Location = New System.Drawing.Point(907, 47)
         Me.LblUsuario.Name = "LblUsuario"
         Me.LblUsuario.Size = New System.Drawing.Size(73, 21)
         Me.LblUsuario.TabIndex = 125
@@ -233,7 +235,7 @@ Partial Class FrmPOS
         Me.LblFecha.BackColor = System.Drawing.Color.Transparent
         Me.LblFecha.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblFecha.ForeColor = System.Drawing.Color.White
-        Me.LblFecha.Location = New System.Drawing.Point(341, 23)
+        Me.LblFecha.Location = New System.Drawing.Point(108, 38)
         Me.LblFecha.Name = "LblFecha"
         Me.LblFecha.Size = New System.Drawing.Size(58, 21)
         Me.LblFecha.TabIndex = 126
@@ -245,7 +247,7 @@ Partial Class FrmPOS
         Me.Lbl_Venta_N.BackColor = System.Drawing.Color.Transparent
         Me.Lbl_Venta_N.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Lbl_Venta_N.ForeColor = System.Drawing.Color.White
-        Me.Lbl_Venta_N.Location = New System.Drawing.Point(108, 34)
+        Me.Lbl_Venta_N.Location = New System.Drawing.Point(108, 10)
         Me.Lbl_Venta_N.Name = "Lbl_Venta_N"
         Me.Lbl_Venta_N.Size = New System.Drawing.Size(81, 21)
         Me.Lbl_Venta_N.TabIndex = 127
@@ -257,7 +259,7 @@ Partial Class FrmPOS
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(550, 23)
+        Me.Label5.Location = New System.Drawing.Point(700, 23)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(68, 21)
         Me.Label5.TabIndex = 131
@@ -269,7 +271,7 @@ Partial Class FrmPOS
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(550, 77)
+        Me.Label11.Location = New System.Drawing.Point(700, 77)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(187, 21)
         Me.Label11.TabIndex = 132
@@ -280,7 +282,7 @@ Partial Class FrmPOS
         Me.LblTotal.AutoSize = True
         Me.LblTotal.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTotal.ForeColor = System.Drawing.Color.White
-        Me.LblTotal.Location = New System.Drawing.Point(891, 314)
+        Me.LblTotal.Location = New System.Drawing.Point(907, 349)
         Me.LblTotal.Name = "LblTotal"
         Me.LblTotal.Size = New System.Drawing.Size(18, 20)
         Me.LblTotal.TabIndex = 133
@@ -291,7 +293,7 @@ Partial Class FrmPOS
         Me.LblSubtotal.AutoSize = True
         Me.LblSubtotal.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblSubtotal.ForeColor = System.Drawing.Color.White
-        Me.LblSubtotal.Location = New System.Drawing.Point(891, 210)
+        Me.LblSubtotal.Location = New System.Drawing.Point(907, 245)
         Me.LblSubtotal.Name = "LblSubtotal"
         Me.LblSubtotal.Size = New System.Drawing.Size(18, 20)
         Me.LblSubtotal.TabIndex = 134
@@ -303,7 +305,7 @@ Partial Class FrmPOS
         Me.LblCantidad.BackColor = System.Drawing.Color.Transparent
         Me.LblCantidad.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCantidad.ForeColor = System.Drawing.Color.White
-        Me.LblCantidad.Location = New System.Drawing.Point(341, 47)
+        Me.LblCantidad.Location = New System.Drawing.Point(318, 10)
         Me.LblCantidad.Name = "LblCantidad"
         Me.LblCantidad.Size = New System.Drawing.Size(121, 21)
         Me.LblCantidad.TabIndex = 137
@@ -343,25 +345,13 @@ Partial Class FrmPOS
         Me.BtnAtrasPOS.Text = "ATRAS"
         Me.BtnAtrasPOS.UseVisualStyleBackColor = True
         '
-        'BtnGenerarComprobante
-        '
-        Me.BtnGenerarComprobante.BackColor = System.Drawing.Color.GreenYellow
-        Me.BtnGenerarComprobante.Font = New System.Drawing.Font("Nirmala Text", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarComprobante.Location = New System.Drawing.Point(885, 635)
-        Me.BtnGenerarComprobante.Name = "BtnGenerarComprobante"
-        Me.BtnGenerarComprobante.Size = New System.Drawing.Size(178, 54)
-        Me.BtnGenerarComprobante.TabIndex = 143
-        Me.BtnGenerarComprobante.Text = "Generar Comprobante"
-        Me.BtnGenerarComprobante.UseVisualStyleBackColor = False
-        '
         'TxtCantidad
         '
         Me.TxtCantidad.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtCantidad.Location = New System.Drawing.Point(345, 80)
+        Me.TxtCantidad.Location = New System.Drawing.Point(322, 71)
         Me.TxtCantidad.Name = "TxtCantidad"
-        Me.TxtCantidad.Size = New System.Drawing.Size(127, 28)
+        Me.TxtCantidad.Size = New System.Drawing.Size(159, 28)
         Me.TxtCantidad.TabIndex = 144
-        Me.TxtCantidad.Text = "Cantidad del Producto"
         '
         'PictureBox1
         '
@@ -374,14 +364,48 @@ Partial Class FrmPOS
         Me.PictureBox1.TabIndex = 141
         Me.PictureBox1.TabStop = False
         '
+        'LblCantidad_Ingresar
+        '
+        Me.LblCantidad_Ingresar.AutoSize = True
+        Me.LblCantidad_Ingresar.BackColor = System.Drawing.Color.Transparent
+        Me.LblCantidad_Ingresar.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCantidad_Ingresar.ForeColor = System.Drawing.Color.White
+        Me.LblCantidad_Ingresar.Location = New System.Drawing.Point(318, 47)
+        Me.LblCantidad_Ingresar.Name = "LblCantidad_Ingresar"
+        Me.LblCantidad_Ingresar.Size = New System.Drawing.Size(163, 21)
+        Me.LblCantidad_Ingresar.TabIndex = 145
+        Me.LblCantidad_Ingresar.Text = "Cantidad a Ingresar:"
+        '
+        'LblModificarCantidadCarrito
+        '
+        Me.LblModificarCantidadCarrito.AutoSize = True
+        Me.LblModificarCantidadCarrito.BackColor = System.Drawing.Color.Transparent
+        Me.LblModificarCantidadCarrito.Font = New System.Drawing.Font("Nirmala Text", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblModificarCantidadCarrito.ForeColor = System.Drawing.Color.White
+        Me.LblModificarCantidadCarrito.Location = New System.Drawing.Point(503, 47)
+        Me.LblModificarCantidadCarrito.Name = "LblModificarCantidadCarrito"
+        Me.LblModificarCantidadCarrito.Size = New System.Drawing.Size(165, 21)
+        Me.LblModificarCantidadCarrito.TabIndex = 146
+        Me.LblModificarCantidadCarrito.Text = "Cantidad a Cambiar:"
+        '
+        'TxtCantidad_A_Cambiar
+        '
+        Me.TxtCantidad_A_Cambiar.Font = New System.Drawing.Font("Nirmala Text", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCantidad_A_Cambiar.Location = New System.Drawing.Point(507, 71)
+        Me.TxtCantidad_A_Cambiar.Name = "TxtCantidad_A_Cambiar"
+        Me.TxtCantidad_A_Cambiar.Size = New System.Drawing.Size(159, 28)
+        Me.TxtCantidad_A_Cambiar.TabIndex = 147
+        '
         'FrmPOS
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1170, 749)
+        Me.Controls.Add(Me.TxtCantidad_A_Cambiar)
+        Me.Controls.Add(Me.LblModificarCantidadCarrito)
+        Me.Controls.Add(Me.LblCantidad_Ingresar)
         Me.Controls.Add(Me.TxtCantidad)
-        Me.Controls.Add(Me.BtnGenerarComprobante)
         Me.Controls.Add(Me.BtnAtrasPOS)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label16)
@@ -410,7 +434,7 @@ Partial Class FrmPOS
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPOS"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "VENTAS"
+        Me.Text = "PUNTO DE VENTAS"
         CType(Me.dgvBusquedaProductosPOS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DgvCarritoProductos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -444,6 +468,8 @@ Partial Class FrmPOS
     Friend WithEvents Label16 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnAtrasPOS As Button
-    Friend WithEvents BtnGenerarComprobante As Button
     Friend WithEvents TxtCantidad As TextBox
+    Friend WithEvents LblCantidad_Ingresar As Label
+    Friend WithEvents LblModificarCantidadCarrito As Label
+    Friend WithEvents TxtCantidad_A_Cambiar As TextBox
 End Class

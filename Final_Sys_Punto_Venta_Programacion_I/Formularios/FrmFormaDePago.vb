@@ -85,7 +85,7 @@ Public Class FrmFormaDePago
         altaFormaPago.descripcionFormaPago = Me.TxtDescripcionFormaPago.Text.Trim()
 
         'Cuidado con los espacios: Dim sql As String = "exec spu_alta_localidad" & altaLoc.cp & ",'" & altaLoc.localidad & "'"
-        Dim sql As String = "exec spu_alta_forma_de_pago" & altaFormaPago.idFormaPago & ", '" & altaFormaPago.descripcionFormaPago & "'"
+        Dim sql As String = "exec spu_alta_forma_de_pago " & altaFormaPago.idFormaPago & ", '" & altaFormaPago.descripcionFormaPago & "'"
         cmd.CommandText = sql
         MsgBox("SE DARA DE ALTA UNA FORMA DE PAGO",, "INFO")
         'Captura de error(Por si ocurre un improbable error en la BD :) ) 
@@ -225,6 +225,7 @@ Public Class FrmFormaDePago
     'BOTON DE DAR ALTA UNA LOCALIDAD
     Private Sub btnAltaFormaPago_Click(sender As Object, e As EventArgs) Handles btnAltaFormaPago.Click
         altaFormaPago()
+        llenarFormaPago() ' Recargo la grilla para que aparezca la nueva forma de pago
     End Sub
 
     ' 1-click en el boton Gestionar Localides
@@ -277,4 +278,39 @@ Public Class FrmFormaDePago
         Me.Close()
     End Sub
 
+    Private Sub TxtBuscarFormaPago_TextChanged(sender As Object, e As EventArgs) Handles TxtBuscarFormaPago.TextChanged
+        Dim textoBusqueda As String = Me.TxtBuscarFormaPago.Text.Trim()
+
+        ' Si la caja queda vacía, recargamos la lista completa
+        If textoBusqueda = "" Then
+            llenarFormaPago()
+            Exit Sub
+        End If
+
+        ' Consulta llamando al procedimiento almacenado de búsqueda
+        Dim sql As String = "exec spu_buscar_forma_pago '" & textoBusqueda & "'"
+
+        Try
+            Dim adp As New SqlClient.SqlDataAdapter(sql, conexion)
+            Dim ds As New DataSet
+
+            ds.Tables.Add("FormaPagoFiltrado")
+            adp.Fill(ds.Tables("FormaPagoFiltrado"))
+
+            ' Asignamos los datos filtrados a la grilla
+            Me.dgvFormaDePago.DataSource = ds.Tables("FormaPagoFiltrado")
+
+            ' Aplicamos el mismo formato a las columnas para mantener la prolijidad
+            Me.dgvFormaDePago.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            If Me.dgvFormaDePago.Columns.Count >= 2 Then
+                Me.dgvFormaDePago.Columns(0).Width = 100
+                Me.dgvFormaDePago.Columns(1).Width = 350
+                Me.dgvFormaDePago.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                Me.dgvFormaDePago.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al buscar forma de pago: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
 End Class

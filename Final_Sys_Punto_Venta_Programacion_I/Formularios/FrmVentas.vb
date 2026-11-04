@@ -74,4 +74,53 @@
     Private Sub BtnAtrasVentas_Click(sender As Object, e As EventArgs) Handles BtnAtrasVentas.Click
         Me.Close()
     End Sub
+
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
+        ' 1. Validar que haya una fila seleccionada en la grilla de ventas realizadas
+        If Me.dgvVentasRealizadas.CurrentRow IsNot Nothing AndAlso Me.dgvVentasRealizadas.CurrentRow.Index >= 0 Then
+
+            ' 2. Extraemos el ID de la venta (asumiendo que está en la primera columna, Cells(0))
+            wID_Venta = Convert.ToInt32(Me.dgvVentasRealizadas.CurrentRow.Cells(0).Value)
+
+            MsgBox("Se generará el comprobante para la Venta N°: " & wID_Venta, MsgBoxStyle.Information, "Generar Comprobante")
+
+            ' 3. Abrimos el formulario de impresión del ticket pasándole la variable global
+            Dim frm As New FrmImprimir_ComprobanteTicket()
+            frm.ShowDialog()
+
+        Else
+            MsgBox("Por favor, seleccione una venta de la lista para generar el comprobante.", MsgBoxStyle.Exclamation, "Sin selección")
+        End If
+    End Sub
+
+    Private Sub BtnReportePorFechas_Click(sender As Object, e As EventArgs) Handles BtnReportePorFechas.Click
+        ' 1. Extraemos las fechas de los selectores con el formato compatible con SQL (yyyy-MM-dd)
+        wFechaDesde = Me.dtpFechaDesde.Value.ToString("yyyy-MM-dd")
+        wFechaHasta = Me.dtpFechaHasta.Value.ToString("yyyy-MM-dd")
+
+        ' 2. Abrimos el formulario de impresión del reporte por fechas 
+        ' (Asegúrate de cambiar 'FrmImprimir_ReporteFechas' por el nombre real de tu formulario de reporte)
+        Dim frm As New FrmImprimir_ReportePorFechas()
+        frm.ShowDialog()
+    End Sub
+
+    Private Sub BtnReportePorRubro_Click(sender As Object, e As EventArgs) Handles BtnReportePorRubro.Click
+        ' 1. Activamos la bandera para indicar que buscamos un rubro para el reporte
+        wflag = 6
+
+        ' 2. Abrimos el formulario de rubros de forma modal
+        Dim frmRubros As New FrmRubros()
+        frmRubros.ShowDialog()
+
+        ' 3. Verificamos si el usuario seleccionó un rubro (wID_Rubro distinto de 0)
+        If wID_Rubro <> 0 Then
+            ' Abrimos el formulario de impresión pasándole el ID global
+            Dim frmReporteRubro As New FrmImprimir_ReportePorRubros()
+            frmReporteRubro.ShowDialog()
+        End If
+
+        ' 4. Reseteamos las variables de control al finalizar
+        wflag = 0
+        wID_Rubro = 0
+    End Sub
 End Class

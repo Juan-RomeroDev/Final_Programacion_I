@@ -76,25 +76,20 @@
     End Sub
 
     Private Sub TxtID_Rubro_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtID_Rubro.KeyDown
-        ' Verificacion si apreto Enter para abrir la pantalla de Rubros
+        ' Permitimos buscar si apreta Enter (incluso si la caja está en ReadOnly o bloqueada parcialmente para escritura manual)
         If e.KeyCode = Keys.Enter Then
-
-            ' Esto evita que suene el "Tilin" de error de Windows al apretar Enter
             e.SuppressKeyPress = True
 
-            ' Indica que se está buscando un Rubro para el Producto
-            ' (ajustá el número al que use tu frmRubros para devolver el valor)
             wflag = 5
-
-            ' Abro la pantalla de Rubros
             Dim frm As New FrmRubros()
             frm.ShowDialog()
 
             If wID_Rubro <> 0 Then
                 Me.TxtID_Rubro.Text = wID_Rubro
+                ' Opcional: si tienes un label para mostrar el nombre del rubro al lado
+                Me.LblRubroFiltrado.Text = wNombre_Rubro
             End If
 
-            ' Reset a las variables de control 
             wflag = 0
             wID_Rubro = 0
         End If
@@ -172,6 +167,8 @@
         Me.TxtDescripcion.Enabled = False
         Me.TxtPrecio.Enabled = False
         Me.TxtStock.Enabled = False
+
+        Me.BtnBuscarRubro.Enabled = False
         Me.TxtID_Rubro.Enabled = False
 
         Me.TxtID_Rubro.BackColor = ColorTranslator.FromOle(&HFFFF) 'Color Amarillo
@@ -180,6 +177,8 @@
         Me.btnAltaProducto.Enabled = False
         Me.btnModificaProducto.Enabled = False
         Me.btnBajaProducto.Enabled = False
+
+
     End Sub
 
     Private Sub LimpiarCajas()
@@ -469,4 +468,13 @@
         Return texto.Replace("'", "''")
     End Function
 
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
+        Dim FrmImprimir_Productos As New FrmImprimir_Productos()
+        FrmImprimir_Productos.ShowDialog()
+    End Sub
+
+    Private Sub BtnListaPrecios_Click(sender As Object, e As EventArgs) Handles BtnListaPrecios.Click
+        Dim FrmImprimir_ListaPrecios As New FrmImprimirListaPrecios()
+        FrmImprimir_ListaPrecios.ShowDialog()
+    End Sub
 End Class

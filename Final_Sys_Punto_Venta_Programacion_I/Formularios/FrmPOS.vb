@@ -9,16 +9,13 @@ Public Class FrmPOS
         llenarProductos()
         CargarCombosBoxClientesFormaPago()
 
-        ' Llamamos a la función que inicializa las columnas del carrito
         InicializarCarrito()
 
-        ' CARGAR DATOS INFORMATIVOS EN LOS LABELS
         Me.LblFecha.Text = "Fecha: " & DateTime.Now.ToString("dd/MM/yyyy")
         Me.LblUsuario.Text = "Usuario: " & wNombre_UsuarioLogueado
         Me.Lbl_Venta_N.Text = "Venta N°: " & generarIdVenta().ToString()
         Me.LblCantidad.Text = "Cantidad Filas: " & dtCarrito.Rows.Count
 
-        ' FORZAMOS EL FOCO A LA GRILLA
         Me.dgvBusquedaProductosPOS.Focus()
     End Sub
 
@@ -26,12 +23,13 @@ Public Class FrmPOS
     ' VARIABLES Y FUNCION PARA CARRITO 
     ' =========================================================
 
-    ' 2. La subrutina de inicialización va independiente
+    ' La subrutina de inicialización va independiente
     Private Sub InicializarCarrito()
         dtCarrito.Columns.Add("ID_PRODUCTO", GetType(Integer))
         dtCarrito.Columns.Add("PRODUCTO", GetType(String))
         dtCarrito.Columns.Add("PRECIO", GetType(Decimal))
         dtCarrito.Columns.Add("CANTIDAD", GetType(Integer))
+        dtCarrito.Columns.Add("STOCK", GetType(Decimal)) ' <--- el stock para validaciones
         ' El subtotal se calcula solo multiplicando precio por cantidad
         dtCarrito.Columns.Add("SUBTOTAL", GetType(Decimal), "PRECIO * CANTIDAD")
 
@@ -57,15 +55,37 @@ Public Class FrmPOS
         ds.Tables.Add("BuscarProductos")
         adp.Fill(ds.Tables("BuscarProductos"))
 
-        ' Asigno los datos a la grilla
-        Me.dgvBusquedaProductosPOS.DataSource = ds.Tables("BuscarProductos")
+        Dim dtProds As DataTable = ds.Tables("BuscarProductos")
 
-        ' FORMATO DE LA GRILLA 
-        ' Acá solo tengo 6 columnas, así que no hace falta ocultar nada
+        ' =========================================================
+        ' DESCONTAR EN TIEMPO REAL LO QUE ESTÁ EN EL CARRITO
+        ' =========================================================
+        If dtCarrito IsNot Nothing AndAlso dtCarrito.Columns.Contains("ID_PRODUCTO") AndAlso dtCarrito.Rows.Count > 0 Then
+            For Each rowProd As DataRow In dtProds.Rows
+                Dim idProdProd As Integer = Convert.ToInt32(rowProd("ID_PRODUCTO"))
+
+                Dim cantEnCarrito As Decimal = 0
+                For Each rowCar As DataRow In dtCarrito.Rows
+                    If Convert.ToInt32(rowCar("ID_PRODUCTO")) = idProdProd Then
+                        cantEnCarrito += Convert.ToDecimal(rowCar("CANTIDAD"))
+                    End If
+                Next
+
+                Dim stockOriginal As Decimal = Convert.ToDecimal(rowProd("STOCK"))
+                rowProd("STOCK") = stockOriginal - cantEnCarrito
+            Next
+        End If
+        ' =========================================================
+
+        ' Asigno los datos actualizados a la grilla
+        Me.dgvBusquedaProductosPOS.DataSource = dtProds
+
+
 
         ' Hace que la grilla ocupe todo el ancho sin scroll horizontal
         Me.dgvBusquedaProductosPOS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
+        ' FORMATO DE LA GRILLA 
         ' ORDEN ESTRICTO DE SQL
         Me.dgvBusquedaProductosPOS.Columns(0).FillWeight = 40   ' ID_PRODUCTO
         Me.dgvBusquedaProductosPOS.Columns(1).FillWeight = 160  ' DESCRIPCION
@@ -104,62 +124,151 @@ Public Class FrmPOS
 
     Private Sub dgvBusquedaProductosPOS_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBusquedaProductosPOS.CellDoubleClick
         If e.RowIndex >= 0 Then
-            ' 1. Extraemos los datos de la fila seleccionada arriba
+            ' Extraemos los datos de la fila seleccionada arriba
             Dim idProducto As Integer = Convert.ToInt32(Me.dgvBusquedaProductosPOS.Rows(e.RowIndex).Cells(0).Value)
             Dim descripcion As String = Me.dgvBusquedaProductosPOS.Rows(e.RowIndex).Cells(1).Value.ToString()
             Dim precio As Decimal = Convert.ToDecimal(Me.dgvBusquedaProductosPOS.Rows(e.RowIndex).Cells(2).Value)
             Dim stock As Decimal = Convert.ToDecimal(Me.dgvBusquedaProductosPOS.Rows(e.RowIndex).Cells(3).Value)
 
-            ' 2. Validación rápida de stock general
+            ' Validación rápida de stock general
             If stock <= 0 Then
                 MsgBox("Atención: El producto seleccionado no cuenta con stock disponible.", MsgBoxStyle.Exclamation, "Sin Stock")
                 Exit Sub
             End If
 
-            ' 3. Leemos la cantidad escrita en el TextBox (si está vacío o no es número, por defecto asignamos 1)
+            ' Leo la cantidad escrita en el TextBox (si está vacío o no es número, por defecto asignamos 1)
             Dim cantidad As Integer = 1
             If Me.TxtCantidad.Text.Trim() <> "" AndAlso IsNumeric(Me.TxtCantidad.Text.Trim()) Then
                 cantidad = Convert.ToInt32(Me.TxtCantidad.Text.Trim())
             End If
 
-            ' 4. Validar que la cantidad sea mayor a 0
+            ' Validar que la cantidad sea mayor a 0
             If cantidad <= 0 Then
                 MsgBox("La cantidad ingresada debe ser mayor a 0.", MsgBoxStyle.Exclamation, "Dato inválido")
                 Exit Sub
             End If
 
-            ' 5. Validar que la cantidad ingresada no supere el stock disponible
+            ' Validar que la cantidad ingresada no supere el stock disponible
             If cantidad > stock Then
                 MsgBox("Atención: La cantidad ingresada (" & cantidad & ") supera el stock disponible (" & stock & ").", MsgBoxStyle.Exclamation, "Stock Insuficiente")
                 Exit Sub
             End If
 
-            ' 6. Inyectamos los datos en la tabla temporal del carrito con la cantidad especificada
-            dtCarrito.Rows.Add(idProducto, descripcion, precio, cantidad)
+            ' Inyecto los datos en la tabla temporal del carrito con la cantidad especificada
+            dtCarrito.Rows.Add(idProducto, descripcion, precio, cantidad, stock)
 
-            ' 7. Recalculamos los totales generales al instante
-            CalcularTotalGeneral()
+            ' Recalculo los totales generales al instante
+            CalcularTotales()
+            llenarProductos()
 
-            ' 8. Opcional: Reseteamos la caja de cantidad a 1 y devolvemos el foco para seguir vendiendo rápido
+            ' Opcional: Reseteamos la caja de cantidad a 1 y devolvemos el foco para seguir vendiendo rápido
             Me.TxtCantidad.Text = "1"
             Me.TxtCantidad.Focus()
             Me.TxtCantidad.SelectAll()
         End If
     End Sub
 
-    ' CALCULAR TOTAL DEL CARRITO 
-    Private Sub CalcularTotalGeneral()
-        Dim totalGeneral As Decimal = 0
+    Private Sub DgvCarritoProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvCarritoProductos.CellClick
+        ' Validar que haya hecho clic en una fila válida y no en el encabezado
+        If e.RowIndex >= 0 Then
+            ' Obtener la cantidad de la fila seleccionada (columna CANTIDAD)
+            Dim cantidadActual As String = Me.DgvCarritoProductos.Rows(e.RowIndex).Cells("CANTIDAD").Value.ToString()
 
+            ' Asignar la cantidad al TextBox de cambio
+            Me.TxtCantidad_A_Cambiar.Text = cantidadActual
+        End If
+    End Sub
+
+    Private Sub ActualizarStockSuperiorAlModificar(idProducto As Integer)
+        Try
+            ' Recorremos la grilla superior de búsqueda para reflejar la resta del stock en tiempo real
+            Dim dtProductosBusqueda = DirectCast(Me.dgvBusquedaProductosPOS.DataSource, DataTable)
+
+            If dtProductosBusqueda IsNot Nothing Then
+                llenarProductos()
+            End If
+        Catch ex As Exception
+            MsgBox("Error al actualizar el stock superior: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    ' =========================================================
+    ' AGREGAR PRODUCTO AL CARRITO CON LA TECLA ENTER
+    ' =========================================================
+    Private Sub dgvBusquedaProductosPOS_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvBusquedaProductosPOS.KeyDown
+        ' Verificamos si se presionó la tecla Enter
+        If e.KeyCode = Keys.Enter Then
+            ' Evitr el sonido predeterminado de Windows y el salto de línea de la grilla
+            e.SuppressKeyPress = True
+
+            ' Validar que haya una fila seleccionada
+            If Me.dgvBusquedaProductosPOS.CurrentRow IsNot Nothing AndAlso Me.dgvBusquedaProductosPOS.CurrentRow.Index >= 0 Then
+                Dim rowIndex As Integer = Me.dgvBusquedaProductosPOS.CurrentRow.Index
+
+                ' Extraer los datos de la fila seleccionada
+                Dim idProducto As Integer = Convert.ToInt32(Me.dgvBusquedaProductosPOS.Rows(rowIndex).Cells(0).Value)
+                Dim descripcion As String = Me.dgvBusquedaProductosPOS.Rows(rowIndex).Cells(1).Value.ToString()
+                Dim precio As Decimal = Convert.ToDecimal(Me.dgvBusquedaProductosPOS.Rows(rowIndex).Cells(2).Value)
+                Dim stock As Decimal = Convert.ToDecimal(Me.dgvBusquedaProductosPOS.Rows(rowIndex).Cells(3).Value)
+
+                ' Validar rápida de stock general
+                If stock <= 0 Then
+                    MsgBox("Atención: El producto seleccionado no cuenta con stock disponible.", MsgBoxStyle.Exclamation, "Sin Stock")
+                    Exit Sub
+                End If
+
+                ' Leer la cantidad escrita en el TextBox (si está vacío o no es número, por defecto asignamos 1)
+                Dim cantidad As Integer = 1
+                If Me.TxtCantidad.Text.Trim() <> "" AndAlso IsNumeric(Me.TxtCantidad.Text.Trim()) Then
+                    cantidad = Convert.ToInt32(Me.TxtCantidad.Text.Trim())
+                End If
+
+                ' Validar que la cantidad sea mayor a 0
+                If cantidad <= 0 Then
+                    MsgBox("La cantidad ingresada debe ser mayor a 0.", MsgBoxStyle.Exclamation, "Dato inválido")
+                    Exit Sub
+                End If
+
+                ' Validar que la cantidad ingresada no supere el stock disponible
+                If cantidad > stock Then
+                    MsgBox("Atención: La cantidad ingresada (" & cantidad & ") supera el stock disponible (" & stock & ").", MsgBoxStyle.Exclamation, "Stock Insuficiente")
+                    Exit Sub
+                End If
+
+                ' Inyectamos los datos en la tabla temporal del carrito con la cantidad especificada
+                dtCarrito.Rows.Add(idProducto, descripcion, precio, cantidad, stock)
+
+                ' Recalcular los totales generales y actualizar el stock superior al instante
+                CalcularTotales()
+                llenarProductos()
+
+                ' Resetear la caja de cantidad a 1 y devolver el foco para seguir buscando y vendiendo rápido
+                Me.TxtCantidad.Text = "1"
+                Me.TxtCantidad.SelectAll()
+            End If
+        End If
+    End Sub
+
+    ' CALCULAR TOTAL DEL CARRITO 
+    Private Sub CalcularTotales()
+        Dim subtotalGeneral As Decimal = 0
+
+        ' Sumo el subtotal de cada renglón presente en el carrito
         For Each fila As DataRow In dtCarrito.Rows
-            totalGeneral += Convert.ToDecimal(fila("SUBTOTAL"))
+            If Not IsDBNull(fila("SUBTOTAL")) Then
+                subtotalGeneral += Convert.ToDecimal(fila("SUBTOTAL"))
+            End If
         Next
 
-        ' Mostramos el resultado en las etiquetas de subtotal y total
-        Me.LblSubtotal.Text = "$ " & totalGeneral.ToString("N2")
-        Me.LblTotal.Text = "$ " & totalGeneral.ToString("N2")
+        '
+        Dim recargoODescuento As Decimal = 0
+        Dim totalFinal As Decimal = subtotalGeneral + recargoODescuento
 
-        ' Actualizamos la cantidad de renglones en el carrito
+        ' Asigno cada valor de forma independiente a su respectiva etiqueta
+        Me.LblSubtotal.Text = "$ " & subtotalGeneral.ToString("N2")
+        Me.LblTotal.Text = "$ " & totalFinal.ToString("N2")
+
+        ' Actualizo la cantidad de renglones en el carrito
         Me.LblCantidad.Text = "Cantidad Filas: " & dtCarrito.Rows.Count.ToString()
     End Sub
 
@@ -185,26 +294,26 @@ Public Class FrmPOS
         Try
             AbrirConexion()
 
-            ' A. Obtenemos el ID de venta nuevo
+            ' obtengo el ID de venta nuevo
             Dim idVenta As Integer = generarIdVenta()
 
-            ' B. Calculamos el total general del carrito
+            ' Calcular el total general del carrito
             Dim totalVenta As Decimal = 0
             For Each fila As DataRow In dtCarrito.Rows
                 totalVenta += Convert.ToDecimal(fila("SUBTOTAL"))
             Next
 
-            ' C. Obtenemos los IDs seleccionados en los combos y usuario actual
+            ' Obtener los IDs seleccionados en los combos y usuario actual
             Dim idCliente As Integer = Convert.ToInt32(Me.CB_Clientes.SelectedValue)
             Dim idFormaPago As Integer = Convert.ToInt32(Me.CB_FormaPago.SelectedValue)
             Dim idUsuario As Integer = 1 ' O la variable global de usuario logueado en tu sistema
 
-            ' D. Ejecutamos el alta de la cabecera de venta
+            ' Ejecutar el alta de la cabecera de venta
             Dim sqlVenta As String = "exec spu_alta_ventas " & idVenta & ", " & idFormaPago & ", " & idCliente & ", " & idUsuario & ", " & totalVenta.ToString(System.Globalization.CultureInfo.InvariantCulture)
             cmd.CommandText = sqlVenta
             cmd.ExecuteNonQuery()
 
-            ' E. Recorremos el carrito para dar de alta cada renglón en detalle_venta
+            ' Recorremos el carrito para dar de alta cada renglón en detalle_venta
             Dim idFila As Integer = 1
             For Each fila As DataRow In dtCarrito.Rows
                 Dim idProducto As Integer = Convert.ToInt32(fila("ID_PRODUCTO"))
@@ -297,7 +406,8 @@ Public Class FrmPOS
         dtCarrito.AcceptChanges()
 
         ' Recalculamos el total
-        CalcularTotalGeneral()
+        CalcularTotales()
+        llenarProductos()
     End Sub
 
     ' =========================================================
@@ -311,6 +421,8 @@ Public Class FrmPOS
 
         ' Regeneramos el próximo N° de venta
         Me.Lbl_Venta_N.Text = "Venta N°: " & generarIdVenta().ToString()
+
+        llenarProductos()
     End Sub
 
     ' =========================================================
@@ -373,18 +485,18 @@ Public Class FrmPOS
 
     End Sub
 
-    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs) Handles BtnGenerarComprobante.Click
-        ' 1. Obtenemos el ID de la venta actual desde la etiqueta de la interfaz
+    Private Sub BtnGenerarComprobante_Click(sender As Object, e As EventArgs)
+        ' ID de la venta actual desde la etiqueta de la interfaz
         Dim idVenta As Integer
 
-        ' Limpiamos el texto del label para quedarnos solo con el número entero
+        ' Limpio el texto del label para quedarnos solo con el número entero
         Dim textoLabel As String = Me.Lbl_Venta_N.Text.Replace("Venta N°:", "").Trim()
 
         If Integer.TryParse(textoLabel, idVenta) Then
             Try
                 AbrirConexion()
 
-                ' 2. Ejecutamos el procedimiento almacenado para verificar si la venta existe
+                ' procedimiento almacenado para verificar si la venta existe
                 Dim sql As String = "exec spu_imprimir_comprobante_venta " & idVenta
                 Dim adp As New SqlClient.SqlDataAdapter(sql, conexion)
                 Dim ds As New DataSet
@@ -392,13 +504,13 @@ Public Class FrmPOS
                 ds.Tables.Add("ComprobanteVenta")
                 adp.Fill(ds.Tables("ComprobanteVenta"))
 
-                ' 3. Validamos que la venta tenga registros asociados antes de abrir el reporte
+                ' Validar que la venta tenga registros asociados antes de abrir el reporte
                 If ds.Tables("ComprobanteVenta").Rows.Count > 0 Then
 
-                    ' Guardamos el ID en la variable global (exactamente igual que con las credenciales de clientes)
+                    ' Guardo el ID en la variable global (exactamente igual que con las credenciales de clientes)
                     wID_Venta = idVenta
 
-                    ' Abrimos el formulario de impresión del ticket
+                    ' Abro el formulario de impresión del ticket
                     Dim frm As New FrmImprimir_ComprobanteTicket()
                     frm.ShowDialog()
 
@@ -411,6 +523,50 @@ Public Class FrmPOS
             End Try
         Else
             MsgBox("No hay un número de venta válido seleccionado.", MsgBoxStyle.Exclamation, "Atención")
+        End If
+    End Sub
+
+    Private Sub TxtCantidad_A_Cambiar_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtCantidad_A_Cambiar.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+
+            If dtCarrito.Rows.Count = 0 Then
+                MsgBox("El carrito está vacío.", MsgBoxStyle.Exclamation, "Carrito Vacío")
+                Exit Sub
+            End If
+
+            If Me.DgvCarritoProductos.CurrentRow Is Nothing Then
+                MsgBox("Debe seleccionar un producto del carrito para modificar su cantidad.", MsgBoxStyle.Exclamation, "Sin selección")
+                Exit Sub
+            End If
+
+            Dim nuevaCantidad As Integer
+            If Not Integer.TryParse(Me.TxtCantidad_A_Cambiar.Text.Trim(), nuevaCantidad) OrElse nuevaCantidad <= 0 Then
+                MsgBox("Por favor, ingrese una cantidad entera válida mayor a 0.", MsgBoxStyle.Exclamation, "Dato inválido")
+                Exit Sub
+            End If
+
+            Try
+                Dim indice As Integer = Me.DgvCarritoProductos.CurrentRow.Index
+                Dim filaCarrito As DataRow = dtCarrito.Rows(indice)
+                Dim stockMaximo As Decimal = Convert.ToDecimal(filaCarrito("STOCK"))
+
+                ' Validar stock (stock guardado + lo que ya tenía asignado en este renglón)
+                Dim cantidadAnterior As Integer = Convert.ToInt32(filaCarrito("CANTIDAD"))
+
+                ' Actualizar la cantidad en el DataTable
+                filaCarrito("CANTIDAD") = nuevaCantidad
+
+                ' Recalcular totales y actualizr el stock de la grilla superior
+                CalcularTotales()
+                llenarProductos()
+
+                Me.TxtCantidad_A_Cambiar.Clear()
+                MsgBox("Cantidad actualizada correctamente.", MsgBoxStyle.Information, "Éxito")
+
+            Catch ex As Exception
+                MsgBox("Error al modificar la cantidad: " & ex.Message, MsgBoxStyle.Critical, "Error")
+            End Try
         End If
     End Sub
 End Class

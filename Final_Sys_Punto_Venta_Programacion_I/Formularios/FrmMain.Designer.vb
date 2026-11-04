@@ -28,6 +28,11 @@ Partial Class FrmMain
         Me.Backup = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RubrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListaDePreciosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BtnVentas = New System.Windows.Forms.Button()
         Me.BtnPuntoVenta = New System.Windows.Forms.Button()
@@ -75,11 +80,42 @@ Partial Class FrmMain
         '
         'InformesToolStripMenuItem
         '
+        Me.InformesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem1, Me.ProductosToolStripMenuItem, Me.RubrosToolStripMenuItem, Me.VentasToolStripMenuItem, Me.ListaDePreciosToolStripMenuItem})
         Me.InformesToolStripMenuItem.Font = New System.Drawing.Font("Nirmala Text", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.InformesToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem"
         Me.InformesToolStripMenuItem.Size = New System.Drawing.Size(75, 21)
         Me.InformesToolStripMenuItem.Text = "Informes"
+        '
+        'ClientesToolStripMenuItem1
+        '
+        Me.ClientesToolStripMenuItem1.Name = "ClientesToolStripMenuItem1"
+        Me.ClientesToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ClientesToolStripMenuItem1.Text = "Clientes"
+        '
+        'ProductosToolStripMenuItem
+        '
+        Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProductosToolStripMenuItem.Text = "Productos"
+        '
+        'RubrosToolStripMenuItem
+        '
+        Me.RubrosToolStripMenuItem.Name = "RubrosToolStripMenuItem"
+        Me.RubrosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RubrosToolStripMenuItem.Text = "Rubros"
+        '
+        'VentasToolStripMenuItem
+        '
+        Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.VentasToolStripMenuItem.Text = "Ventas"
+        '
+        'ListaDePreciosToolStripMenuItem
+        '
+        Me.ListaDePreciosToolStripMenuItem.Name = "ListaDePreciosToolStripMenuItem"
+        Me.ListaDePreciosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ListaDePreciosToolStripMenuItem.Text = "Lista De Precios"
         '
         'Panel1
         '
@@ -258,7 +294,6 @@ Partial Class FrmMain
     End Sub
 
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents Backup As ToolStripMenuItem
     Friend WithEvents Panel1 As Panel
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PictureBox1 As PictureBox
@@ -273,4 +308,10 @@ Partial Class FrmMain
     Friend WithEvents LblNombre_Negocio As Label
     Friend WithEvents BtnPuntoVenta As Button
     Friend WithEvents BtnVentas As Button
+    Friend WithEvents Backup As ToolStripMenuItem
+    Friend WithEvents ClientesToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ProductosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RubrosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListaDePreciosToolStripMenuItem As ToolStripMenuItem
 End Class
