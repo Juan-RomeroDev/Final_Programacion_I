@@ -2,7 +2,7 @@
 -- BASE DE DATOS PUNTO DE VENTA  
 -- ============================================
 GO
-CREATE DATABASE Final_Punto_Venta_Programacion_I
+--CREATE DATABASE Final_Punto_Venta_Programacion_I
 GO
 -- ============================================
 -- USAR BASE DE DATOS PUNTO DE VENTA  
@@ -14,61 +14,61 @@ GO
 -- TABLAS PUNTO VENTA "PADRE"  (TODOS LOS ABM DE LAS TABLAS (EXC usuarios))
 -- ============================================
 
-CREATE TABLE forma_de_pago (
+/*CREATE TABLE forma_de_pago (
 	id_forma_pago INT PRIMARY KEY,  
 	descrip_forma_pago NVARCHAR (60) NOT NULL
-);
+);*/
 
-CREATE TABLE localidades (
+/*CREATE TABLE localidades (
 	cp INT PRIMARY KEY, 
 	localidad NVARCHAR (60) NOT NULL
-);
+);*/
 
-CREATE TABLE rubros (
+/*CREATE TABLE rubros (
 	id_rubro INT PRIMARY KEY,  
 	descrip_rubro NVARCHAR (60) NOT NULL
-);
+);*/
 
-CREATE TABLE usuarios ( 
+/*CREATE TABLE usuarios ( 
 	id_usuario INT PRIMARY KEY, 
 	usuario NVARCHAR (60) NOT NULL,
 	psw NVARCHAR (60) NOT NULL
-); 
+);*/ 
 
 -- ============================================
 -- TABLAS PUNTO VENTA "HIJOS"
 -- ============================================
 
-CREATE TABLE clientes (
+/*CREATE TABLE clientes (
 	id_cliente INT PRIMARY KEY,
 	razon_social NVARCHAR (60) NOT NULL,
 	cp INT NOT NULL FOREIGN KEY REFERENCES localidades(cp),
 	mail NVARCHAR (60),
 	telefono NVARCHAR (60)
-); 
+);*/ 
 
-CREATE TABLE productos ( 
+/*CREATE TABLE productos ( 
 	id_producto INT PRIMARY KEY, 
 	descripcion NVARCHAR (60) NOT NULL,
 	precio DECIMAL(10,2) NOT NULL,
 	stock DECIMAL(10,3) NOT NULL, 
 	id_rubro INT NOT NULL FOREIGN KEY REFERENCES rubros(id_rubro)
-);
+);*/
 
 -- ============================================
 -- TABLAS PUNTO VENTA QUE DEPENDE DE PADRE E HIJOS
 -- ============================================
 
-CREATE TABLE ventas (
+/*CREATE TABLE ventas (
 	id_venta INT  PRIMARY KEY, 
 	fecha DATE NOT NULL,
 	id_forma_pago INT NOT NULL FOREIGN KEY REFERENCES forma_de_pago(id_forma_pago),
 	id_cliente INT NOT NULL FOREIGN KEY REFERENCES clientes(id_cliente),
 	id_usuario INT NOT NULL FOREIGN KEY REFERENCES usuarios(id_usuario),
 	total DECIMAL(10,2) NOT NULL
-);
+);  */
 
-CREATE TABLE detalle_venta (
+/*CREATE TABLE detalle_venta (
 	id_venta INT, 
 	id_producto INT,
 	id_fila INT, --ID FILA 
@@ -81,7 +81,7 @@ CREATE TABLE detalle_venta (
 	 FOREIGN KEY (id_venta) REFERENCES ventas(id_venta),
      FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
-GO
+GO*/
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS FORMA PAGO 
 -- ============================================
@@ -190,7 +190,7 @@ GO
 
 
 -- ============================================
--- BUSCAR VENTAS TOOD JUNTO 
+-- BUSCAR VENTAS TODO JUNTO 
 -- ============================================
 
 CREATE PROCEDURE spu_buscar_ventas_cruzado
@@ -241,7 +241,7 @@ BEGIN
       AND (@localidad = '' OR localidades.localidad LIKE '%' + @localidad + '%')
       AND (@formaPago = '' OR forma_de_pago.descrip_forma_pago LIKE '%' + @formaPago + '%')
       AND (ventas.fecha BETWEEN @fechaDesde AND @fechaHasta)
-END
+END;
 
 -- ============================================
 -- PROCEDIMIENTOS ALMACENADOS LOCALIDADES BUSCAR X CP - LOCALIDADES 
@@ -334,12 +334,16 @@ CREATE PROCEDURE spu_buscar_producto_X_producto
 AS 
 BEGIN 
 	SELECT 
-		id_producto AS ID_PRODUCTO,
-		descripcion AS PRODUCTO,
-		precio AS PRECIO, 
-		stock AS STOCK 
+		productos.id_producto AS ID_PRODUCTO,
+		productos.descripcion AS PRODUCTO,
+		productos.precio AS PRECIO, 
+		productos.stock AS STOCK,
+		rubros.id_rubro AS ID_RUBRO,
+		rubros.descrip_rubro AS RUBRO
 	FROM productos 
+	INNER JOIN rubros ON productos.id_rubro = rubros.id_rubro
 	WHERE productos.descripcion LIKE '%' + @descripcion + '%';
+	
 END;
 GO
 
@@ -384,10 +388,12 @@ CREATE PROCEDURE spu_buscar_rubro_X_producto
 AS 
 BEGIN 
 	SELECT 
-		rubros.id_rubro AS ID_RUBRO,
 		productos.id_producto AS ID_PRODUCTO,
-		rubros.descrip_rubro AS RUBRO,
-		productos.descripcion AS PRODUCTO
+        productos.descripcion AS DESCRIPCION,
+        productos.precio AS PRECIO,
+        productos.stock AS STOCK,
+        rubros.id_rubro AS ID_RUBRO,
+        rubros.descrip_rubro AS DESCRIPCION_RUBRO
 	FROM productos --A
 	INNER JOIN rubros /*B*/ ON productos.id_rubro = rubros.id_rubro
 	WHERE rubros.descrip_rubro LIKE '%' + @descrip_rubro + '%';	
@@ -478,6 +484,7 @@ BEGIN
     INSERT INTO rubros (id_rubro, descrip_rubro) 
 	VALUES (@id_rubro, @descrip_rubro);
 END;
+GO
 
 --MODIFICAR RUBROS
 CREATE PROCEDURE spu_modificar_rubro
@@ -498,6 +505,7 @@ AS
 BEGIN
    DELETE FROM rubros WHERE id_rubro = @id_rubro;
 END;
+GO
 
 -- GENERAR +1 AL RUBRO
 CREATE PROCEDURE spu_generar_id_rubro
@@ -835,6 +843,7 @@ BEGIN
 	SET stock = stock + @cantidad_anterior - @cantidad
 	WHERE id_producto = @id_producto;
 END;
+GO
 
 --ELIMINAR DETALLE VENTAS
 CREATE PROCEDURE spu_baja_detalle_venta
@@ -1056,21 +1065,23 @@ INSERT INTO productos (id_producto, descripcion, precio, stock, id_rubro) VALUES
 (4, 'Agua 2L', 1200, 60, 2),
 (5, 'Lavandina 1L', 1000, 25, 3);
 
--- ELIMINAR PRODUCTOS 
-EXEC spu_baja_producto 1;    -- elimina el producto con id 1
-EXEC spu_baja_producto 2;    -- elimina el producto con id 2
-EXEC spu_baja_producto 3;    -- elimina el producto con id 3
-EXEC spu_baja_producto 4;    -- elimina el producto con id 4
-EXEC spu_baja_producto 5;    -- elimina el producto con id 5
+INSERT INTO usuarios (id_usuario, usuario, psw) VALUES (2, 'Juan', '4567'), (3, 'Marcelo', '8901');
 
--- ============================================
--- SIMULACION VENTA Final_Punto_Venta_Programacion_I 
--- ============================================
 
--- VENTA 1: VENTA DE 2 PRODUCTOS (Fideos y Gaseosa) CON STOCK INICIAL DE 50 Y 30 RESPECTIVAMENTE
-EXEC spu_alta_ventas 1, 1, 2, 1, 4400;
-EXEC spu_alta_detalle_venta 1, 3, 1, 2200, 2, 0;   -- el último valor (precio_r) se ignora
-EXEC spu_imprimir_comprobante 1;
-SELECT stock FROM productos WHERE id_producto = 3; -- tiene que ser 28
-EXEC spu_baja_ventas 1;
-SELECT stock FROM productos WHERE id_producto = 3; -- tiene que volver a 30
+-- Nuevos productos en Almacén (Rubro 1)
+EXEC spu_alta_producto 6, 'Yerba Mate 1kg', 3500.00, 100.000, 1;
+EXEC spu_alta_producto 7, 'Aceite de Girasol 1.5L', 2800.00, 80.000, 1;
+
+-- Nuevos productos en Bebidas (Rubro 2)
+EXEC spu_alta_producto 8, 'Cerveza Lata 473ml', 1800.00, 150.000, 2;
+EXEC spu_alta_producto 9, 'Jugo en Polvo', 450.00, 200.000, 2;
+
+-- Nuevos productos en Limpieza (Rubro 3)
+EXEC spu_alta_producto 10, 'Detergente 500ml', 1600.00, 90.000, 3;
+EXEC spu_alta_producto 11, 'Esponja Multiuso', 600.00, 150.000, 3;
+
+UPDATE productos SET stock = stock + 50.000 WHERE id_producto = 1; -- Fideos 500g
+UPDATE productos SET stock = stock + 40.000 WHERE id_producto = 2; -- Arroz 1kg
+UPDATE productos SET stock = stock + 30.000 WHERE id_producto = 3; -- Gaseosa 1.5L
+UPDATE productos SET stock = stock + 60.000 WHERE id_producto = 4; -- Agua 2L
+UPDATE productos SET stock = stock + 25.000 WHERE id_producto = 5; -- Lavandina 1L
